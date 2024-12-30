@@ -561,7 +561,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 ## Peer Reviewed Publications {.unnumbered}
 
-1.  Wang, L., J.S. Racine and Q. Wang (forthcoming), "Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator," *Econometric Reviews*, https://doi.org/10.1080/07474938.2024.2390392.
+1.  Wang, L., J.S. Racine and Q. Wang (2025), "Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator," *Econometric Reviews*, 44 (1) 80-89, https://doi.org/10.1080/07474938.2024.2390392.
 
 2.  Racine, J.S., Q. Li and Q. Wang (2024), "Boundary-Adaptive Kernel Density Estimation: The Case of (Near) Uniform Density," *Journal of Nonparametric Statistics*, 36 (1), 146--164, https://doi.org/10.1080/10485252.2023.2250011.
 
