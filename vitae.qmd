@@ -551,6 +551,8 @@ grid.arrange(plot1, plot2, ncol=2)
 
 -   The \`np' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/np/index.html>.
 
+-   The \`npiv' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/npiv/index.html>.
+
 -   The \`npRmpi' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/np/index.html>.
 
 -   The \`crs' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/crs/index.html>.
