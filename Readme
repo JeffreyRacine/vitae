@@ -1,3 +1,11 @@
+Jan 13 2025
+
+If I want to commit only the updated PDF then
+
+git commit vitae.pdf -F .tmp.git
+
+will do it, otherwise the -am will only update the .qmd file (I think?) if physically it has been altered beyond the time stamp (? assumption on my part)
+
 Aug 19 2024
 
 socialsciences no longer exists, figured out how to host pdf on github pages, all good...
