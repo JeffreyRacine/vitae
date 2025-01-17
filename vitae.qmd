@@ -775,7 +775,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 -   Patilea, V. and J.S. Racine, "Locally Adaptive Online Functional Data Analysis," submitted for publication.
 
--   Christensen, T. and X. Chen and J.S. Racine, "Estimation and Confidence Bands for Nonparametric Instrumental Variables Models: The R Package npiv," submitted for publication.
+-   Chen, X. and T. Christensen and S. Kankanala and J.S. Racine, "npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R," submitted for publication.
 
 ```{=html}
 <!--
