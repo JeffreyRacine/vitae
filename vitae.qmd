@@ -577,9 +577,9 @@ grid.arrange(plot1, plot2, ncol=2)
 
 7.  Racine, J.S. and I. Van Keilegom (2020), "A Smooth Nonparametric, Multivariate, Mixed-Data Location-Scale Test," *Journal of Business & Economic Statistics*, 38 (4), 784-795, (12 additional pages of supplementary material available at https://doi.org/10.1080/07350015.2019.1574227).
 
-8.  Ma, S., J.S. Racine and A. Ullah (2020), "Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models," *Econometric Reviews*, 39 (8), 792-825.
+8.  Ma, S., J.S. Racine and A. Ullah (2020), "Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models," *Econometric Reviews*, 39 (8), 792-825, https://doi.org/10.1080/07474938.2020.1772569.
 
-9.  Racine, J.S. and Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586.
+9.  Racine, J.S. and Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.
 
 10. Racine, J.S. (2019), "Energy, Economics, Replication & Reproduction," *Energy Economics*, 82, 264-275.
 
