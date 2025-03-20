@@ -571,7 +571,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 4.  Du, P., C. Parmeter and J.S. Racine (2024), "Shape Constrained Kernel PDF and PMF Estimation," *Statistica Sinica*, 34 (1), 257--289, https://doi.org/10.5705/ss.202021.0112.
 
-5.  Racine, J.S., Q. Li and D. Yu and L. Zheng (2023), "Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions," *Journal of Business and Economic Statistics*, 41 (4), 1251--1261, https://doi.org/10.1080/07350015.2022.2118126.
+5.  Racine, J.S., Q. Li, D. Yu and L. Zheng (2023), "Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions," *Journal of Business and Economic Statistics*, 41 (4), 1251--1261, https://doi.org/10.1080/07350015.2022.2118126.
 
 6.  Simardone, C. and J.S. Racine (2021), "Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective," *Handbook of Labor, Human Resources and Population*, Klaus F. Zimmermann Ed., Springer, DOI: https://doi.org/10.1007/978-3-319-57365-6, 1--30.
 
@@ -579,7 +579,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 8.  Ma, S., J.S. Racine and A. Ullah (2020), "Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models," *Econometric Reviews*, 39 (8), 792-825, https://doi.org/10.1080/07474938.2020.1772569.
 
-9.  Racine, J.S. and Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.
+9.  Racine, J.S. , Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.
 
 10. Racine, J.S. (2019), "Energy, Economics, Replication & Reproduction," *Energy Economics*, 82, 264-275.
 
@@ -627,7 +627,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 32. Li, C. and J.S. Racine (2013), "A Smooth Nonparametric Conditional Density Test for Categorical Responses," *Econometric Theory*, Volume 29, Issue 03, pages 629-641.
 
-33. Li, Q. and D. Ouyang and J.S. Racine (2013), "Categorical Semiparametric Varying Coefficient Models," *Journal of Applied Econometrics*, Volume 28, pages 551-579.
+33. Li, Q. , D. Ouyang and J.S. Racine (2013), "Categorical Semiparametric Varying Coefficient Models," *Journal of Applied Econometrics*, Volume 28, pages 551-579.
 
 34. Ma, S. and J.S. Racine (2013), "Additive Regression Splines with Irrelevant Categorical and Continuous Regressors," *Statistica Sinica*, Volume 23, pages 515-541.
 
