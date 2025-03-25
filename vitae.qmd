@@ -573,7 +573,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 5.  Racine, J.S., Q. Li, D. Yu and L. Zheng (2023), "Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions," *Journal of Business and Economic Statistics*, 41 (4), 1251--1261, https://doi.org/10.1080/07350015.2022.2118126.
 
-6.  Simardone, C. and J.S. Racine (2021), "Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective," *Handbook of Labor, Human Resources and Population*, Klaus F. Zimmermann Ed., Springer, DOI: https://doi.org/10.1007/978-3-319-57365-6, 1--30.
+6.  Simardone, C. and J.S. Racine (2021), "Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective," *Handbook of Labor, Human Resources and Population*, Klaus F. Zimmermann Ed., Springer, https://doi.org/10.1007/978-3-319-57365-6, 1--30.
 
 7.  Racine, J.S. and I. Van Keilegom (2020), "A Smooth Nonparametric, Multivariate, Mixed-Data Location-Scale Test," *Journal of Business & Economic Statistics*, 38 (4), 784-795, (12 additional pages of supplementary material available at https://doi.org/10.1080/07350015.2019.1574227).
 
@@ -775,7 +775,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 -   Patilea, V. and J.S. Racine, "Locally Adaptive Online Functional Data Analysis," submitted for publication.
 
--   Chen, X. and T. Christensen and S. Kankanala and J.S. Racine, "npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R," submitted for publication.
+-   Chen, X., T. Christensen, S. Kankanala and J.S. Racine, "npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R," submitted for publication.
 
 ```{=html}
 <!--
