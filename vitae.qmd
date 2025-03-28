@@ -363,128 +363,134 @@ knitr:
 
 1.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
 
+    Title: *A Foundational Framework For Functional Data Analysis*\
+    Amount: \$103,883\
+    Date: March 18, 2025 - March 31, 2030
+
+2.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
+
     Title: *A Comprehensive Framework for Model Averaging*\
     Amount: \$176,593\
     Date: March 15, 2018 - March 31, 2023
 
-2.  McMaster (RHPCS) Research Software Pilot Project
+3.  McMaster (RHPCS) Research Software Pilot Project
 
     Title: The R package np\
     Amount: In kind programming\
     Date: Fall 2019 - Winter 2020
 
-3.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
+4.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
 
     Title: *A Unified Framework for Nonparametric Instrumental Variable Estimation*\
     Amount: \$206,729\
     Date: July 1, 2013 - June 30, 2018
 
-4.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
+5.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
 
     Title: *Adaptive Robust Kernel Estimation*\
     Amount: \$93,000 (\$78,000 SSHRC, \$15,000 McMaster University matching funds)\
     Date: July 1, 2009 - June 30, 2012
 
-5.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
+6.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
 
     Joint with Paul V. Grootendorst\
     Title: *Assessment of the Cost and Equity of Different Catastrophic Drug Insurance Options for Canadians*\
     Amount: \$233,669\
     Date: September 1, 2008 - August 30, 2010
 
-6.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
+7.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
 
     Title: *Kernel Estimation of a Conditional CDF with Mixed Data*\
     Amount: \$108,630 (\$93,630 SSHRC, \$15,000 McMaster University matching funds)\
     Date: July 1, 2005 - June 30, 2008
 
-7.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
+8.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
 
     Joint with Carlos R. Quiñonez, David Locker, Peter V. Cooney, Raisa B. Deber, Paul V. Grootendorst, Stephen W. Hwang, and Sunjay Suri\
     Title: *Alleviating disparities in oral health: Responding to the information needs of key decision makers (and the KT plan)*\
     Amount: \$109,900\
     Date: January 1, 2008 - December 31, 2008
 
-8.  Natural Sciences and Engineering Research Council of Canada - *Discovery Grant*
+9.  Natural Sciences and Engineering Research Council of Canada - *Discovery Grant*
 
     Title: *Real Time Kernel Estimation*\
     Amount: \$12,000\
     Date: July 1, 2005 - June 30, 2006
 
-9.  National Science Foundation - *Major Research Instrumentation Grant: Principal Investigator*
+10. National Science Foundation - *Major Research Instrumentation Grant: Principal Investigator*
 
     Title: *Acquisition of a Beowulf Class Cluster Computer to Support Interdisciplinary Faculty Research*\
     Amount: \$162,810 (\$113,967 NSF, \$48,843 Syracuse University required cost-share)\
     Date: August 1, 2003
 
-10. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+11. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
 
     Title: *Nonparametric Hypothesis Testing in the Presence of Mixed Discrete and Continuous Data Types*\
     Amount: \$7,500\
     Date: January 1, 2001 - December 31, 2001
 
-11. National Institute of Health - *Research Grant*
+12. National Institute of Health - *Research Grant*
 
     Title: *Advanced Statistical Tools for Biomedical Research*\
     Amount: \$20,000\
     Date: May 1, 1999 - December 31, 2000
 
-12. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+13. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
 
     Title: *Density-Based Multinomial Choice - Theory and Applications*\
     Amount: \$7,500\
     Date: January 1, 1999 - December 31, 1999
 
-13. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+14. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
 
     Title: *Finite-Sample Corrections for* $hv$-Block Cross-Validation\
     Amount: \$7,500\
     Date: January 1, 1997 - December 31, 1997
 
-14. National Science Foundation SBR Grant - *Research Grant*
+15. National Science Foundation SBR Grant - *Research Grant*
 
     Co-Collaborator with Halbert White, Principal Investigator\
     Title: *Improved Estimation and Specification Testing with Parametric, Nonparametric, and Neural Network Models Using the Bootstrap*\
     Amount: \$166,650\
     Date: August 1, 1995 - July 31, 1998
 
-15. USAF Phase II Standards Technology Transfer Network - *Research Grant*
+16. USAF Phase II Standards Technology Transfer Network - *Research Grant*
 
     Title: *Automatic Data Modeling*\
     Amount: \$29,000\
     Date: May 6, 1996 - July 25, 1998
 
-16. USF Division of Sponsored Research - *Research Grant*
+17. USF Division of Sponsored Research - *Research Grant*
 
     Title: *Testing Exchange Market Efficiency using Nonparametric and Nonlinear Estimation*\
     Amount: \$6,500\
     Date: January 1, 1995 - December 31, 1995
 
-17. Social Sciences and Humanities Research Council of Canada - *Operating Grant*
+18. Social Sciences and Humanities Research Council of Canada - *Operating Grant*
 
     Title: *Semiparametric Estimation of Multi-Equation Econometric Models*\
     Amount: \$15,000\
     Date: June 1, 1992 - June 1, 1995
 
-18. Natural Sciences and Engineering Research Council of Canada - *Research Grant*
+19. Natural Sciences and Engineering Research Council of Canada - *Research Grant*
 
     Title: *Estimation of Multivariate Systems Models: A Heteroscedasticity-Consistent Approach*\
     Amount: \$27,000\
     Date: April 1, 1991 - April 1, 1994
 
-19. Social Sciences and Humanities Research Council of Canada - *Strategic Grant*
+20. Social Sciences and Humanities Research Council of Canada - *Strategic Grant*
 
     Joint work with D. Shapiro, J.B. Smith, and M. Stelcner\
     Title: *The Gender Earnings Gap and Labour Market Discrimination in Canada: A Reassessment and Extension of Econometric and Policy Analysis*\
     Amount: \$20,000\
     Date: October 1, 1990 - September 31, 1992
 
-20. Social Sciences and Humanities Research Council of Canada - *Doctoral Fellowship*
+21. Social Sciences and Humanities Research Council of Canada - *Doctoral Fellowship*
 
     Amount: \$12,500 per annum\
     Date: 1987-1988, 1988-1989
 
-21. Ontario Graduate Scholarship - *Doctoral Scholarship*
+22. Ontario Graduate Scholarship - *Doctoral Scholarship*
 
     Amount: \$8,500\
     Date: 1985-1986
