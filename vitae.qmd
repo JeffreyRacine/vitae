@@ -365,7 +365,7 @@ knitr:
 
     Title: *A Foundational Framework For Functional Data Analysis*\
     Amount: \$103,883\
-    Date: March 18, 2025 - March 31, 2030
+    Date: March 28, 2025 - March 31, 2030
 
 2.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
 
