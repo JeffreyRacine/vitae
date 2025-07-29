@@ -240,37 +240,39 @@ knitr:
 
 -   *Thesis Committee Member:*
 
-    1.  Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)
+    1.  Roberts, Keith (2025-, Economics, McMaster University)
 
-    2.  Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)
+    2.  Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)
 
-    3.  Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)
+    3.  Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)
 
-    4.  Shamsi, Azam (2018, School of Business, McMaster University, currently on faculty at the University of New Brunswick, Canada)
+    4.  Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)
 
-    5.  Thomas, Stephanie (2016, Economics, McMaster University, currently on faculty at Curtin University, Australia)
+    5.  Shamsi, Azam (2018, School of Business, McMaster University, currently on faculty at the University of New Brunswick, Canada)
 
-    6.  Olagunju, Waheed (2016, Economics, McMaster University, currently working at the King Abdullah Petroleum Studies and Research Center, Saudi Arabia)
+    6.  Thomas, Stephanie (2016, Economics, McMaster University, currently on faculty at Curtin University, Australia)
 
-    7.  Tellez, Juan (2014, Economics, the University of Geneva, currently a Post-Doctoral Fellow at the Harvard Kennedy School, U.S.A.)
+    7.  Olagunju, Waheed (2016, Economics, McMaster University, currently working at the King Abdullah Petroleum Studies and Research Center, Saudi Arabia)
 
-    8.  Meredith, Evan (2012, Economics, McMaster University, currently working at Human Services Alberta, Canada)
+    8.  Tellez, Juan (2014, Economics, the University of Geneva, currently a Post-Doctoral Fellow at the Harvard Kennedy School, U.S.A.)
 
-    9.  Li, Jinhu (2011, Economics, McMaster University, currently on faculty at the University of Melbourne, Australia)
+    9.  Meredith, Evan (2012, Economics, McMaster University, currently working at Human Services Alberta, Canada)
 
-    10. McLeod, Logan (2010, Economics, McMaster University, currently on faculty at Wilfrid Laurier University, Canada)
+    10. Li, Jinhu (2011, Economics, McMaster University, currently on faculty at the University of Melbourne, Australia)
 
-    11. de Oliveira, Claire (2008, Economics, McMaster University, currently on faculty at the University of York, UK)
+    11. McLeod, Logan (2010, Economics, McMaster University, currently on faculty at Wilfrid Laurier University, Canada)
 
-    12. Liu, Long (2008, Economics, Syracuse, currently on faculty at the University of Texas at San Antonio, U.S.A.)
+    12. de Oliveira, Claire (2008, Economics, McMaster University, currently on faculty at the University of York, UK)
 
-    13. Dammert, Ana (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
+    13. Liu, Long (2008, Economics, Syracuse, currently on faculty at the University of Texas at San Antonio, U.S.A.)
 
-    14. Galdo, Jose (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
+    14. Dammert, Ana (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
+
+    15. Galdo, Jose (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
 
         \[NB - from 1993-2002 I was a faculty member in the Department of Economics at the University of South Florida and, at that time, they did not have a Ph.D. program\]
 
-    15. Papanastasiou, John (1992, Economics, York, currently on faculty at the University of Macedonia, Thessaloniki, Greece)
+    16. Papanastasiou, John (1992, Economics, York, currently on faculty at the University of Macedonia, Thessaloniki, Greece)
 
 -   *Thesis External Examiner:*
 

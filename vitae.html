@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,10 +30,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="vitae_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="vitae_files/libs/quarto-html/anchor.min.js"></script>
 <link href="vitae_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="vitae_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="vitae_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="vitae_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="vitae_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="vitae_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="vitae_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -93,7 +93,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Updated March 28, 2025</p>
+      <p class="date">Updated July 29, 2025</p>
     </div>
   </div>
   
@@ -261,6 +261,7 @@ Analysis of Economic Data I</p></li>
 </ol></li>
 <li><p><em>Thesis Committee Member:</em></p>
 <ol type="1">
+<li><p>Roberts, Keith (2025-, Economics, McMaster University)</p></li>
 <li><p>Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)</p></li>
 <li><p>Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)</p></li>
 <li><p>Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)</p></li>
@@ -464,8 +465,8 @@ Date: 1985-1986</p></li>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Citations</td>
-<td style="text-align: right;">13,801</td>
-<td style="text-align: right;">4,492</td>
+<td style="text-align: right;">14,054</td>
+<td style="text-align: right;">4,734</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">h-index</td>
@@ -474,8 +475,8 @@ Date: 1985-1986</p></li>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">i10-index</td>
-<td style="text-align: right;">85</td>
-<td style="text-align: right;">56</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">60</td>
 </tr>
 </tbody>
 </table>
@@ -1048,8 +1049,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1160,7 +1159,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
