@@ -571,6 +571,8 @@ grid.arrange(plot1, plot2, ncol=2)
 
 ## Peer Reviewed Publications {.unnumbered}
 
+1.  Patilea, V. and J.S. Racine (in press), "Locally Adaptive Online Functional Data Analysis," *Journal of Nonparametric Statistics*.
+
 1.  Wang, L., J.S. Racine and Q. Wang (2025), "Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator," *Econometric Reviews*, 44 (1) 80-89, https://doi.org/10.1080/07474938.2024.2390392.
 
 2.  Racine, J.S., Q. Li and Q. Wang (2024), "Boundary-Adaptive Kernel Density Estimation: The Case of (Near) Uniform Density," *Journal of Nonparametric Statistics*, 36 (1), 146--164, https://doi.org/10.1080/10485252.2023.2250011.
@@ -780,8 +782,6 @@ grid.arrange(plot1, plot2, ncol=2)
 -   Racine, J.S. (2001), "Nonparametric Econometrics - Themes in Modern Econometrics by Adrian Pagan and Aman Ullah," *Journal of The American Statistical Association*, March, Volume 96, Number 453, pages 343-345.
 
 ## Work Submitted for Publication {.unnumbered}
-
--   Patilea, V. and J.S. Racine, "Locally Adaptive Online Functional Data Analysis," submitted for publication.
 
 -   Chen, X., T. Christensen, S. Kankanala and J.S. Racine, "npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R," submitted for publication.
 

@@ -1,3 +1,15 @@
+Aug 17 2025
+
+Cool! Looks like h might be back with "The Cygwin tools: a GNU toolkit for Windows" hitting 45?
+
+h/i10/total 45/89/14111
+
+Aug 14 2025
+
+Well h dropped to 44 a while ago and has not come back, but i10 up to 89...
+
+h/i10/total 44/89/14100
+
 Dec 30 2024
 
 Fun, h-index to 45, i10 to 86
