@@ -502,6 +502,7 @@ knitr:
 <center>
 
 ```{r foopander,message=FALSE,warning=FALSE,echo=FALSE,results='asis'}
+library(tikzDevice) ## workflows/actions seems to halt in this code claiming tikzDevice namespace issue
 ## Re-use foo below to do counting etc. and can't use formatted
 ## version for this, so make copy (foofoo) for formatting big.mark
 ## comma in table then can re-use foo later for counts etc.
