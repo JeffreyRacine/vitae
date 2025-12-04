@@ -1,0 +1,98 @@
+How can I use github to build and update resume pdf daily from a quarto markdown stored on github? The file is served up by github pages and apepars at https://jeffreyracine.github.io/vitae/vitae.pdf
+
+The most effective way to build and update your resume PDF daily using GitHub is by implementing a GitHub Actions workflow with a scheduled cron job.
+
+This approach automates the entire rendering process, ensuring your vitae.pdf is rebuilt from your Quarto Markdown file (.qmd) every day, even if you don't manually push a change.
+
+Here are the steps and the required workflow file:
+
+1. Create the GitHub Action Workflow
+Create a new directory named .github/workflows/ in the root of your repository. Inside this directory, create a new YAML file, for example, daily_vitae_update.yml.
+
+daily_vitae_update.yml
+Copy the following code into the file. This workflow performs the daily rendering of your Quarto file and commits the resulting PDF.
+
+YAML
+name: Daily Quarto PDF Update
+
+on:
+  # 1. Schedule a daily run (e.g., at 04:00 UTC)
+  schedule:
+    - cron: '0 4 * * *'
+  # 2. Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    # Set permissions to allow the action to write/commit files
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        # Fetches the code, including history, needed for the commit step
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto and TinyTeX
+        # TinyTeX is necessary for rendering Quarto documents to PDF
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+          
+      - name: Render Quarto Document to PDF
+        # Replace 'vitae.qmd' with the actual name of your main Quarto file
+        run: quarto render vitae.qmd 
+
+      - name: Commit and Push Updated PDF
+        run: |
+          # Configure Git user for the automated commit
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the generated PDF file. The path must match where Quarto outputs the file.
+          # For a single document, it usually appears in the same directory.
+          git add vitae.pdf
+          
+          # Commit the changes. '|| true' or '|| echo' prevents the action from failing 
+          # if there are no changes to the PDF (e.g., if the data didn't update).
+          git commit -m "Automated daily resume update" || echo "No changes to commit"
+
+          # Push the commit back to the main branch
+          git push
+2. Configure Your Repository Settings
+For the daily update to work, the GitHub Action needs permission to commit and push the newly rendered PDF back into your repository.
+
+Navigate to your repository on GitHub.
+
+Go to Settings -> Actions -> General.
+
+Scroll down to Workflow permissions.
+
+Ensure that "Read and write permissions" is selected.
+
+Click Save.
+
+This permission is crucial as it allows the default GITHUB_TOKEN to push the updated vitae.pdf file back to the branch being served by GitHub Pages.
+
+3. Verify GitHub Pages Configuration
+Confirm that your GitHub Pages settings are correctly configured to serve the PDF from the correct source:
+
+Navigate to your repository on GitHub.
+
+Go to Settings -> Pages.
+
+Under Source, ensure it points to the branch (main or gh-pages) and folder (e.g., (root) or /docs) where your Quarto source file and the generated vitae.pdf reside.
+
+The daily action will update the vitae.pdf file in this source location, and GitHub Pages will automatically serve the newest version.
+
+This process eliminates the need for manual local rendering and pushing, fulfilling your requirement for a daily, automated PDF update.
+
+This video provides a great visual guide on using GitHub Actions to deploy Quarto projects: Publish a Quarto project using GitHub Pages+GitHub Actions in 6 minutes (no need to render locally!).
+
+Publish a Quarto project using GitHub Pages+GitHub Actions in 6 minutes (no need to render locally!) - YouTube
+Melissa Van Bussel (ggnot2) · 11K views
+
+youtube.com/watch?v=arzBRW5XIkg&themeRefresh=1
+
+Welcome to Gemini, your personal AI assistant
+
