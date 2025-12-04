@@ -1,8 +1,8 @@
 ---
 title: "Curriculum Vitae"
 author: "Jeffrey Scott Racine"
-date: last-modified
-date-format: "[Updated] MMMM DD, YYYY"
+date: now
+date-format: "YYYY-MM-DD HH:mm:ss"
 format: 
   html: default
   pdf:
