@@ -1,0 +1,46 @@
+name: Daily Quarto PDF Update
+
+on:
+  # 1. Schedule a daily run (e.g., at 04:00 UTC)
+  schedule:
+    - cron: '0 4 * * *'
+  # 2. Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    # Set permissions to allow the action to write/commit files
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        # Fetches the code, including history, needed for the commit step
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto and TinyTeX
+        # TinyTeX is necessary for rendering Quarto documents to PDF
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+          
+      - name: Render Quarto Document to PDF
+        # Replace 'vitae.qmd' with the actual name of your main Quarto file
+        run: quarto render vitae.qmd 
+
+      - name: Commit and Push Updated PDF
+        run: |
+          # Configure Git user for the automated commit
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the generated PDF file. The path must match where Quarto outputs the file.
+          # For a single document, it usually appears in the same directory.
+          git add vitae.pdf
+          
+          # Commit the changes. '|| true' or '|| echo' prevents the action from failing 
+          # if there are no changes to the PDF (e.g., if the data didn't update).
+          git commit -m "Automated daily resume update" || echo "No changes to commit"
+
+          # Push the commit back to the main branch
+          git push
