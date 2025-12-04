@@ -1,4 +1,8 @@
-How can I use github to build and update resume pdf daily from a quarto markdown stored on github? The file is served up by github pages and apepars at https://jeffreyracine.github.io/vitae/vitae.pdf
+Dec 4 2025
+
+Asked Google Gemini LRM and got the following response which seems to be very solid?
+
+How can I use GitHub to build and update resume pdf daily from a quarto markdown stored on github? The file is served up by github pages and apepars at https://jeffreyracine.github.io/vitae/vitae.pdf
 
 The most effective way to build and update your resume PDF daily using GitHub is by implementing a GitHub Actions workflow with a scheduled cron job.
 
