@@ -28,6 +28,11 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Install CRAN packages
+        run: |
+          install.packages(c("pander", "gcite"))
+        shell: Rscript {0}
+
       - name: Set up Quarto and TinyTeX
         # TinyTeX is necessary for rendering Quarto documents to PDF
         uses: quarto-dev/quarto-actions/setup@v2
