@@ -18,6 +18,16 @@ jobs:
         # Fetches the code, including history, needed for the commit step
         uses: actions/checkout@v4
 
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2.0'
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
       - name: Set up Quarto and TinyTeX
         # TinyTeX is necessary for rendering Quarto documents to PDF
         uses: quarto-dev/quarto-actions/setup@v2

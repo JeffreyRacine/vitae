@@ -1,5 +1,9 @@
 Dec 4 2025
 
+See https://quarto.org/docs/publishing/github-pages.html for more info...
+
+-------
+
 Asked Google Gemini LRM and got the following response which seems to be very solid?
 
 How can I use GitHub to build and update resume pdf daily from a quarto markdown stored on github? The file is served up by github pages and apepars at https://jeffreyracine.github.io/vitae/vitae.pdf
