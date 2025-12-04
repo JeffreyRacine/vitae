@@ -1,5 +1,9 @@
 Dec 4 2025
 
+Dang, was not following directions... .github/workflows is the dir, now it IS showing up on the repo under the actions tab... first attempt will be in an hour?
+
+------
+
 See https://quarto.org/docs/publishing/github-pages.html for more info...
 
 Added install R and dependencies to workflows/*.yml
