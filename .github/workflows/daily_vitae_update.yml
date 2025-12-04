@@ -25,7 +25,7 @@ jobs:
 
       - name: Install CRAN packages
         run: |
-          install.packages(c("rmarkdown", "knitr", "pander", "gcite"))
+          install.packages(c("rmarkdown", "knitr", "pander", "gcite", "tikzDevice"))
         shell: Rscript {0}
 
       - name: Set up Quarto and TinyTeX
