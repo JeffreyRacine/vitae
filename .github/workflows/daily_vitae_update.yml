@@ -18,7 +18,17 @@ jobs:
         # Fetches the code, including history, needed for the commit step
         uses: actions/checkout@v4
 
+      # Cache apt-get packages
+      - name: Cache apt packages
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }} # Use a file to list apt packages
+          restore-keys: |
+            ${{ runner.os }}-apt-        
+
       - name: Install libpng-dev and libcurl4-openssl-dev
+        if: steps.cache-apt.outputs.cache-hit != 'true'
         run: sudo apt-get update && sudo apt-get install -y libpng-dev libcurl4-openssl-dev    
 
       - name: Set up Quarto and TinyTeX
@@ -46,9 +56,19 @@ jobs:
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2.0'
+          r-version: '4.5.2'
+
+      # Cache R packages
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }} # Path to user-installed R packages
+          key: ${{ runner.os }}-r-${{ hashFiles('**/renv.lock', '**/DESCRIPTION') }} # Use renv.lock or DESCRIPTION for cache key
+          restore-keys: |
+            ${{ runner.os }}-r-          
           
       - name: Install CRAN packages
+        if: steps.cache-r.outputs.cache-hit != 'true'
         run: |
           install.packages(c("png", "rmarkdown", "knitr", "pander", "gcite", "tikzDevice"))
         shell: Rscript {0}          
