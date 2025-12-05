@@ -2,7 +2,7 @@
 title: "Curriculum Vitae"
 author: "Jeffrey Scott Racine"
 date: now
-date-format: "YYYY-MM-DD HH:mm:ss"
+date-format: "YYYY-MM-DD"
 format: 
   html: default
   pdf:
@@ -571,209 +571,211 @@ grid.arrange(plot1, plot2, ncol=2)
 
 ## Peer Reviewed Publications {.unnumbered}
 
-1.  Patilea, V. and J.S. Racine (in press), "Locally Adaptive Online Functional Data Analysis," *Journal of Nonparametric Statistics*.
+1.  Patilea, V. and J.S. Racine (in press), "Locally Adaptive Online Functional Data Analysis," *Journal of Nonparametric Statistics*.
 
-2.  Wang, L., J.S. Racine and Q. Wang (2025), "Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator," *Econometric Reviews*, 44 (1) 80-89, https://doi.org/10.1080/07474938.2024.2390392.
+2.  Racine, J.S. (in press), "Quarto the Assassin", Advanced Studies in Theoretical and Applied Econometrics, Volume 56, *Springer Nature*, https://link.springer.com/book/9783031979415.
 
-3.  Racine, J.S., Q. Li and Q. Wang (2024), "Boundary-Adaptive Kernel Density Estimation: The Case of (Near) Uniform Density," *Journal of Nonparametric Statistics*, 36 (1), 146--164, https://doi.org/10.1080/10485252.2023.2250011.
+3.  Wang, L., J.S. Racine and Q. Wang (2025), "Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator," *Econometric Reviews*, 44 (1) 80-89, https://doi.org/10.1080/07474938.2024.2390392.
 
-4.  Hansen, B.E. and J.S. Racine (2024), "Bootstrap Model Averaging Unit Root Inference," *Advances in Econometrics: Essays in Honor of Subal Kumbhakar*, Parmeter, C., Tsionas, M. and H.J. Wang Eds., Volume 46, 81--98.
+4.  Racine, J.S., Q. Li and Q. Wang (2024), "Boundary-Adaptive Kernel Density Estimation: The Case of (Near) Uniform Density," *Journal of Nonparametric Statistics*, 36 (1), 146--164, https://doi.org/10.1080/10485252.2023.2250011.
 
-5.  Du, P., C. Parmeter and J.S. Racine (2024), "Shape Constrained Kernel PDF and PMF Estimation," *Statistica Sinica*, 34 (1), 257--289, https://doi.org/10.5705/ss.202021.0112.
+5.  Hansen, B.E. and J.S. Racine (2024), "Bootstrap Model Averaging Unit Root Inference," *Advances in Econometrics: Essays in Honor of Subal Kumbhakar*, Parmeter, C., Tsionas, M. and H.J. Wang Eds., Volume 46, 81--98.
 
-6.  Racine, J.S., Q. Li, D. Yu and L. Zheng (2023), "Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions," *Journal of Business and Economic Statistics*, 41 (4), 1251--1261, https://doi.org/10.1080/07350015.2022.2118126.
+6.  Du, P., C. Parmeter and J.S. Racine (2024), "Shape Constrained Kernel PDF and PMF Estimation," *Statistica Sinica*, 34 (1), 257--289, https://doi.org/10.5705/ss.202021.0112.
 
-7.  Simardone, C. and J.S. Racine (2021), "Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective," *Handbook of Labor, Human Resources and Population*, Klaus F. Zimmermann Ed., Springer, https://doi.org/10.1007/978-3-319-57365-6, 1--30.
+7.  Racine, J.S., Q. Li, D. Yu and L. Zheng (2023), "Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions," *Journal of Business and Economic Statistics*, 41 (4), 1251--1261, https://doi.org/10.1080/07350015.2022.2118126.
 
-8.  Racine, J.S. and I. Van Keilegom (2020), "A Smooth Nonparametric, Multivariate, Mixed-Data Location-Scale Test," *Journal of Business & Economic Statistics*, 38 (4), 784-795, (12 additional pages of supplementary material available at https://doi.org/10.1080/07350015.2019.1574227).
+8.  Simardone, C. and J.S. Racine (2021), "Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective," *Handbook of Labor, Human Resources and Population*, Klaus F. Zimmermann Ed., Springer, https://doi.org/10.1007/978-3-319-57365-6, 1--30.
 
-9.  Ma, S., J.S. Racine and A. Ullah (2020), "Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models," *Econometric Reviews*, 39 (8), 792-825, https://doi.org/10.1080/07474938.2020.1772569.
+9.  Racine, J.S. and I. Van Keilegom (2020), "A Smooth Nonparametric, Multivariate, Mixed-Data Location-Scale Test," *Journal of Business & Economic Statistics*, 38 (4), 784-795, (12 additional pages of supplementary material available at https://doi.org/10.1080/07350015.2019.1574227).
 
-10. Racine, J.S. , Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.
+10. Ma, S., J.S. Racine and A. Ullah (2020), "Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models," *Econometric Reviews*, 39 (8), 792-825, https://doi.org/10.1080/07474938.2020.1772569.
 
-11. Racine, J.S. (2019), "Energy, Economics, Replication & Reproduction," *Energy Economics*, 82, 264-275.
+11. Racine, J.S. , Q. Li and K.X. Yan (2020), "Kernel Smoothed Probability Mass Functions for Ordered Datatypes," *Journal of Nonparametric Statistics*, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.
 
-12. Parmeter, C. and J.S. Racine (2019), "Nonparametric Estimation and Inference for Panel Data Models," *Panel Data Econometrics: Foundations and Applications*, Volume 1, Chapter 4, Academic Press (an imprint of Elsevier), 97-129.
+12. Racine, J.S. (2019), "Energy, Economics, Replication & Reproduction," *Energy Economics*, 82, 264-275.
 
-13. Beheshti, N., J.S. Racine and E.S. Soofi (2019), "Information Measures of Kernel Estimation," *Econometric Reviews*, 28 (1), 47-68.
+13. Parmeter, C. and J.S. Racine (2019), "Nonparametric Estimation and Inference for Panel Data Models," *Panel Data Econometrics: Foundations and Applications*, Volume 1, Chapter 4, Academic Press (an imprint of Elsevier), 97-129.
 
-14. Li, C., Q. Li, J.S. Racine and D. Zhang (2018), "Optimal Model Averaging of Varying Coefficient Models," *Statistica Sinica*, 28, 2795-2809.
+14. Beheshti, N., J.S. Racine and E.S. Soofi (2019), "Information Measures of Kernel Estimation," *Econometric Reviews*, 28 (1), 47-68.
 
-15. Das, S. and J.S. Racine (2018), "Interactive Nonparametric Analysis of Complex Nonlinear Systems," *Physica A* 5 (10), 290-301.
+15. Li, C., Q. Li, J.S. Racine and D. Zhang (2018), "Optimal Model Averaging of Varying Coefficient Models," *Statistica Sinica*, 28, 2795-2809.
 
-16. Florens, J.P., J.S. Racine and S. Centorrino (2018), "Nonparametric Instrumental Variable Derivative Estimation," *Journal of Nonparametric Statistics*, Volume 30 (2), 368-391.
+16. Das, S. and J.S. Racine (2018), "Interactive Nonparametric Analysis of Complex Nonlinear Systems," *Physica A* 5 (10), 290-301.
 
-17. Centorrino, S. and J.S. Racine (2017), "Semiparametric Varying Coefficient Models With Endogenous Covariates," *Annals of Economics and Statistics*, Number 128, 261-295.
+17. Florens, J.P., J.S. Racine and S. Centorrino (2018), "Nonparametric Instrumental Variable Derivative Estimation," *Journal of Nonparametric Statistics*, Volume 30 (2), 368-391.
 
-18. Racine, J.S. and K. Li (2017), "Nonparametric Conditional Quantile Estimation: A Locally Weighted Quantile Kernel Approach," *Journal of Econometrics*, Volume 201 (1), pages 72-94.
+18. Centorrino, S. and J.S. Racine (2017), "Semiparametric Varying Coefficient Models With Endogenous Covariates," *Annals of Economics and Statistics*, Number 128, 261-295.
 
-19. Li, C., H. Li and J.S. Racine (2017), "Cross-Validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions," *Econometric Reviews*, Volume 36 (6-9), pages 970-987.
+19. Racine, J.S. and K. Li (2017), "Nonparametric Conditional Quantile Estimation: A Locally Weighted Quantile Kernel Approach," *Journal of Econometrics*, Volume 201 (1), pages 72-94.
 
-20. Kiefer, N.M. and J.S. Racine (2017), "The Smooth Colonel and the Reverend Find Common Ground," *Econometric Reviews*, Volume 36 (1-3), pages 241-256.
+20. Li, C., H. Li and J.S. Racine (2017), "Cross-Validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions," *Econometric Reviews*, Volume 36 (6-9), pages 970-987.
 
-21. Koch, S. and J.S. Racine (2016), "Health Care Facility Choice and User Fee Abolition: Regression Discontinuity in a Multinomial Choice Setting," *Journal of the Royal Statistical Society*, Series A, Volume 179, pages 927-950.
+21. Kiefer, N.M. and J.S. Racine (2017), "The Smooth Colonel and the Reverend Find Common Ground," *Econometric Reviews*, Volume 36 (1-3), pages 241-256.
 
-22. Racine, J.S. (2016), "Local Polynomial Derivative Estimation: Analytic or Taylor?" *Advances in Econometrics*, Volume 36, pages 617-633.
+22. Koch, S. and J.S. Racine (2016), "Health Care Facility Choice and User Fee Abolition: Regression Discontinuity in a Multinomial Choice Setting," *Journal of the Royal Statistical Society*, Series A, Volume 179, pages 927-950.
 
-23. Bugden, J., I. Fraser, J.S. Racine and R. Waschik (2016), "Nonparametric Hedonic Analysis of Tax Changes and House Prices," *Global Business and Economics Review*, Volume 18, pages 533-549.
+23. Racine, J.S. (2016), "Local Polynomial Derivative Estimation: Analytic or Taylor?" *Advances in Econometrics*, Volume 36, pages 617-633.
 
-24. Maasoumi, E. and J.S. Racine (2016), "A Solution to Aggregation and an Application to Multidimensional \`Well-Being' Frontiers," *Journal of Econometrics*, Volume 191, pages 374-383.
+24. Bugden, J., I. Fraser, J.S. Racine and R. Waschik (2016), "Nonparametric Hedonic Analysis of Tax Changes and House Prices," *Global Business and Economics Review*, Volume 18, pages 533-549.
 
-25. Chakrabarty, M., A. Majumder and J.S. Racine (2015), "Household Preference Distribution and Welfare Implication: An Application of Multivariate Distributional Statistics," *Journal of Applied Statistics*, Volume 42, Issue 12, pages 2754-2768.
+25. Maasoumi, E. and J.S. Racine (2016), "A Solution to Aggregation and an Application to Multidimensional \`Well-Being' Frontiers," *Journal of Econometrics*, Volume 191, pages 374-383.
 
-26. Ma, S., J.S. Racine and L. Yang (2015), "Spline Regression in the Presence of Categorical Predictors," *Journal of Applied Econometrics*, Volume 30, pages 705-717.
+26. Chakrabarty, M., A. Majumder and J.S. Racine (2015), "Household Preference Distribution and Welfare Implication: An Application of Multivariate Distributional Statistics," *Journal of Applied Statistics*, Volume 42, Issue 12, pages 2754-2768.
 
-27. Hall, P. and J.S. Racine (2015), "Infinite Order Cross-Validated Local Polynomial Regression," *Journal of Econometrics*, Volume 185, pages 510-525.
+27. Ma, S., J.S. Racine and L. Yang (2015), "Spline Regression in the Presence of Categorical Predictors," *Journal of Applied Econometrics*, Volume 30, pages 705-717.
 
-28. Racine, J.S. (2015), "Mixed Data Kernel Copulas," *Empirical Economics*, Volume 48, pages 37-59.
+28. Hall, P. and J.S. Racine (2015), "Infinite Order Cross-Validated Local Polynomial Regression," *Journal of Econometrics*, Volume 185, pages 510-525.
 
-29. Gao, Q., L. Liu and J.S. Racine (2015), "A Partially Linear Kernel Estimator for Categorical Data," *Econometric Reviews*, Volume 34 (6-10), pages 958-977.
+29. Racine, J.S. (2015), "Mixed Data Kernel Copulas," *Empirical Economics*, Volume 48, pages 37-59.
 
-30. Gyimah-Brempong, K. and J.S. Racine (2014), "Aid and Economic Growth: A Robust Approach," *Journal of African Development*, Volume 16 (1), pages 1-35.
+30. Gao, Q., L. Liu and J.S. Racine (2015), "A Partially Linear Kernel Estimator for Categorical Data," *Econometric Reviews*, Volume 34 (6-10), pages 958-977.
 
-31. Racine, J.S. and C. Parmeter (2014), "Data-Driven Model Evaluation: A Test for Revealed Performance," *Handbook of Applied Nonparametric and Semiparametric Econometrics and Statistics*, (A. Ullah, J.S. Racine and L. Su Eds.), Oxford University Press, New York, pages 308-345.
+31. Gyimah-Brempong, K. and J.S. Racine (2014), "Aid and Economic Growth: A Robust Approach," *Journal of African Development*, Volume 16 (1), pages 1-35.
 
-32. Du, P., C. Parmeter and J.S. Racine (2013), "Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints," *Statistica Sinica*, Volume 23, Number 3, pages 1343-1372.
+32. Racine, J.S. and C. Parmeter (2014), "Data-Driven Model Evaluation: A Test for Revealed Performance," *Handbook of Applied Nonparametric and Semiparametric Econometrics and Statistics*, (A. Ullah, J.S. Racine and L. Su Eds.), Oxford University Press, New York, pages 308-345.
 
-33. Li, C. and J.S. Racine (2013), "A Smooth Nonparametric Conditional Density Test for Categorical Responses," *Econometric Theory*, Volume 29, Issue 03, pages 629-641.
+33. Du, P., C. Parmeter and J.S. Racine (2013), "Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints," *Statistica Sinica*, Volume 23, Number 3, pages 1343-1372.
 
-34. Li, Q. , D. Ouyang and J.S. Racine (2013), "Categorical Semiparametric Varying Coefficient Models," *Journal of Applied Econometrics*, Volume 28, pages 551-579.
+34. Li, C. and J.S. Racine (2013), "A Smooth Nonparametric Conditional Density Test for Categorical Responses," *Econometric Theory*, Volume 29, Issue 03, pages 629-641.
 
-35. Ma, S. and J.S. Racine (2013), "Additive Regression Splines with Irrelevant Categorical and Continuous Regressors," *Statistica Sinica*, Volume 23, pages 515-541.
+35. Li, Q. , D. Ouyang and J.S. Racine (2013), "Categorical Semiparametric Varying Coefficient Models," *Journal of Applied Econometrics*, Volume 28, pages 551-579.
 
-36. Li, Q., J. Lin and J.S. Racine (2013), "Optimal Bandwidth Selection for Nonparametric Conditional Distribution and Quantile Functions," *Journal of Business & Economic Statistics*, Volume 31, Number 1, pages 57-65 (19 additional pages of supplementary material (proofs are available online at http://tandfonline.com/r/JBES).
+36. Ma, S. and J.S. Racine (2013), "Additive Regression Splines with Irrelevant Categorical and Continuous Regressors," *Statistica Sinica*, Volume 23, pages 515-541.
 
-37. Nie, Z. and J.S. Racine (2012), "The crs Package: Nonparametric Regression Splines for Continuous and Categorical Predictors," *The R Journal*, Volume 4, Issue 2, pages 48-56.
+37. Li, Q., J. Lin and J.S. Racine (2013), "Optimal Bandwidth Selection for Nonparametric Conditional Distribution and Quantile Functions," *Journal of Business & Economic Statistics*, Volume 31, Number 1, pages 57-65 (19 additional pages of supplementary material (proofs are available online at http://tandfonline.com/r/JBES).
 
-38. Parmeter, C. and J.S. Racine (2012), "Smooth Constrained Frontier Analysis," *Recent Advances and Future Directions in Causality, Prediction, and Specification Analysis: Essays in Honor of Halbert L. White Jr.*, Springer Verlag, (X. Chen and N.R. Swanson Eds.), pages 463-488.
+38. Nie, Z. and J.S. Racine (2012), "The crs Package: Nonparametric Regression Splines for Continuous and Categorical Predictors," *The R Journal*, Volume 4, Issue 2, pages 48-56.
 
-39. Racine, J.S. (2012), "RStudio: A Platform-Independent IDE for R and Sweave," *Journal of Applied Econometrics*, Volume 27, Issue 1, pages 167-172.
+39. Parmeter, C. and J.S. Racine (2012), "Smooth Constrained Frontier Analysis," *Recent Advances and Future Directions in Causality, Prediction, and Specification Analysis: Essays in Honor of Halbert L. White Jr.*, Springer Verlag, (X. Chen and N.R. Swanson Eds.), pages 463-488.
 
-40. Hansen, B. and J.S. Racine (2012), "Jackknife Model Averaging," *Journal of Econometrics*, Volume 167, Issue 1, pages 38-46.
+40. Racine, J.S. (2012), "RStudio: A Platform-Independent IDE for R and Sweave," *Journal of Applied Econometrics*, Volume 27, Issue 1, pages 167-172.
 
-41. Gyimah-Brempong, K., J.S. Racine and A. Gyapong (2012), "Aid and Economic Growth: Sensitivity Analysis," *Journal of International Development*, Volume 24, Issue 1, pages 17-33.
+41. Hansen, B. and J.S. Racine (2012), "Jackknife Model Averaging," *Journal of Econometrics*, Volume 167, Issue 1, pages 38-46.
 
-42. Zhang, Z., D. Chen, W. Liu, J.S. Racine, S. Ong, Y. Chen, G. Zhao and Q. Ziang (2011), "Nonparametric Evaluation of Dynamic Disease Risk: A Spatio-Temporal Kernel Approach," *PLoS ONE*, Volume 6, Number 3, e17381, pages 1-8.
+42. Gyimah-Brempong, K., J.S. Racine and A. Gyapong (2012), "Aid and Economic Growth: Sensitivity Analysis," *Journal of International Development*, Volume 24, Issue 1, pages 17-33.
 
-43. Racine, J.S. (2011), "Nonparametric Kernel Methods for Qualitative and Quantitative Data," *The Handbook of Empirical Economics and Finance*, (A. Ullah and D.E.A. Giles Eds.), CRC Press, Chapman & Hall, pages 183-204.
+43. Zhang, Z., D. Chen, W. Liu, J.S. Racine, S. Ong, Y. Chen, G. Zhao and Q. Ziang (2011), "Nonparametric Evaluation of Dynamic Disease Risk: A Spatio-Temporal Kernel Approach," *PLoS ONE*, Volume 6, Number 3, e17381, pages 1-8.
 
-44. Li, Q. and J.S. Racine (2010), "Smooth Varying Coefficient Estimation and Inference for Qualitative and Quantitative Data," *Econometric Theory*, Volume 26, Issue 06, pages 1607-1637.
+44. Racine, J.S. (2011), "Nonparametric Kernel Methods for Qualitative and Quantitative Data," *The Handbook of Empirical Economics and Finance*, (A. Ullah and D.E.A. Giles Eds.), CRC Press, Chapman & Hall, pages 183-204.
 
-45. Gyimah-Brempong, K. and J.S. Racine (2010), "Aid and Investment in LDCs: A Robust Approach," *Journal of International Trade & Economic Development*, Volume 19, Number 2, pages 319-349.
+45. Li, Q. and J.S. Racine (2010), "Smooth Varying Coefficient Estimation and Inference for Qualitative and Quantitative Data," *Econometric Theory*, Volume 26, Issue 06, pages 1607-1637.
 
-46. Racine, J.S. (2009), "Nonparametric and Semiparametric Methods in R," *Advances in Econometrics: Nonparametric Econometric Methods*, Elsevier Science, Volume 25, pages 335-375.
+46. Gyimah-Brempong, K. and J.S. Racine (2010), "Aid and Investment in LDCs: A Robust Approach," *Journal of International Trade & Economic Development*, Volume 19, Number 2, pages 319-349.
 
-47. Li, C., D. Ouyang and J.S. Racine (2009), "Nonparametric Regression with Weakly Dependent Data: The Discrete and Continuous Regressor Case," *Journal of Nonparametric Statistics*, Volume 21, Number 6, pages 697-711.
+47. Racine, J.S. (2009), "Nonparametric and Semiparametric Methods in R," *Advances in Econometrics: Nonparametric Econometric Methods*, Elsevier Science, Volume 25, pages 335-375.
 
-48. Kiefer, N.M. and J.S. Racine (2009), "The Smooth Colonel Meets the Reverend," *Journal of Nonparametric Statistics*, Volume 21, pages 521-533.
+48. Li, C., D. Ouyang and J.S. Racine (2009), "Nonparametric Regression with Weakly Dependent Data: The Discrete and Continuous Regressor Case," *Journal of Nonparametric Statistics*, Volume 21, Number 6, pages 697-711.
 
-49. Li, Q., J.S. Racine and J. Wooldridge (2009), "Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data," *Journal of Business & Economic Statistics*, Volume 27, pages 206-223.
+49. Kiefer, N.M. and J.S. Racine (2009), "The Smooth Colonel Meets the Reverend," *Journal of Nonparametric Statistics*, Volume 21, pages 521-533.
 
-50. Meredith, E. and J.S. Racine (2009), "Towards Reproducible Econometric Research: The Sweave Framework," *Journal of Applied Econometrics*, Volume 24, pages 366-374.
+50. Li, Q., J.S. Racine and J. Wooldridge (2009), "Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data," *Journal of Business & Economic Statistics*, Volume 27, pages 206-223.
 
-51. Li, Q., E. Maasoumi and J.S. Racine (2009), "A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data," *Journal of Econometrics*, Volume 148, pages 186-200.
+51. Meredith, E. and J.S. Racine (2009), "Towards Reproducible Econometric Research: The Sweave Framework," *Journal of Applied Econometrics*, Volume 24, pages 366-374.
 
-52. Ouyang, D., Q. Li and J.S. Racine (2009), "Nonparametric Estimation of Regression Functions with Discrete Regressors," *Econometric Theory*, Volume 25, pages 1-42.
+52. Li, Q., E. Maasoumi and J.S. Racine (2009), "A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data," *Journal of Econometrics*, Volume 148, pages 186-200.
 
-53. Maasoumi, E. and J.S. Racine (2009), "A Robust Entropy-Based Test of Asymmetry for Discrete and Continuous Processes," *Econometric Reviews*, Volume 28, pages 246-261.
+53. Ouyang, D., Q. Li and J.S. Racine (2009), "Nonparametric Estimation of Regression Functions with Discrete Regressors," *Econometric Theory*, Volume 25, pages 1-42.
 
-54. Li, Q. and J.S. Racine (2008), "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data," *Journal of Business & Economic Statistics*, Volume 26, Number 4, pages 423-434.
+54. Maasoumi, E. and J.S. Racine (2009), "A Robust Entropy-Based Test of Asymmetry for Discrete and Continuous Processes," *Econometric Reviews*, Volume 28, pages 246-261.
 
-55. Hayfield, T. and J.S. Racine (2008), "Nonparametric Econometrics: The np Package," *Journal of Statistical Software*, Volume 27, Number 5, pages 1-32.
+55. Li, Q. and J.S. Racine (2008), "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data," *Journal of Business & Economic Statistics*, Volume 26, Number 4, pages 423-434.
 
-56. Li, Q., J.S. Racine and J. Wooldridge (2008), "Estimating Average Treatment Effects with Continuous and Discrete Covariates: The Case of Swan-Ganz Catherization," *American Economic Review*, Volume 98, Number 2, pages 357-62.
+56. Hayfield, T. and J.S. Racine (2008), "Nonparametric Econometrics: The np Package," *Journal of Statistical Software*, Volume 27, Number 5, pages 1-32.
 
-57. Li, J. and J.S. Racine (2008), "Maxima: An Open Source Computer Algebra System," *Journal of Applied Econometrics*, Volume 23, Issue 4, pages 515-523.
+57. Li, Q., J.S. Racine and J. Wooldridge (2008), "Estimating Average Treatment Effects with Continuous and Discrete Covariates: The Case of Swan-Ganz Catherization," *American Economic Review*, Volume 98, Number 2, pages 357-62.
 
-58. Racine, J.S. (2008), "Nonparametric Econometrics: A Primer," *Foundations and Trends in Econometrics*, Volume 3, Number 1, pages 1-88.
+58. Li, J. and J.S. Racine (2008), "Maxima: An Open Source Computer Algebra System," *Journal of Applied Econometrics*, Volume 23, Issue 4, pages 515-523.
+
+59. Racine, J.S. (2008), "Nonparametric Econometrics: A Primer," *Foundations and Trends in Econometrics*, Volume 3, Number 1, pages 1-88.
 
     An edited version of this monograph is reprinted in Russian and appears as follows:
 
     Racine, J.S. (2008), "Nonparametric Econometrics: A Primer," *Quantile*, Number 4, pages 7-56.
 
-59. Hall, P., Q. Li and J.S. Racine (2007), "Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors," *The Review of Economics and Statistics*, Volume 89, Issue 4, pages 784-789.
+60. Hall, P., Q. Li and J.S. Racine (2007), "Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors," *The Review of Economics and Statistics*, Volume 89, Issue 4, pages 784-789.
 
-60. Hayfield, T. and J.S. Racine (2007), "The np Package," *RNews*, Volume 7, pages 36-43.
+61. Hayfield, T. and J.S. Racine (2007), "The np Package," *RNews*, Volume 7, pages 36-43.
 
-61. Hsiao, C., Q. Li and J.S. Racine (2007), "A Consistent Model Specification Test with Mixed Categorical and Continuous Data," *Journal of Econometrics*, Volume 140, Issue 2, pages 802-826.
+62. Hsiao, C., Q. Li and J.S. Racine (2007), "A Consistent Model Specification Test with Mixed Categorical and Continuous Data," *Journal of Econometrics*, Volume 140, Issue 2, pages 802-826.
 
-62. Racine, J.S. and J. G. MacKinnon (2007), "Inference via Kernel Smoothing of Bootstrap $P$ Values," *Computational Statistics and Data Analysis*, Volume 51, Issue 12, pages 5949-5957.
+63. Racine, J.S. and J. G. MacKinnon (2007), "Inference via Kernel Smoothing of Bootstrap $P$ Values," *Computational Statistics and Data Analysis*, Volume 51, Issue 12, pages 5949-5957.
 
-63. Racine, J.S. and E. Maasoumi (2007), "A Versatile and Robust Metric Entropy Test of Time Reversibility and other Hypotheses," *Journal of Econometrics*, Volume 138, pages 547-567.
+64. Racine, J.S. and E. Maasoumi (2007), "A Versatile and Robust Metric Entropy Test of Time Reversibility and other Hypotheses," *Journal of Econometrics*, Volume 138, pages 547-567.
 
-64. Racine, J.S. and J. G. MacKinnon (2007), "Simulation-Based Tests that can use any Number of Simulations," *Communications in Statistics*, Volume 36, Number 2, pages 357-365.
+65. Racine, J.S. and J. G. MacKinnon (2007), "Simulation-Based Tests that can use any Number of Simulations," *Communications in Statistics*, Volume 36, Number 2, pages 357-365.
 
-65. Maasoumi, E., J.S. Racine and T. Stengos (2007), "Growth and Convergence: A Profile of Distribution Dynamics and Mobility," *Journal of Econometrics*, Volume 136, pages 483-508.
+66. Maasoumi, E., J.S. Racine and T. Stengos (2007), "Growth and Convergence: A Profile of Distribution Dynamics and Mobility," *Journal of Econometrics*, Volume 136, pages 483-508.
 
-66. Chakrabarty, M., A. Schmalenbach and J.S. Racine (2006), "On the Distributional Effects of Income in an Aggregate Consumption Relation," *Canadian Journal of Economics*, Volume 39, pages 1221-1243.
+67. Chakrabarty, M., A. Schmalenbach and J.S. Racine (2006), "On the Distributional Effects of Income in an Aggregate Consumption Relation," *Canadian Journal of Economics*, Volume 39, pages 1221-1243.
 
-67. Racine, J.S., J. Hart and Q. Li (2006), "Testing the Significance of Categorical Predictor Variables in Nonparametric Regression Models," *Econometric Reviews*, Volume 25, pages 523-544.
+68. Racine, J.S., J. Hart and Q. Li (2006), "Testing the Significance of Categorical Predictor Variables in Nonparametric Regression Models," *Econometric Reviews*, Volume 25, pages 523-544.
 
-68. Gyimah-Brempong, K. and J.S. Racine (2006), "Alcohol Availability and Crime: A Robust Approach," *Applied Economics*, Volume 38, pages 1293-1307.
+69. Gyimah-Brempong, K. and J.S. Racine (2006), "Alcohol Availability and Crime: A Robust Approach," *Applied Economics*, Volume 38, pages 1293-1307.
 
-69. Racine, J.S. (2006), "gnuplot 4.0: A Portable Interactive Plotting Utility," *Journal of Applied Econometrics*, Volume 21, pages 133-141.
+70. Racine, J.S. (2006), "gnuplot 4.0: A Portable Interactive Plotting Utility," *Journal of Applied Econometrics*, Volume 21, pages 133-141.
 
-70. Racine, J.S. and A. Ullah (2006), "Nonparametric Econometrics," *Palgrave Handbook of Econometrics:* Volume 1, Theoretical Econometrics, page 1001-1034.
+71. Racine, J.S. and A. Ullah (2006), "Nonparametric Econometrics," *Palgrave Handbook of Econometrics:* Volume 1, Theoretical Econometrics, page 1001-1034.
 
-71. Racine, J.S. and A. Ker (2006), "Rating Crop Insurance Policies with Efficient Nonparametric Estimators That Admit Mixed Data Types," *Journal of Agricultural and Resource Economics*, Volume 31, Number 1, pages 27-39.
+72. Racine, J.S. and A. Ker (2006), "Rating Crop Insurance Policies with Efficient Nonparametric Estimators That Admit Mixed Data Types," *Journal of Agricultural and Resource Economics*, Volume 31, Number 1, pages 27-39.
 
-72. Ouyang, D., Q. Li and J.S. Racine (2006), "Cross-Validation and the Estimation of Probability Distributions with Categorical Data," *Journal of Nonparametric Statistics*, Volume 18, Number 1, pages 69-100.
+73. Ouyang, D., Q. Li and J.S. Racine (2006), "Cross-Validation and the Estimation of Probability Distributions with Categorical Data," *Journal of Nonparametric Statistics*, Volume 18, Number 1, pages 69-100.
 
-73. Racine, J.S., Q. Li. and X. Zhu (2004), "Kernel Estimation of Multivariate Conditional Distributions," *Annals of Economics and Finance*, Volume 5, Number 2, pages 211-235.
+74. Racine, J.S., Q. Li. and X. Zhu (2004), "Kernel Estimation of Multivariate Conditional Distributions," *Annals of Economics and Finance*, Volume 5, Number 2, pages 211-235.
 
-74. Hall, P., J.S. Racine and Q. Li (2004), "Cross-Validation and the Estimation of Conditional Probability Densities," *Journal of The American Statistical Association*, Volume 99, Number 468, pages 1015-1026.
+75. Hall, P., J.S. Racine and Q. Li (2004), "Cross-Validation and the Estimation of Conditional Probability Densities," *Journal of The American Statistical Association*, Volume 99, Number 468, pages 1015-1026.
 
-75. Li, Q. and J.S. Racine (2004), "Predictor Relevance and Extramarital Affairs," *Journal of Applied Econometrics*, July/August, Volume 19, Number 4, pages 533-535.
+76. Li, Q. and J.S. Racine (2004), "Predictor Relevance and Extramarital Affairs," *Journal of Applied Econometrics*, July/August, Volume 19, Number 4, pages 533-535.
 
-76. Granger, C., E. Maasoumi and J.S. Racine (2004), "A Dependence Metric for Possibly Nonlinear Processes," *Journal of Time Series Analysis*, May, Volume 25, Number 5, pages 649-669.
+77. Granger, C., E. Maasoumi and J.S. Racine (2004), "A Dependence Metric for Possibly Nonlinear Processes," *Journal of Time Series Analysis*, May, Volume 25, Number 5, pages 649-669.
 
-77. Li, Q. and J.S. Racine (2004), "Cross-Validated Local Linear Nonparametric Regression," *Statistica Sinica*, Volume 14, Number 2, pages 485-512.
+78. Li, Q. and J.S. Racine (2004), "Cross-Validated Local Linear Nonparametric Regression," *Statistica Sinica*, Volume 14, Number 2, pages 485-512.
 
-78. Racine, J.S. and Q. Li (2004), "Nonparametric Estimation of Regression Functions with Both Categorical and Continuous Data," *Journal of Econometrics*, March, Volume 119, Issue 1, pages 99-130.
+79. Racine, J.S. and Q. Li (2004), "Nonparametric Estimation of Regression Functions with Both Categorical and Continuous Data," *Journal of Econometrics*, March, Volume 119, Issue 1, pages 99-130.
 
-79. Li, Q. and J.S. Racine (2003), "Nonparametric Estimation of Distributions with Categorical and Continuous Data," *Journal of Multivariate Analysis*, August, Volume 86, Issue 2, pages 266-292.
+80. Li, Q. and J.S. Racine (2003), "Nonparametric Estimation of Distributions with Categorical and Continuous Data," *Journal of Multivariate Analysis*, August, Volume 86, Issue 2, pages 266-292.
 
-80. Racine, J.S. (2002), "Parallel Distributed Kernel Estimation," *Computational Statistics and Data Analysis*, August, Volume 40, Issue 2, pages 293-302.
+81. Racine, J.S. (2002), "Parallel Distributed Kernel Estimation," *Computational Statistics and Data Analysis*, August, Volume 40, Issue 2, pages 293-302.
 
-81. Racine, J.S. and R. Hyndman (2002), "Using R to Teach Econometrics," *Journal of Applied Econometrics*, March/April, Volume 17, Issue 2, pages 175-189.
+82. Racine, J.S. and R. Hyndman (2002), "Using R to Teach Econometrics," *Journal of Applied Econometrics*, March/April, Volume 17, Issue 2, pages 175-189.
 
-82. Maasoumi, E. and J.S. Racine (2002), "Entropy and Predictability of Stock Market Returns," *Journal of Econometrics*, March, Volume 107, Issue 2, pages 291-312.
+83. Maasoumi, E. and J.S. Racine (2002), "Entropy and Predictability of Stock Market Returns," *Journal of Econometrics*, March, Volume 107, Issue 2, pages 291-312.
 
-83. Racine, J.S. (2002), "\`New and Improved' Direct Marketing: A Nonparametric Approach," *Advances in Econometrics:* Econometric Models in Marketing, A. Montgomery and P. H. Franses (Eds), Elsevier Science, Volume 16, pages 141-164.
+84. Racine, J.S. (2002), "\`New and Improved' Direct Marketing: A Nonparametric Approach," *Advances in Econometrics:* Econometric Models in Marketing, A. Montgomery and P. H. Franses (Eds), Elsevier Science, Volume 16, pages 141-164.
 
-84. Racine, J.S. (2002), "Generalized Semiparametric Binary Prediction," *Annals of Economics and Finance*, Volume 3, pages 131-147.
+85. Racine, J.S. (2002), "Generalized Semiparametric Binary Prediction," *Annals of Economics and Finance*, Volume 3, pages 131-147.
 
-85. Racine, J.S. (2002), "Index-Free, Density-Based Multinomial Choice," *Handbook of Applied Econometrics and Statistical Inference*, Ullah, A. and A. Wan and A. Chaturvedi (Eds), Marcel Dekker Inc., pages 115-142.
+86. Racine, J.S. (2002), "Index-Free, Density-Based Multinomial Choice," *Handbook of Applied Econometrics and Statistical Inference*, Ullah, A. and A. Wan and A. Chaturvedi (Eds), Marcel Dekker Inc., pages 115-142.
 
-86. Racine, J.S. (2001), "On The Nonlinear Predictability of Stock Returns Using Financial and Economic Variables," *Journal of Business & Economic Statistics*, July, Volume 19, Number 3, pages 380-382.
+87. Racine, J.S. (2001), "On The Nonlinear Predictability of Stock Returns Using Financial and Economic Variables," *Journal of Business & Economic Statistics*, July, Volume 19, Number 3, pages 380-382.
 
-87. White, H. and J.S. Racine (2001), "Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates," *IEEE Transactions on Neural Networks:* Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 657-673.
+88. White, H. and J.S. Racine (2001), "Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates," *IEEE Transactions on Neural Networks:* Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 657-673.
 
-88. Chen, X., J.S. Racine and N. R. Swanson (2001), "Semiparametric ARX Neural Network Models with an Application to Forecasting Inflation," *IEEE Transactions on Neural Networks:* Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 674-684.
+89. Chen, X., J.S. Racine and N. R. Swanson (2001), "Semiparametric ARX Neural Network Models with an Application to Forecasting Inflation," *IEEE Transactions on Neural Networks:* Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 674-684.
 
-89. Racine, J.S. (2001), "Bias-Corrected Kernel Regression," *Journal of Quantitative Economics*, January, Volume 17, Number 1, pages 25-42.
+90. Racine, J.S. (2001), "Bias-Corrected Kernel Regression," *Journal of Quantitative Economics*, January, Volume 17, Number 1, pages 25-42.
 
-90. Racine, J.S. (2000), "A Consistent Cross-Validatory Method for Dependent Data: hv-Block Cross-Validation," *Journal of Econometrics*, November, Volume 9, Issue 1, pages 39-61.
+91. Racine, J.S. (2000), "A Consistent Cross-Validatory Method for Dependent Data: hv-Block Cross-Validation," *Journal of Econometrics*, November, Volume 9, Issue 1, pages 39-61.
 
-91. Racine, J.S. and J. B. Smith (2000), "Nonparametric Estimation of Growth in Replenishable Resource Stocks," *Advances in Econometrics:* Applying Kernel and Nonparametric Estimation to Economic Topics, R. Carter-Hill and T. Fomby (eds.), JAI Press Inc., Volume 14, pages 309-327.
+92. Racine, J.S. and J. B. Smith (2000), "Nonparametric Estimation of Growth in Replenishable Resource Stocks," *Advances in Econometrics:* Applying Kernel and Nonparametric Estimation to Economic Topics, R. Carter-Hill and T. Fomby (eds.), JAI Press Inc., Volume 14, pages 309-327.
 
-92. Racine, J.S. (2000), "Feasible Resampling for Nonparametric Kernel Estimators," *Journal of Quantitative Economics*, July, Vol 16, Number 2, pages 19-30.
+93. Racine, J.S. (2000), "Feasible Resampling for Nonparametric Kernel Estimators," *Journal of Quantitative Economics*, July, Vol 16, Number 2, pages 19-30.
 
-93. Racine, J.S. (2000), "The Cygwin Tools: A GNU Toolkit for Windows," *Journal of Applied Econometrics*, July, Volume 15, Number 3, pages 331-341.
+94. Racine, J.S. (2000), "The Cygwin Tools: A GNU Toolkit for Windows," *Journal of Applied Econometrics*, July, Volume 15, Number 3, pages 331-341.
 
-94. Racine, J.S. (1997), "Consistent Significance Testing for Nonparametric Regression," *Journal of Business & Economic Statistics*, July, Volume 15, Number 3, pages 369-379.
+95. Racine, J.S. (1997), "Consistent Significance Testing for Nonparametric Regression," *Journal of Business & Economic Statistics*, July, Volume 15, Number 3, pages 369-379.
 
-95. Racine, J.S. (1997), "Feasible Cross-Validatory Model Selection for General Stationary Processes," *Journal of Applied Econometrics*, March/April, Volume 12, pages 169-179.
+96. Racine, J.S. (1997), "Feasible Cross-Validatory Model Selection for General Stationary Processes," *Journal of Applied Econometrics*, March/April, Volume 12, pages 169-179.
 
-96. Morrow, G. D., R. M. Stein, J.S. Racine and J. Siegel-Bartelt (1997), "Computerized Videokeratography of Kerataconus Kindreds," *Canadian Journal of Ophthalmology*, June, Volume 32, Number 4, pages 233-243.
+97. Morrow, G. D., R. M. Stein, J.S. Racine and J. Siegel-Bartelt (1997), "Computerized Videokeratography of Kerataconus Kindreds," *Canadian Journal of Ophthalmology*, June, Volume 32, Number 4, pages 233-243.
 
-97. Racine, J.S. and P. Rilstone (1995), "The Reverse Regression Problem: Statistical Paradox or Artefact of Misspecification?," *Canadian Journal of Economics*, August, Volume 28, Number 3, pages 502-531.
+98. Racine, J.S. and P. Rilstone (1995), "The Reverse Regression Problem: Statistical Paradox or Artefact of Misspecification?," *Canadian Journal of Economics*, August, Volume 28, Number 3, pages 502-531.
 
-98. González-Rivera, G. and J.S. Racine (1995), "Maximum Likelihood Estimation and Testing Strategies in GARCH Models," *Proceedings of the American Statistical Association*, Joint Statistical Meetings, Orlando, Florida, pages 47-54.
+99. González-Rivera, G. and J.S. Racine (1995), "Maximum Likelihood Estimation and Testing Strategies in GARCH Models," *Proceedings of the American Statistical Association*, Joint Statistical Meetings, Orlando, Florida, pages 47-54.
 
-99. Racine, J.S. (1993), "An Efficient Cross-Validation Algorithm For Window Width Selection for Nonparametric Kernel Regression," *Communications in Statistics*, October, Volume 22, Issue 4, pages 1107-1114.
+100. Racine, J.S. (1993), "An Efficient Cross-Validation Algorithm For Window Width Selection for Nonparametric Kernel Regression," *Communications in Statistics*, October, Volume 22, Issue 4, pages 1107-1114.
 
-100. Ullah, A. and J.S. Racine (1992), "Smooth Improved Estimators of Econometric Parameters," in W. E. Griffiths, H. Lütkepohl and M. E. Bock, Editors, *Readings in Econometric Theory and Practice*, A Volume in Honour of George Judge, North Holland, pages 197-213.
+101. Ullah, A. and J.S. Racine (1992), "Smooth Improved Estimators of Econometric Parameters," in W. E. Griffiths, H. Lütkepohl and M. E. Bock, Editors, *Readings in Econometric Theory and Practice*, A Volume in Honour of George Judge, North Holland, pages 197-213.
 
 ## Published Book Reviews {.unnumbered}
 
@@ -861,7 +863,7 @@ grid.arrange(plot1, plot2, ncol=2)
 
 ## Conference Presentations and Invited Lectures {.unnumbered}
 
-1.  The University of Washington, Seattle, February 18, 2024, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
+1.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
 
 2.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
 
