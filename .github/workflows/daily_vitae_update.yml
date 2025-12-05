@@ -1,9 +1,9 @@
 name: Daily Quarto PDF Update
 
 on:
-  # 1. Schedule a daily run (e.g., at 04:00 UTC)
-  # schedule:
-  #   - cron: '0 4 * * *'
+  # 1. Schedule a weekly run (every Sunday, 04:00 UTC)
+  schedule:
+    - cron: '0 5 * * 0'
   # 2. Allow manual triggering from the Actions tab
   workflow_dispatch:
 
