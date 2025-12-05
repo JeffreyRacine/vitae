@@ -3,7 +3,7 @@ name: Daily Quarto PDF Update
 on:
   # 1. Schedule a daily run (e.g., at 04:00 UTC)
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 4 * * *'
   # 2. Allow manual triggering from the Actions tab
   workflow_dispatch:
 
@@ -17,9 +17,9 @@ jobs:
       - name: Checkout Repository
         # Fetches the code, including history, needed for the commit step
         uses: actions/checkout@v4
-        
-      - name: Install libpng-dev
-        run: sudo apt-get update && sudo apt-get install -y libpng-dev libcurl4-openssl-dev       
+
+      - name: Install libpng-dev and libcurl4-openssl-dev
+        run: sudo apt-get update && sudo apt-get install -y libpng-dev libcurl4-openssl-dev    
 
       - name: Set up Quarto and TinyTeX
         # TinyTeX is necessary for rendering Quarto documents to PDF
@@ -27,16 +27,32 @@ jobs:
         with:
           tinytex: true
 
+      - name: Add TinyTeX bin path to GITHUB_PATH
+        run: |
+          # 1. Define the TinyTeX root directory (the install script default on Linux)
+          TINYTEX_ROOT="${HOME}/.TinyTeX"
+      
+          # 2. Find the bin directory (e.g., /home/runner/.TinyTeX/bin/x86_64-linux)
+          # The '*/' ensures we capture the correct architecture subdirectory.
+          TINYTEX_BIN_DIR=$(find "${TINYTEX_ROOT}/bin" -maxdepth 1 -type d -name "*-*" | head -n 1)
+      
+          # 3. Add the bin directory to the GITHUB_PATH environment variable
+          echo "TinyTeX Bin Directory found: ${TINYTEX_BIN_DIR}"
+          echo "${TINYTEX_BIN_DIR}" >> $GITHUB_PATH
+
+      - name: Verify TinyTeX is on PATH
+        run: pdflatex --version
+         
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.2.0'
-
+          
       - name: Install CRAN packages
         run: |
-          install.packages(c("rmarkdown", "knitr", "pander", "gcite", "tikzDevice"))
+          install.packages(c("png", "rmarkdown", "knitr", "pander", "gcite", "tikzDevice"))
         shell: Rscript {0}          
-          
+
       - name: Render Quarto Document to PDF
         # Replace 'vitae.qmd' with the actual name of your main Quarto file
         run: quarto render vitae.qmd 
