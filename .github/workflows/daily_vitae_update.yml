@@ -72,6 +72,9 @@ jobs:
         run: |
           install.packages(c("png", "rmarkdown", "knitr", "pander", "gcite", "tikzDevice"))
         shell: Rscript {0}          
+        
+      - name: Check if GitHub (os is Linux), set Google Scholar to false
+        run: sed -i 's/gseval: true/gseval: false/g' vitae.qmd
 
       - name: Render Quarto Document to PDF
         # Replace 'vitae.qmd' with the actual name of your main Quarto file

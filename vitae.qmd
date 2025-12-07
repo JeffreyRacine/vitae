@@ -38,6 +38,11 @@ knitr:
     R.options:
       np.messages: false
       plot.par.mfrow: false
+## Create two variables to control display of Google Scholar section, one 
+## controlling the Markdown header, the other controlling the R code chunks
+params:
+  gseval: false
+header-gseval: false
 ---
 
 ## \faHome Contact Information {.unnumbered}
@@ -496,12 +501,19 @@ knitr:
 
     Amount: \$8,500\
     Date: 1985-1986
-
+    
+::: {.content-visible when-meta="header-gseval"}
 ## \aiGoogleScholar Google Scholar Citation Summary {.unnumbered}
+:::
 
 <center>
 
-```{r foopander,message=FALSE,warning=FALSE,echo=FALSE,results='asis'}
+```{r, eval=params$gseval}
+#| label: foopander
+#| message: FALSE
+#| warning: FALSE
+#| echo: FALSE
+#| results: 'asis'
 ## Re-use foo below to do counting etc. and can't use formatted
 ## version for this, so make copy (foofoo) for formatting big.mark
 ## comma in table then can re-use foo later for counts etc.
@@ -516,7 +528,14 @@ pander::pander(foofoo$citation_indices)
 
 </center>
 
-```{r fooplot,message=FALSE,fig.asp=0.4,out.width="75%",warning=FALSE,echo=FALSE,results='asis'}
+```{r, eval=params$gseval}
+#| label: fooplot
+#| message: FALSE
+#| fig-asp: 0.4
+#| out-width: "75%"
+#| warning: FALSE
+#| echo: FALSE
+#| results: 'asis'
 require(ggplot2)
 require(gridExtra)
 require(scholar)
