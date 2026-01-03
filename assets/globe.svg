@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" role="img" aria-label="Globe">
-  <title>Globe</title>
-  <circle cx="12" cy="12" r="12" fill="#0d6efd" />
-  <path d="M2 12h20M12 2v20M4 6c4 2 8 2 16 0M4 18c4-2 8-2 16 0" stroke="#fff" stroke-width="0.8" fill="none"/>
-</svg>
