@@ -64,21 +64,21 @@ header-gseval: true
 
 ## <i class="fa-solid fa-globe"></i> Academic Profiles and Websites {.unnumbered}
 
--   [<i class="fa-brands fa-github"></i> GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
+-   [GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
 
--   [<i class="fa-solid fa-graduation-cap"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
+-   [Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
 
 -   [<i class="fa-solid fa-globe"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html](https://ideas.repec.org/e/pra175.html)
 
 -   [<i class="fa-solid fa-globe"></i> Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705](https://profiles.impactstory.org/u/0000-0002-5680-3705)
 
--   [<i class="fa-solid fa-university"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
+-   [McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
 
--   ![](assets/orcid.svg){width="1em" style="vertical-align:middle"} [ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
+-   [ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
 
--   [<i class="fa-solid fa-blog"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
+-   [Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
 
--   [<i class="fa-brands fa-researchgate"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
+-   [ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
 
 -   [<i class="fa-solid fa-globe"></i> Scopus Profile: Author ID: 12790466400](https://www.scopus.com/authid/detail.uri?authorId=12790466400)
 
