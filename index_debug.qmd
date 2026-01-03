@@ -74,7 +74,7 @@ header-gseval: true
 
 -   [<i class="fa-solid fa-university"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
 
--   [<i class="ai ai-orcid"></i> ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
+-   ![](assets/orcid.svg){width="1em" style="vertical-align:middle"} [ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
 
 -   [<i class="fa-solid fa-blog"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
 
