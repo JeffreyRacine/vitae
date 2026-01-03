@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" role="img" aria-label="Blog">
+  <title>Blog</title>
+  <circle cx="12" cy="12" r="12" fill="#6c757d" />
+  <text x="12" y="15" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="700">BL</text>
+</svg>
