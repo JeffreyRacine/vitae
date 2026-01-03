@@ -1,0 +1,718 @@
+---
+title: "Curriculum Vitae"
+author: "Jeffrey Scott Racine"
+date: now
+date-format: "YYYY-MM-DD"
+bibliography: publications.bib
+nocite: "@*"
+format:
+  html:
+    toc: true
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.11.0/css/academicons.min.css">
+  pdf:
+    documentclass: article
+    keep-tex: true
+    number-sections: true
+    geometry:
+      - top=20mm
+      - left=20mm
+      - heightrounded
+    include-in-header:
+      - text: |
+          \usepackage{fontawesome5}
+          \usepackage{academicons}
+          \usepackage[TU]{fontenc}
+          \usepackage{caption}
+          \usepackage{float}
+pdf-engine: lualatex
+knitr:
+  opts_chunk:
+    autodep: true
+    collapse: true
+    dev: "tikz"
+    cache: false
+    echo: false
+    # eval.after: "fig.cap"
+    fig.align: "center"
+    # fig.asp: 0.65
+    fig.pos: "H"
+    # out.width: "85%"
+    message: false
+    warning: false
+    R.options:
+      np.messages: false
+      plot.par.mfrow: false
+## Create two variables to control display of Google Scholar section, one 
+## controlling the Markdown header, the other controlling the R code chunks
+params:
+  gseval: true
+header-gseval: true
+---
+
+## <i class="fa-solid fa-house"></i> Contact Information {.unnumbered}
+
+-   <i class="fa-solid fa-paper-plane"></i> Department of Economics  
+    Kenneth Taylor Hall, Room 426  
+    McMaster University  
+    1280 Main Street West  
+    Hamilton, Ontario, Canada, L8S 4M4
+
+-   [<i class="fa-solid fa-envelope"></i>](mailto:racinej@mcmaster.ca) racinej@mcmaster.ca
+
+## <i class="fa-solid fa-globe"></i> Academic Profiles and Websites {.unnumbered}
+
+-   [<i class="fa-brands fa-github"></i> GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
+
+-   [<i class="fa-solid fa-graduation-cap"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
+
+-   [<i class="fa-solid fa-globe"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html](https://ideas.repec.org/e/pra175.html)
+
+-   [<i class="fa-solid fa-globe"></i> Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705](https://profiles.impactstory.org/u/0000-0002-5680-3705)
+
+-   [<i class="fa-solid fa-university"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
+
+-   [<i class="ai ai-orcid"></i> ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
+
+-   [<i class="fa-solid fa-blog"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
+
+-   [<i class="fa-brands fa-researchgate"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
+
+-   [<i class="fa-solid fa-globe"></i> Scopus Profile: Author ID: 12790466400](https://www.scopus.com/authid/detail.uri?authorId=12790466400)
+
+## Academic Background {.unnumbered}
+
+## <i class="fa-solid fa-graduation-cap"></i> *Education:*
+
+- Ph.D. Economics (1989), the University of Western Ontario, London, Canada (Aman Ullah, Supervisor)
+- M.A. Economics (1985), McMaster University
+- B.A. Economics (1984), *Summa Cum Laude*, McMaster University
+
+- *Fields of Specialization:*
+  - Econometrics and Statistics
+  - Monetary Economics
+
+- *Professional Affiliations:*
+  - American Economic Association
+  - American Statistical Association
+  - Canadian Economics Association
+  - Econometric Society
+  - International Symposia for Nonparametric Statistics (ISNPS)
+
+## Current Positions {.unnumbered}
+
+-   Professor, Department of Economics, McMaster University (2005-)
+
+-   Professor, Graduate Program in Statistics, Department of Mathematics and Statistics, McMaster University (2006-)
+
+-   Senator William McMaster Chair in Econometrics, McMaster University (2005-)
+
+-   Senior Research Associate, Info-Metrics Institute, American University, D.C., U.S.A (2010-)
+
+-   Senior Fellow, Rimini Center for Economic Analysis, Rimini, Italy (2010-)
+
+## Past Positions {.unnumbered}
+
+-   International Research Fellow, CREATES, Aarhus University, Aarhus, Denmark (2013-2017)
+
+-   Associate Department Chair, Department of Economics, McMaster University (2009-2011)
+
+-   Associate Professor, Department of Economics, Syracuse University, Syracuse, U.S.A. (2002-2005)
+
+-   Senior Research Associate, Center for Policy Research, Syracuse University, Syracuse, U.S.A. (2002-2005)
+
+-   Associate Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1999-2002)
+
+-   Assistant Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1993-1999)
+
+-   Visiting Assistant Professor, Department of Economics, the University of California San Diego, San Diego, U.S.A. (1991-1993)
+
+-   Assistant Professor, Department of Economics, York University, Toronto, Canada (1989-1993)
+
+-   Instructor, Department of Economics, the University of Western Ontario, London, Canada (1986-1989)
+
+-   Summer Intern, the International Monetary Fund, D.C., U.S.A (1988)
+
+## <i class="fa-solid fa-award"></i> Honours and Awards {.unnumbered}
+
+-   Fellow, *Journal of Econometrics* (2014-)
+
+-   Editorial Fellow, *Econometric Reviews* (2018-)
+
+-   *David J. and Helen C. Kahn Teaching Award* (the University of South Florida, 1997, $1,000)
+
+-   *Outstanding Undergraduate Teaching Award* (the University of South Florida, 1997, $2,000)
+
+-   *Sam Lawrence Prize in Labour Economics* (McMaster University, 1984, $225)
+
+## <i class="fa-solid fa-book-open"></i> Editorial Positions {.unnumbered}
+
+-   Guest Editor (with M. Gorfine and J. de Uña Álvarez), *Journal of Nonparametric Statistics*, ISNPS 2024 Special Volumes (2024-)
+
+-   Associate Editor, [*Econometric Reviews*](http://www.tandfonline.com/action/journalInformation?show=editorialBoard&journalCode=lecr20), (2012-)
+
+-   Deputy Editor-in-Chief, [*Econometrics*](http://www.mdpi.com/journal/econometrics/editors), (2016-2019)
+
+-   Associate Editor, [*Journal of Econometric Methods*](http://www.degruyter.com/view/j/jem), (2010-2018)
+
+-   Editorial Board, *Book Series on Econometrics*, World Scientific and Imperial College Press, (2013-)
+
+-   Editor (with L. Su and A. Ullah), *Oxford Handbook of Semiparametric and Nonparametric Econometric Methods*, (2011-2014)
+
+-   Guest Editor (with Q. Li), *Advances in Econometrics*, Volume 24, Nonparametric Methods (2009-2010)
+
+## Visiting Appointments {.unnumbered}
+
+-   Visiting Fellow, ENSAI ($\acute{\text E}$cole nationale de la statistique et de l'analyse d l'information), Rennes, France (2022)
+
+-   Visiting Fellow, ENSAI ($\acute{\text E}$cole nationale de la statistique et de l'analyse d l'information), Rennes, France (2016)
+
+-   Visiting Fellow, CSIR (Council for Scientific and Industrial Research), Pretoria, South Africa (2016)
+
+-   Visiting Fellow, ENSAI ($\acute{\text E}$cole nationale de la statistique et de l'analyse d l'information), Rennes, France (2015)
+
+-   Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2015)
+
+-   Visiting Research Scholar, the University of Melbourne, Melbourne, Australia (2014)
+
+-   Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2014)
+
+-   Visiting Fellow, Cowles Foundation, Yale University, New Haven, U.S.A. (2014)
+
+-   Visiting Fellow, QuanTM Institute, Emory University, Atlanta, U.S.A. (2013)
+
+-   Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2011)
+
+-   Visiting Fellow, the Toulouse School of Economics, Toulouse, France (2011)
+
+-   Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2010)
+
+-   Visiting Fellow, Info-Metrics Institute, American University, D.C., U.S.A. (2010)
+
+-   Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2008)
+
+-   Visiting Fellow, Department of Economics and Finance, La Trobe University, Melbourne, Australia (2008)
+
+-   Visiting Fellow, Centre interuniversitaire de recherche en économie quantitative, McGill University, Montreal, Canada (2007)
+
+-   Visiting Fellow, Mathematical Sciences Institute, the Australian National University, Canberra, Australia (2002)
+
+## Courses Taught {.unnumbered}
+
+-   *Graduate:*
+    - Econometrics I
+    - Econometrics II
+    - Econometrics III
+    - Topics in Econometrics
+    - Advanced Topics in Econometrics
+    - Advanced Econometrics
+
+-   *Undergraduate:*
+    - Managerial Economics
+    - Introduction to Money and Banking
+    - International Monetary Economics
+    - Monetary Economics
+    - Introduction to Macroeconomics
+    - Introduction to Microeconomics
+    - Intermediate Price Theory
+    - Intermediate Microeconomic Theory I
+    - Introductory Mathematical Statistics I
+    - Introductory Mathematical Statistics II
+    - Econometrics I
+    - Econometrics II
+    - Analysis of Economic Data I
+
+-   *Independent Studies:*
+    - Nonparametric Kernel Estimation (1997)
+
+## Ph.D. Candidate Supervision and Examination {.unnumbered}
+
+-   *Thesis Supervisor:*
+
+    1.  Ugarte Bravo, Karen (2022, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of Toronto)
+
+    2.  Sexton, Sean (2022, Economics, McMaster University, as of Summer 2022 Part-Time Instructor in the Department of Statistics, University of Toronto)
+
+    3.  Simardone, Camille (2021, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of British Colombia, Okanagan Campus)
+
+    4.  Kiwon, Francis (2019, M.Sc., Mathematics (Statistics), McMaster University, currently a Ph.D. student in the Department of Statistics at the University of Waterloo, Canada)
+
+    5.  Clair, Luc (2017, Economics, McMaster University, currently on faculty at the University of Winnipeg, Canada)
+
+    6.  Kealey, John (2016, Economics, McMaster University)
+
+    7.  Thompson, John (2014, M.Sc., Mathematics (Statistics), McMaster University, as of Fall 2021 on faculty in the Department of Mathematics at the University of British Colombia, Okanagan Campus)
+
+-   *Thesis Committee Member:*
+
+    1.  Roberts, Keith (2025-, Economics, McMaster University)
+
+    2.  Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)
+
+    3.  Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)
+
+    4.  Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)
+
+    5.  Shamsi, Azam (2018, School of Business, McMaster University, currently on faculty at the University of New Brunswick, Canada)
+
+    6.  Thomas, Stephanie (2016, Economics, McMaster University, currently on faculty at Curtin University, Australia)
+
+    7.  Olagunju, Waheed (2016, Economics, McMaster University, currently working at the King Abdullah Petroleum Studies and Research Center, Saudi Arabia)
+
+    8.  Tellez, Juan (2014, Economics, the University of Geneva, currently a Post-Doctoral Fellow at the Harvard Kennedy School, U.S.A.)
+
+    9.  Meredith, Evan (2012, Mathematics (Statistics), McMaster University, currently working at Human Services Alberta, Canada)
+
+    10. Li, Jinhu (2011, Economics, McMaster University, currently on faculty at the University of Melbourne, Australia)
+
+    11. McLeod, Logan (2010, Economics, McMaster University, currently on faculty at Wilfrid Laurier University, Canada)
+
+    12. de Oliveira, Claire (2008, Economics, McMaster University, currently on faculty at the University of York, UK)
+
+    13. Liu, Long (2008, Economics, Syracuse, currently on faculty at the University of Texas at San Antonio, U.S.A.)
+
+    14. Dammert, Ana (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
+
+    15. Galdo, Jose (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)
+
+        \[NB - from 1993-2002 I was a faculty member in the Department of Economics at the University of South Florida and, at that time, they did not have a Ph.D. program\]
+
+    16. Papanastasiou, John (1992, Economics, York, currently on faculty at the University of Macedonia, Thessaloniki, Greece)
+
+-   *Thesis External Examiner:*
+
+    1.  Håkon Otneim (2016), Mathematics, the University of Bergen, Norway.
+
+    2.  Henpitahewage Thilaksha Tharanganie (2015), Econometrics and Business Statistics, Monash University, Australia.
+
+    3.  Marcos Gómez (2011), Economics, Universidad de Zaragoza, España.
+
+    4.  Lindsay Tedds (2005), Economics, McMaster University.
+
+    5.  Yulia Kotlyarova (2005), Economics, McGill University, Canada.
+
+    6.  Dingding Li (2002), Economics, the University of Guelph, Canada.
+
+## University Service {.unnumbered}
+
+-   *McMaster University:*
+    - Ad Hoc Selection Committee for IT Support in the Faculty of Social Sciences (2013)
+    - Ad Hoc Selection Committee for the Director of the School of Social Work (2009, 2025)
+    - Faculty Multimedia Computing and Electronic Communication Committee (2005-)
+    - Faculty of Social Sciences' Tenure and Promotion Committee (2009-2012, 2012-2015, 2019-2020, 2020-2023)
+    - Graduate Admissions Committee (2005-2007)
+    - Hiring Committee (2005-2007)
+    - Research High-Performance Computing Support Committee (2005-)
+    - Research Information Technology Committee (2020-)
+    - Selection Committee for Replacement for Technical Director for Research High-Performance Computing Support (2011-2012)
+    - Selection Committee for the Director of the Masters in Statistics Programme (2009)
+    - Selection Committee for Director, Research & High Performance Computer Support (2021)
+    - Tenure and Promotion Task Force (2012)
+    - Tenure and Promotion Committee (2005-2007, 2017-2018, 2023-2024)
+    - Tenure and Promotion University Secretariat (2019-)
+    - University Scholar Committee (2025)
+
+-   *Syracuse University:*
+    - Econometrics Seminar Series Coordinator (2002-2005)
+    - Executive Committee (2003-2005)
+    - Freshman Forum Adviser (2003)
+    - ICT Advisory Committee (2003-2005)
+    - Research Evaluation Committee (2002-2005)
+    - Statistics Program Review Committee (2003)
+    - Tenure and Promotion Committee (2002-2005)
+
+-   *The University of South Florida:*
+    - Committee on Scholarship (2000-2001)
+    - Economics Department Committee A (1999-2000, 2001-2002)
+    - Economics Department Computing Coordinator (1993-2002)
+    - Outstanding Undergraduate Teaching Award Committee (1998)
+
+-   *York University:*
+
+    Economics Department Computing Coordinator (1989-1992)
+
+## External Service {.unnumbered}
+
+-   *Social Sciences and Humanities Research Council of Canada (CRSH/SSHRC)*
+
+    Insight Grants Committee, Chair, (2013-2014).
+
+-   *International Symposia for Nonparametric Statistics (ISNPS)*
+    - Member of Board of Directors (Elected 5/21/2018-)
+    - Member of Council Committee (Elected 1/1/2016-)
+    - Member of Charting Committee (2011-2015)
+    - Charting Committee, 2012 Annual Meetings (June 15-19, 2012, Chalkidiki, Greece)
+    - Charting Committee, 2014 Annual Meetings (June 12-16, 2014, Cádiz, España)
+    - Scientific Committee, 2024 Annual Meetings (June 25-29, 2024, Braga, Portugal)
+    - Scientific Committee, 2026 Annual Meetings (June 22-26, 2026, Thessaloniki, Greece)
+
+-   *Info-Metrics Institute*
+    - Memorial Prize Committee in Memory of Halbert L. White, Jr., (2016-)
+    - Organizing Committee for the 2012 Workshop on Nonparametric Inference (November 17, 2012, the University of California, Riverside)
+
+-   *Compute/Calcul Canada*
+    - National Resource Allocation Committee (2009-)
+
+-   *American Statistical Association*
+    - Publications Committee (2009)
+
+-   *SHARCNET*
+    - Resource Allocation Committee Chair, Round VI & VII (2007)
+    - Site Representative (2008-)
+
+## Grants and Fellowships {.unnumbered}
+
+1.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
+
+    Title: *A Foundational Framework For Functional Data Analysis*
+    Amount: $103,883
+    Date: March 28, 2025 - March 31, 2030
+
+2.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
+
+    Title: *A Comprehensive Framework for Model Averaging*
+    Amount: $176,593
+    Date: March 15, 2018 - March 31, 2023
+
+3.  McMaster (RHPCS) Research Software Pilot Project
+
+    Title: The R package np
+    Amount: In kind programming
+    Date: Fall 2019 - Winter 2020
+
+4.  Social Sciences and Humanities Research Council of Canada - *Insight Grant*
+
+    Title: *A Unified Framework for Nonparametric Instrumental Variable Estimation*
+    Amount: $206,729
+    Date: July 1, 2013 - June 30, 2018
+
+5.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
+
+    Title: *Adaptive Robust Kernel Estimation*
+    Amount: $93,000 ($78,000 SSHRC, $15,000 McMaster University matching funds)
+    Date: July 1, 2009 - June 30, 2012
+
+6.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
+
+    Joint with Paul V. Grootendorst
+    Title: *Assessment of the Cost and Equity of Different Catastrophic Drug Insurance Options for Canadians*
+    Amount: $233,669
+    Date: September 1, 2008 - August 30, 2010
+
+7.  Social Sciences and Humanities Research Council of Canada - *Standard Research Grant*
+
+    Title: *Kernel Estimation of a Conditional CDF with Mixed Data*
+    Amount: $108,630 ($93,630 SSHRC, $15,000 McMaster University matching funds)
+    Date: July 1, 2005 - June 30, 2008
+
+8.  Canadian Institutes of Health Research - *Health Services and Policy Research Operating Grant*
+
+    Joint with Carlos R. Quiñonez, David Locker, Peter V. Cooney, Raisa B. Deber, Paul V. Grootendorst, Stephen W. Hwang, and Sunjay Suri
+    Title: *Alleviating disparities in oral health: Responding to the information needs of key decision makers (and the KT plan)*
+    Amount: $109,900
+    Date: January 1, 2008 - December 31, 2008
+
+9.  Natural Sciences and Engineering Research Council of Canada - *Discovery Grant*
+
+    Title: *Real Time Kernel Estimation*
+    Amount: $12,000
+    Date: July 1, 2005 - June 30, 2006
+
+10. National Science Foundation - *Major Research Instrumentation Grant: Principal Investigator*
+
+    Title: *Acquisition of a Beowulf Class Cluster Computer to Support Interdisciplinary Faculty Research*
+    Amount: $162,810 ($113,967 NSF, $48,843 Syracuse University required cost-share)
+    Date: August 1, 2003
+
+11. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+
+    Title: *Nonparametric Hypothesis Testing in the Presence of Mixed Discrete and Continuous Data Types*
+    Amount: $7,500
+    Date: January 1, 2001 - December 31, 2001
+
+12. National Institute of Health - *Research Grant*
+
+    Title: *Advanced Statistical Tools for Biomedical Research*
+    Amount: $20,000
+    Date: May 1, 1999 - December 31, 2000
+
+13. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+
+    Title: *Density-Based Multinomial Choice - Theory and Applications*
+    Amount: $7,500
+    Date: January 1, 1999 - December 31, 1999
+
+14. USF Division of Sponsored Research - *Research and Creative Scholarship Award*
+
+    Title: *Finite-Sample Corrections for* $hv$-Block Cross-Validation
+    Amount: $7,500
+    Date: January 1, 1997 - December 31, 1997
+
+15. National Science Foundation SBR Grant - *Research Grant*
+
+    Co-Collaborator with Halbert White, Principal Investigator
+    Title: *Improved Estimation and Specification Testing with Parametric, Nonparametric, and Neural Network Models Using the Bootstrap*
+    Amount: $166,650
+    Date: August 1, 1995 - July 31, 1998
+
+16. USAF Phase II Standards Technology Transfer Network - *Research Grant*
+
+    Title: *Automatic Data Modeling*
+    Amount: $29,000
+    Date: May 6, 1996 - July 25, 1998
+
+17. USF Division of Sponsored Research - *Research Grant*
+
+    Title: *Testing Exchange Market Efficiency using Nonparametric and Nonlinear Estimation*
+    Amount: $6,500
+    Date: January 1, 1995 - December 31, 1995
+
+18. Social Sciences and Humanities Research Council of Canada - *Operating Grant*
+
+    Title: *Semiparametric Estimation of Multi-Equation Econometric Models*
+    Amount: $15,000
+    Date: June 1, 1992 - June 1, 1995
+
+19. Natural Sciences and Engineering Research Council of Canada - *Research Grant*
+
+    Title: *Estimation of Multivariate Systems Models: A Heteroscedasticity-Consistent Approach*
+    Amount: $27,000
+    Date: April 1, 1991 - April 1, 1994
+
+20. Social Sciences and Humanities Research Council of Canada - *Strategic Grant*
+
+    Joint work with D. Shapiro, J.B. Smith, and M. Stelcner
+    Title: *The Gender Earnings Gap and Labour Market Discrimination in Canada: A Reassessment and Extension of Econometric and Policy Analysis*
+    Amount: $20,000
+    Date: October 1, 1990 - September 31, 1992
+
+21. Social Sciences and Humanities Research Council of Canada - *Doctoral Fellowship*
+
+    Amount: $12,500 per annum
+    Date: 1987-1988, 1988-1989
+
+22. Ontario Graduate Scholarship - *Doctoral Scholarship*
+
+    Amount: $8,500
+    Date: 1985-1986
+    
+::: {.content-visible when-meta="header-gseval"}
+## <i class="ai ai-google-scholar"></i> Google Scholar Citation Summary {.unnumbered}
+:::
+
+<center>
+
+```{r, eval=params$gseval}
+#| label: foopander
+#| message: FALSE
+#| warning: FALSE
+#| echo: FALSE
+#| results: 'asis'
+## Re-use foo below to do counting etc. and can't use formatted
+## version for this, so make copy (foofoo) for formatting big.mark
+## comma in table then can re-use foo later for counts etc.
+foofoo <- foo <- gcite::gcite_user_info('TXeKxGsAAAAJ',verbose=FALSE,read_citations=FALSE)
+#foofoo$citation_indices$`All` <- format(foofoo$citation_indices$`All`,big.mark=",")
+#foofoo$citation_indices$`Since 2019` <- format(foofoo$citation_indices$`Since 2019`,big.mark=",")
+foofoo$citation_indices[[2]] <- format(foofoo$citation_indices[[2]],big.mark=",")
+foofoo$citation_indices[[3]] <- format(foofoo$citation_indices[[3]],big.mark=",")
+pander::panderOptions('table.alignment.default',c('left','right','right'))
+pander::pander(foofoo$citation_indices)
+```
+
+</center>
+
+```{r, eval=params$gseval}
+#| label: fooplot
+#| message: FALSE
+#| fig-asp: 0.4
+#| out-width: "75%"
+#| warning: FALSE
+#| echo: FALSE
+#| results: 'asis'
+require(ggplot2)
+require(gridExtra)
+require(scholar)
+#plot1 <- qplot(1)
+#plot2 <- qplot(1)
+## Adjust for discrepancy in total (field All[1] in call to gcite)
+adjust <- foo$citation_indices$All[1]-sum(foo$overall_citations$n_citations)
+plot1 <- ggplot(foo$overall_citations,aes(x=year,y=n_citations))+
+    geom_bar(stat='identity')+
+    theme_bw()+
+    xlab('Year')+
+    ylab('Citations/Year')
+plot2 <- ggplot(foo$overall_citations,aes(x=year,y=cumsum(n_citations)+adjust))+
+    geom_bar(stat='identity')+
+    theme_bw()+
+    xlab('Year')+
+    ylab('Cumulative Citations')
+grid.arrange(plot1, plot2, ncol=2)    
+```
+
+## <i class="fa-solid fa-book"></i> Books {.unnumbered}
+
+-   Racine, J.S. (2019), *An Introduction to the Advanced Theory and Practice of Nonparametric Econometrics (A Replicable Approach Using R),* Cambridge University Press, ISBN 9781108483407, 408 pages.
+
+-   Racine, J.S. (2019), *Reproducible Econometrics Using R,* Oxford University Press, ISBN: 9780190900663, 293 pages.
+
+-   Li, Q. and J.S. Racine (2007), *Nonparametric Econometrics: Theory and Practice,* Princeton University Press, ISBN: 9780691121611, 746 pages.
+
+    Chinese Edition:
+
+    Li, Q. and J.S. Racine (2015), *Nonparametric Econometrics: Theory and Practice,* Translated by Ye Azhong, Wu Xiangbo et al., Peking University Press, ISBN: 9787301249673.
+
+## <i class="fa-solid fa-book-open"></i> Edited Volumes {.unnumbered}
+
+-   *Nonparametric Econometric Methods* (2009), Volume 25 of the book series: Advances in Econometrics, ISBN: 9781849506236, Edited by: Qi Li, Jeffrey S. Racine.
+
+-   *Oxford Handbook of Semiparametric and Nonparametric Econometric Methods* (2014), ISBN 9780199857944, Edited By Jeffrey S.\u00A0Racine, Liangjun Su, and Aman Ullah.
+
+## \faRProject\u00A0Packages {.unnumbered}
+
+-   The `np' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/np/index.html>.
+
+-   The `npiv' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/npiv/index.html>.
+
+-   The `npRmpi' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/np/index.html>.
+
+-   The `crs' package for R available directly from the Comprehensive R Archive Network <https://cran.r-project.org/web/packages/crs/index.html>.
+
+-   The `ma' package for R <https://github.com/JeffreyRacine/R-Package-ma>.
+
+-   The `hr' package for R <https://github.com/JeffreyRacine/R-Package-hr>.
+
+## Peer Reviewed Publications {.unnumbered}
+
+1.  @patilea_inpress_locally
+1.  @racine_inpress_quarto
+1.  @wang_2025_bootstrap
+1.  @racine_2024_boundary
+1.  @hansen_2024_bootstrap
+1.  @du_2024_shape
+1.  @racine_2023_optimal
+1.  @simardone_2021_nonparametri
+1.  @racine_2020_kernel
+1.  @ma_2020_nonparametri
+1.  @racine_2020_kernel
+1.  @racine_2019_energy
+1.  @parmeter_2019_nonparametri
+1.  @beheshti_2019_information
+1.  @li_2018_optimal
+1.  @das_2018_interactive
+1.  @florens_2018_nonparametri
+1.  @centorrino_2017_semiparametr
+1.  @racine_2017_nonparametri
+1.  @li_2017_cross
+1.  @kiefer_2017_the
+1.  @koch_2016_health
+1.  @racine_2016_local
+1.  @bugden_2016_nonparametri
+1.  @maasoumi_2016_a
+1.  @chakrabarty_2015_household
+1.  @ma_2015_spline
+1.  @hall_racine_2015_infiniteorder
+1.  @racine_2015_mixeddata
+1.  @gao_liu_racine_2015_partiallylinear
+1.  @gyimahbrempong_2014_aid
+1.  @racine_parmeter_2014_data_driven
+1.  @du_parmeter_racine_2013_constrained
+1.  @li_lin_racine_2013_optimalbandwidth
+1.  @li_lin_racine_2013_optimalbandwidth
+1.  @ma_racine_2013_additive2
+1.  @li_lin_racine_2013_optimalbandwidth
+1.  @nie_racine_2012_crs
+1.  @parmeter_racine_2012_frontier
+1.  @racine_2012_rstudio
+1.  @hansen_racine_2012_jackknife
+1.  @gyimahbrempong_2012_aid
+1.  @zhang_chen_liu_racine_2011_disease
+1.  @racine_2011_chapter
+1.  @li_racine_2010_smoothvarying
+1.  @gyimahbrempong_2010_aid
+1.  @racine_2009_nonparametric_methods_in_r
+1.  @li_maasoumi_racine_2009_test
+1.  @kiefer_racine_2009_smoothreverend
+1.  @li_maasoumi_racine_2009_test
+1.  @meredith_racine_2009_reproducible
+1.  @li_maasoumi_racine_2009_test
+1.  @ouyang_li_racine_2009_nonparamregression
+1.  @maasoumi_racine_2009_entropy
+1.  @li_racine_2008_maxima
+1.  @hayfield_racine_2008_np
+1.  @li_racine_2008_maxima
+1.  @li_racine_2008_maxima
+1.  @racine_2008_primer
+1.  @hall_racine_2007_infinite
+1.  @hayfield_racine_2007_np
+1.  @hsiao_li_racine_2007
+1.  @racine_mackinnon_2007_bootstrap_p
+1.  @racine_mackinnon_2007_bootstrap_p
+1.  @racine_mackinnon_2007_bootstrap_p
+1.  @maasoumi_racine_2007_entropy
+1.  @chakrabarty_schmalenbach_racine_2006
+1.  @racine_kern_2006_testing
+1.  @gyimahbrempong_2006_alcohol
+1.  @racine_kern_2006_testing
+1.  @racine_kern_2006_testing
+1.  @racine_kern_2006_testing
+1.  @ouyang_li_racine_2006
+1.  @racine_2004_parallel
+1.  @hall_li_racine_2004
+1.  @li_racine_2004_crossval
+1.  @granger_maasoumi_racine_2004
+1.  @li_racine_2004_crossval
+1.  @racine_2004_parallel
+1.  @li_racine_2003_multivariate
+1.  @racine_2002_directmarketing
+1.  @racine_2002_directmarketing
+1.  @maasoumi_racine_2002_entropy
+1.  @racine_2002_directmarketing
+1.  @racine_2002_directmarketing
+1.  @racine_2002_directmarketing
+1.  @racine_2001_biascorrected
+1.  @white_racine_2001_nn
+1.  @chen_racine_swanson_2001
+1.  @racine_2001_biascorrected
+1.  @racine_2000_feasible_resampling
+1.  @racine_2000_feasible_resampling
+1.  @racine_2000_feasible_resampling
+1.  @racine_2000_feasible_resampling
+1.  @racine_1997_hvblock
+1.  @racine_1997_hvblock
+1.  @morrow_stein_racine_1997_videokeratography
+1.  @racine_rilstone_1995_reverse
+1.  @gonzalez_rivera_racine_1995_garch
+1.  @racine_1993_efficient
+1.  @ullah_racine_1992_smooth
+
+## Published Book Reviews {.unnumbered}
+
+-   Racine, J.S.\u00A0(2005), "Finite Sample Econometrics by Aman Ullah," *Economic Record*, Volume 81, Issue 1, pages 94-95.
+
+-   Racine, J.S.\u00A0(2001), "Nonparametric Econometrics - Themes in Modern Econometrics by Adrian Pagan and Aman Ullah," *Journal of The American Statistical Association*, March, Volume 96, Number 453, pages 343-345.
+
+## Work Submitted for Publication {.unnumbered}
+
+-   Chen, X., T. Christensen, S. Kankanala and J.S. Racine, "npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R," submitted for publication.
+
+```{=html}
+<!--
+
+- Smits, J. and J.S.\ Racine, "Testing Exclusion Restrictions in Nonseparable Triangular Models," submitted for publication.
+
+- Grootendorst, P.\ and J.S.\ Racine, "Distributional Effects of Needs-Based Drug Subsidies: Regional Evidence From Canada," submitted for publication.
+
+-->
+```
+
+## Workshops {.unnumbered}
+
+... (rest of document unchanged)
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
