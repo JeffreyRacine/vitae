@@ -1,30 +1,70 @@
-Curriculum Vitae (HTML-first workflow)
+# README — index.qmd
 
-Overview
+🎯 **Purpose**
 
-- This repository contains the source for the CV (`index.qmd`) and supporting assets (CSS, bibliographies, icons).
-- The preferred workflow is HTML-first: render the QMD to HTML with Quarto and print the HTML to PDF using a headless browser (Google Chrome).
+This repository builds the CV from `index.qmd` using Quarto. Rendering produces `index.html` (web) and `index.pdf` (print-ready PDF).
 
-Quick commands
+---
 
-- Render HTML:
+## 🔧 Prerequisites
 
-    quarto render index.qmd
+- Quarto (https://quarto.org/) installed and on your PATH
+- A TeX distribution (MacTeX / TeX Live) if you want to render PDF output
+- Git (for the automated commit/push steps)
 
-- Print the rendered HTML to PDF (macOS example):
+---
 
-    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="index.pdf" "index.html"
+## ⚙️ Build & Preview
 
-- Render with a different spacing preset (example, body line-height = 1.15):
+- Preview a live-reloading site for development:
 
-    quarto render index.qmd -P spacing.value.body_line_height=1.15
-    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="index_spacing_115.pdf" "index.html"
+  ```bash
+  quarto preview
+  ```
 
-Notes
+- Render HTML (and PDF if TeX is available):
 
-- Spacing parameters are controlled in the YAML `params.spacing.value` map. Adjust `body_line_height`, `bib_line_height`, and other spacing variables there and re-render to see the effect.
-- The `cv.css` file centralizes spacing via CSS custom properties — the README and Makefile are intentionally minimal; modify them for your environment or CI.
+  ```bash
+  quarto render index.qmd
+  ```
 
-Support
+- Use the included Makefile targets:
 
-If you want, I can add additional Makefile targets (e.g., `preview`, `ci`, or spacing presets) or add a short CI job that renders PDFs for a set of presets.
+  - `make` — renders `index.qmd` and opens `index.pdf` (uses Skim on macOS)
+  - `make github` — renders, copies `index.pdf` to `vitae.pdf`, commits, and pushes (see `makefile` for details)
+  - `make clean` — removes generated artifacts (`index.html`, `index.pdf`, `index.tex`, `index_files`)
+
+- There is also a `CV.sh` script that automates render + git commit/push (used for cron automation). Use with caution.
+
+---
+
+## 📚 Publications & Citation
+
+Publication data are stored in the `.bib` files (`publications-*.bib`) and citation style is in `numeric-ydnt.csl`. Edit/add references there and update `index.qmd` citations as needed.
+
+---
+
+## 🎨 Styling & Assets
+
+- Custom stylesheet: `cv.css`
+- Static assets and Quarto-generated support files live in `index_files/`.
+
+Edit `index.qmd` for content changes; do not edit generated files (`index.html`, `index.pdf`, `index.tex`).
+
+---
+
+## 🛠 Troubleshooting
+
+- "quarto: command not found": install Quarto and reopen the terminal
+- PDF not generated: confirm a working TeX distribution is installed
+- git push in `make github`/`CV.sh` may fail if credentials are not set; verify your Git config
+
+---
+
+## ✅ Notes
+
+- This README is intentionally brief. If you'd like more details (CI deployment, GitHub Pages steps, or alternate output formats), say which you'd prefer and I'll expand it.
+
+---
+
+File location: `README.md` (root of this project)
