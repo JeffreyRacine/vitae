@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" default-locale="en-US">
+  <info>
+    <title>Numeric (year desc) - custom</title>
+    <id>http://www.zotero.org/styles/numeric-ydnt</id>
+    <link href="http://www.zotero.org/styles/numeric"/>
+    <author>
+      <name>Generated</name>
+    </author>
+    <category citation-format="numeric"/>
+    <updated>2026-01-03T00:00:00+00:00</updated>
+  </info>
+
+  <macro name="author">
+    <names variable="author">
+      <name form="long" initialize-with="." and="text" delimiter=", " et-al-min="999"/>
+    </names>
+  </macro>
+
+  <citation>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography hanging-indent="true" line-spacing="1">
+    <layout>
+      <text variable="citation-number" suffix=". "/>
+      <group>
+        <text macro="author"/>
+        <text variable="title" prefix=" “" suffix="”"/>
+        <text variable="container-title" prefix=". In: " font-style="italic"/>
+        <text variable="volume" prefix=" Vol. "/>
+        <text variable="issue" prefix=" (" suffix=")"/>
+        <choose>
+          <if variable="issued">
+            <text value=" ("/>
+            <date variable="issued"><date-part name="year"/></date>
+            <text value=")"/>
+          </if>
+          <else-if variable="year">
+            <text value=" ("/>
+            <text variable="year"/>
+            <text value=")"/>
+          </else-if>
+          <else-if variable="note">
+            <choose>
+              <if type="book">
+                <text value=", "/>
+                <text variable="publisher"/>
+                <text value=", "/>
+                <text variable="note"/>
+              </if>
+              <else>
+                <text value=" ("/>
+                <text variable="note"/>
+                <text value=")"/>
+              </else>
+            </choose>
+          </else-if>
+        </choose>
+        <text variable="page" prefix=", pp. "/>
+        <choose>
+          <if type="book">
+            <text variable="publisher" prefix=", "/>
+            <text variable="note" prefix=", "/>
+            <text variable="number-of-pages" prefix=", " suffix=" pages total"/>
+            <text variable="ISBN" prefix=", ISBN: "/>
+            <text variable="DOI" prefix=", doi: "/>
+            <text variable="URL" prefix=", URL: " form="uri"/>
+          </if>
+          <else>
+            <choose>
+              <if variable="DOI">
+                <text variable="DOI" prefix=", doi: "/>
+              </if>
+              <else>
+                <text variable="URL" prefix=", URL: " form="uri"/>
+              </else>
+            </choose>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+  <sort>
+    <key variable="issued" sort="descending"/>
+    <key variable="author" sort="ascending"/>
+    <key variable="title" sort="ascending"/>
+  </sort>
+</style>

@@ -1,0 +1,116 @@
+--- Script started at Sun Jan  4 00:00:00 EST 2026 ---
+[31m
+
+processing file: index.qmd
+[39m1/5            
+2/5 [foopander]
+3/5            
+4/5 [fooplot]  
+5/5            
+[31moutput file: index.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: index.html
+  standalone: true
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  pdf-engine: lualatex
+  toc: true
+  variables: {}
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  lang: en
+  title: Curriculum Vitae
+  author: Jeffrey Scott Racine
+  date: now
+  date-format: YYYY-MM-DD
+  knitr:
+    opts_chunk:
+      autodep: true
+      collapse: true
+      dev: tikz
+      cache: false
+      echo: false
+      fig.align: center
+      fig.pos: H
+      message: false
+      warning: false
+      R.options:
+        np.messages: false
+        plot.par.mfrow: false
+  header-gseval: true
+  
+[31m
+
+processing file: index.qmd
+[39m1/5            
+2/5 [foopander]
+3/5            
+4/5 [fooplot]  
+5/5            
+[31moutput file: index.knit.md
+
+[39m[1mpandoc [22m
+  to: latex
+  output-file: index.tex
+  standalone: true
+  shift-heading-level-by: -1
+  pdf-engine: lualatex
+  variables:
+    graphics: true
+    tables: true
+  default-image-extension: pdf
+  number-sections: true
+  
+[1mmetadata[22m
+  block-headings: true
+  title: Curriculum Vitae
+  author: Jeffrey Scott Racine
+  date: now
+  date-format: YYYY-MM-DD
+  knitr:
+    opts_chunk:
+      autodep: true
+      collapse: true
+      dev: tikz
+      cache: false
+      echo: false
+      fig.align: center
+      fig.pos: H
+      message: false
+      warning: false
+      R.options:
+        np.messages: false
+        plot.par.mfrow: false
+  header-gseval: true
+  documentclass: article
+  geometry:
+    - top=20mm
+    - left=20mm
+    - heightrounded
+  
+[1m[34m
+Rendering PDF[39m[22m
+[1m[34mrunning lualatex - 1[39m[22m
+  This is LuaHBTeX, Version 1.21.0 (TeX Live 2025/MacPorts 2025.74524_1) 
+   restricted system commands enabled.
+  
+[1m[34mrunning lualatex - 2[39m[22m
+  This is LuaHBTeX, Version 1.21.0 (TeX Live 2025/MacPorts 2025.74524_1) 
+   restricted system commands enabled.
+  
+
+Output created: index.html
+
+[main b44b085] Updated GS info: 2026-01-04 00:02:18
+ 7 files changed, 252 insertions(+), 364 deletions(-)
+ create mode 100644 index.pdf
+To github.com:JeffreyRacine/vitae.git
+   153a0db..b44b085  main -> main
+--- Script finished at Sun Jan  4 00:02:20 EST 2026 ---
+Elapsed time: 00:02:20

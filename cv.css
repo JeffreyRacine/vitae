@@ -1,0 +1,117 @@
+/* CV stylesheet (replaces old main.css)
+ * Centralized spacing variables at top so spacing is easy to tweak.
+ * Edit the values below to change global spacing rather than hunting for
+ * individual hard-coded values across the stylesheet.
+ */
+
+:root {
+  /* Base line-height for body text (default: slightly more relaxed than 'tight') */
+  --cv-body-line-height: 1.35;
+  /* Bibliography entry line-height */
+  --cv-bib-line-height: 1.25;
+  --cv-bib-gap: 0.12em; /* gap between bib entries */
+  /* Lists */
+  --cv-list-line-height: 1.6;
+  --cv-list-gap: 0.65em; /* gap between list items (li) */
+  --cv-list-item-gap: 0.35em; /* small gap for nested/compact lists */
+  --cv-paragraph-gap: 0.85em; /* default paragraph bottom margin */
+}
+
+/* Global body/paragraph spacing (use variables above to tweak) */
+body, p {
+  line-height: var(--cv-body-line-height);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--cv-paragraph-gap);
+}
+
+
+
+.csl-bib-body .csl-entry {
+  text-indent: -2em;
+  margin-left: 2em;
+  margin-top: 0;
+  margin-bottom: var(--cv-bib-gap);
+  padding: 0;
+  line-height: var(--cv-bib-line-height); /* tweakable */
+}
+
+/* Tight lists: reduce vertical spacing for lists across the CV */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: var(--cv-list-gap);
+  padding-left: 1.5em;
+}
+ul li, ol li {
+  margin-bottom: var(--cv-list-item-gap);
+  /* Ensure list items use the list line-height for wrapped lines */
+  line-height: var(--cv-list-line-height);
+}
+
+/* If a list item contains multiple paragraphs, keep tiny gap if needed */
+ul li > p + p, ol li > p + p {
+  margin-top: 0;
+}
+
+/* Also reduce spacing for task lists */
+ul.task-list { margin-bottom: 0; }
+
+/* Remove default paragraph margins inside list items so lists are tight */
+ul li > p, ol li > p {
+  margin: 0;
+  /* render as inline to collapse vertical gaps caused by block paragraphs inside <li> */
+  display: inline;
+}
+
+/* Tighten Table of Contents spacing */
+#TOC, nav#TOC { }
+#TOC ul { margin: 0; padding-left: 0.6em; }
+#TOC li { margin: 0 0 0.08em 0; line-height: 0.98; }
+#TOC a.nav-link { padding: 0.06rem 0; display: block; }
+@media (max-width: 767.98px) {
+  #TOC ul { padding-left: 0.9em }
+}
+/* Tighten nested lists (e.g., *Thesis Committee Member* lists) */
+li > ol, li > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 1.2em;
+}
+li > ol > li, li > ul > li {
+  margin-bottom: 0;
+}
+li > ol > li > p, li > ul > li > p { display:inline; margin:0; }
+ul.task-list li { margin-bottom: 0; }
+
+/* Tighten nested enumerations in section blocks */
+.level2 ol, .level2 ul {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 1.5em !important;
+}
+.level2 ol li, .level2 ul li {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: var(--cv-list-line-height) !important;
+}
+
+/* Reduce gap between 'Packages' heading and its bibliography (packages section) */
+h2.unnumbered + .references.csl-bib-body,
+h2.unnumbered + #refs-packages {
+  margin-top: 0.25em;
+}
+
+/* Ensure R logo inline with headings and constrain its size */
+.r-logo { display: inline-block; vertical-align: -0.12em; margin-right: .5rem; height: 1.2em; width: auto; max-height: 1.6em; }
+/* Make paragraphs inside list-items behave with no extra gap and wrap nicely */
+.level2 ol li > p, .level2 ul li > p, .level2 li > p {
+  margin: 0 !important;
+  display: block !important;
+}
+/* If a list item directly contains a nested list, remove top gap from nested list */
+.level2 li > ol, .level2 li > ul {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

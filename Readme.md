@@ -1,40 +1,30 @@
-# CV
+Curriculum Vitae (HTML-first workflow)
 
-## Dec 10 2025
+Overview
 
-Updated workflow as GitHub can't support scraping GS data (403 error,
-blocked).
+- This repository contains the source for the CV (`index.qmd`) and supporting assets (CSS, bibliographies, icons).
+- The preferred workflow is HTML-first: render the QMD to HTML with Quarto and print the HTML to PDF using a headless browser (Google Chrome).
 
-Think this is as good as it can get. First, the repo does not get
-rsynced to other machines so can't get clobbered that way. Second,
-repo is on iCloud and locally kept tightly syncrochinzed with the
-macOS Finder option "Keep Downloaded" enabled by going to the iCloud
-folder "Documents", then control-clock and selece "Keep Downloaded".
+Quick commands
 
-This appears to permit _any_ machine to run a cron job and _all_
-machines will be kept synchrnonized when they next connect to the
-internet (which, unless travelling without a connection while updating
-my CV ought to be essentially a close-to-zero probability occurrance).
+- Render HTML:
 
-A cron job on my home machine
+    quarto render index.qmd
 
-```
-0 0 * * * /opt/local/bin/bash -l -c 'source ~/.bashrc && cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/CV/ && /opt/local/bin/bash ./CV.sh > cron.log 2>&1'
-```
+- Print the rendered HTML to PDF (macOS example):
 
-executes in the local iCloud directory where the files are located
-every midnight (could be weekly etc.), the updated files get pushed to
-GitHub with a message
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="index.pdf" "index.html"
 
-```
-echo "Updated GS info: $(date +'%Y-%m-%d %H:%M:%S')"
-```
+- Render with a different spacing preset (example, body line-height = 1.15):
 
-If I update the main file index.qmd I push that separately with its
-own message.
+    quarto render index.qmd -P spacing.value.body_line_height=1.15
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="index_spacing_115.pdf" "index.html"
 
-The file index.pdf gets copied to vitae.pdf which also gets pushed for
-compatibility with existing links in McMaster Experts, my email sig
-etc.
+Notes
 
-Last night it ran and appeared to execute properly.
+- Spacing parameters are controlled in the YAML `params.spacing.value` map. Adjust `body_line_height`, `bib_line_height`, and other spacing variables there and re-render to see the effect.
+- The `cv.css` file centralizes spacing via CSS custom properties — the README and Makefile are intentionally minimal; modify them for your environment or CI.
+
+Support
+
+If you want, I can add additional Makefile targets (e.g., `preview`, `ci`, or spacing presets) or add a short CI job that renders PDFs for a set of presets.
