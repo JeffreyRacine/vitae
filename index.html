@@ -22,7 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -36,6 +55,78 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.0/css/academicons.min.css">
+<style>
+  /* Small R logo alignment */
+  .r-logo svg{ display:inline-block; vertical-align: -0.12em; margin-right: .5rem }
+  /* Package link icons */
+  #refs-packages .csl-entry a { text-decoration: none }
+  .pkg-icon { margin-left: .35rem; vertical-align: middle; display: inline-block }
+  /* Slightly reduce list indent for package section */
+  #refs-packages.csl-bib-body { padding-left: 0.5rem }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const pkgDiv = document.getElementById('refs-packages');
+    if(!pkgDiv) return;
+    pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
+      const href = a.getAttribute('href') || '';
+      const next = a.nextSibling;
+      // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
+      // also append the R logo AFTER the link icon. Avoid inserting duplicates.
+      // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
+      if(href.includes('doi.org')){
+        // Do not insert link icons (they caused layout/clobbering issues).
+        // For CRAN package DOIs, still append the R logo (no link icon).
+        if(href.includes('CRAN.package')){
+          const afterNode = next;
+          if(!(afterNode && afterNode.classList && afterNode.classList.contains('pkg-icon'))){
+            const rimg = document.createElement('img');
+            rimg.src = 'r-logo.png';
+            rimg.alt = 'CRAN';
+            rimg.className = 'pkg-icon';
+            rimg.style.width = '16px'; rimg.style.height = '16px';
+            a.parentNode.insertBefore(rimg, afterNode);
+          }
+        }
+      }
+    });
+
+    // Remove any existing link icons (fa-link) that may have been added previously
+    pkgDiv.querySelectorAll('i.fa-link').forEach(function(ic){ ic.remove(); });
+
+    // Hide long URL anchors when a DOI is present to reduce clutter
+    function hidePackageURLs(){
+      let removedAny = false;
+      pkgDiv.querySelectorAll('.csl-entry').forEach(function(entry){
+        const hasDOI = !!entry.querySelector('a[href*="doi.org"]');
+        if(!hasDOI) return;
+        entry.querySelectorAll('a').forEach(function(a){
+          const href = a.getAttribute('href') || '';
+          // hide non-doi http/https links (these are the long URLs)
+          if(href.startsWith('http') && !href.includes('doi.org')){
+            // remove preceding 'URL:' label if present
+            const prev = a.previousSibling;
+            if(prev && prev.nodeType === Node.TEXT_NODE){
+              prev.textContent = prev.textContent.replace(/\,?\s*URL\s*:\s*/i, '');
+            }
+            a.remove();
+            removedAny = true;
+          }
+        });
+      });
+      return removedAny;
+    }
+    // Try immediately and observe for dynamic changes (citeproc may insert anchors later)
+    if(!hidePackageURLs()){
+      const urlObserver = new MutationObserver(function(mutations, obs){
+        if(hidePackageURLs()) obs.disconnect();
+      });
+      urlObserver.observe(pkgDiv, { childList: true, subtree: true });
+    }
+  });
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -67,6 +158,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="cv.css">
 </head>
 
 <body class="quarto-light">
@@ -77,23 +169,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contact-information" id="toc-contact-information" class="nav-link active" data-scroll-target="#contact-information">&nbsp;Contact Information</a></li>
-  <li><a href="#academic-profiles-and-websites" id="toc-academic-profiles-and-websites" class="nav-link" data-scroll-target="#academic-profiles-and-websites">&nbsp;Academic Profiles and Websites</a></li>
+  <li><a href="#contact-information" id="toc-contact-information" class="nav-link active" data-scroll-target="#contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i>&nbsp;Contact Information</a></li>
+  <li><a href="#academic-profiles-and-websites" id="toc-academic-profiles-and-websites" class="nav-link" data-scroll-target="#academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Academic Profiles and Websites</a></li>
   <li><a href="#academic-background" id="toc-academic-background" class="nav-link" data-scroll-target="#academic-background">Academic Background</a></li>
   <li><a href="#current-positions" id="toc-current-positions" class="nav-link" data-scroll-target="#current-positions">Current Positions</a></li>
   <li><a href="#past-positions" id="toc-past-positions" class="nav-link" data-scroll-target="#past-positions">Past Positions</a></li>
-  <li><a href="#honours-and-awards" id="toc-honours-and-awards" class="nav-link" data-scroll-target="#honours-and-awards">&nbsp;Honours and Awards</a></li>
-  <li><a href="#editorial-positions" id="toc-editorial-positions" class="nav-link" data-scroll-target="#editorial-positions">&nbsp;Editorial Positions</a></li>
+  <li><a href="#honours-and-awards" id="toc-honours-and-awards" class="nav-link" data-scroll-target="#honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i>&nbsp;Honours and Awards</a></li>
+  <li><a href="#editorial-positions" id="toc-editorial-positions" class="nav-link" data-scroll-target="#editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Editorial Positions</a></li>
   <li><a href="#visiting-appointments" id="toc-visiting-appointments" class="nav-link" data-scroll-target="#visiting-appointments">Visiting Appointments</a></li>
   <li><a href="#courses-taught" id="toc-courses-taught" class="nav-link" data-scroll-target="#courses-taught">Courses Taught</a></li>
   <li><a href="#ph.d.-candidate-supervision-and-examination" id="toc-ph.d.-candidate-supervision-and-examination" class="nav-link" data-scroll-target="#ph.d.-candidate-supervision-and-examination">Ph.D.&nbsp;Candidate Supervision and Examination</a></li>
   <li><a href="#university-service" id="toc-university-service" class="nav-link" data-scroll-target="#university-service">University Service</a></li>
   <li><a href="#external-service" id="toc-external-service" class="nav-link" data-scroll-target="#external-service">External Service</a></li>
   <li><a href="#grants-and-fellowships" id="toc-grants-and-fellowships" class="nav-link" data-scroll-target="#grants-and-fellowships">Grants and Fellowships</a></li>
-  <li><a href="#google-scholar-citation-summary" id="toc-google-scholar-citation-summary" class="nav-link" data-scroll-target="#google-scholar-citation-summary">&nbsp;Google Scholar Citation Summary</a></li>
-  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books">&nbsp;Books</a></li>
-  <li><a href="#edited-volumes" id="toc-edited-volumes" class="nav-link" data-scroll-target="#edited-volumes">&nbsp;Edited Volumes</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">&nbsp;Packages</a></li>
+  <li><a href="#google-scholar-citation-summary" id="toc-google-scholar-citation-summary" class="nav-link" data-scroll-target="#google-scholar-citation-summary"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Citation Summary</a></li>
+  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books"><i class="fa-solid fa-book" aria-hidden="true"></i>&nbsp;Books</a></li>
+  <li><a href="#edited-volumes" id="toc-edited-volumes" class="nav-link" data-scroll-target="#edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Edited Volumes</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><img src="r-logo.png" title="R" alt="R logo" class="r-logo" aria-hidden="true">&nbsp;Packages</a></li>
   <li><a href="#peer-reviewed-publications" id="toc-peer-reviewed-publications" class="nav-link" data-scroll-target="#peer-reviewed-publications">Peer Reviewed Publications</a></li>
   <li><a href="#published-book-reviews" id="toc-published-book-reviews" class="nav-link" data-scroll-target="#published-book-reviews">Published Book Reviews</a></li>
   <li><a href="#work-submitted-for-publication" id="toc-work-submitted-for-publication" class="nav-link" data-scroll-target="#work-submitted-for-publication">Work Submitted for Publication</a></li>
@@ -138,34 +230,34 @@ window.Quarto = {
 
 
 <section id="contact-information" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="contact-information">&nbsp;Contact Information</h2>
+<h2 class="unnumbered anchored" data-anchor-id="contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i>&nbsp;Contact Information</h2>
 <ul>
-<li><p>&nbsp;Department of Economics<br>
+<li><p><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>&nbsp;Department of Economics<br>
 Kenneth Taylor Hall, Room 426<br>
 McMaster University<br>
 1280 Main Street West<br>
 Hamilton, Ontario, Canada, L8S 4M4</p></li>
-<li><p><a href="mailto:racinej@mcmaster.ca"></a> racinej@mcmaster.ca</p></li>
+<li><p><a href="mailto:racinej@mcmaster.ca"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a> racinej@mcmaster.ca</p></li>
 </ul>
 </section>
 <section id="academic-profiles-and-websites" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="academic-profiles-and-websites">&nbsp;Academic Profiles and Websites</h2>
+<h2 class="unnumbered anchored" data-anchor-id="academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Academic Profiles and Websites</h2>
 <ul>
-<li><p><a href="https://github.com/JeffreyRacine">&nbsp;GitHub Profile: github.com/JeffreyRacine</a></p></li>
-<li><p><a href="https://scholar.google.com/citations?user=TXeKxGsAAAAJ">&nbsp;Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ</a></p></li>
-<li><p><a href="https://ideas.repec.org/e/pra175.html">&nbsp;IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html</a></p></li>
-<li><p><a href="https://profiles.impactstory.org/u/0000-0002-5680-3705">&nbsp;Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705</a></p></li>
-<li><p><a href="https://experts.mcmaster.ca/display/racinej">&nbsp;McMaster Website: experts.mcmaster.ca/display/racinej</a></p></li>
-<li><p><a href="https://orcid.org/0000-0002-5680-3705">&nbsp;ORCID Profile: orcid.org/0000-0002-5680-3705</a></p></li>
-<li><p><a href="https://jeffreyracine.github.io/blog">&nbsp;Personal Blog: jeffreyracine.github.io/blog</a></p></li>
-<li><p><a href="https://www.researchgate.net/profile/Jeffrey_Racine">&nbsp;ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine</a></p></li>
-<li><p><a href="https://www.scopus.com/authid/detail.uri?authorId=12790466400">&nbsp;Scopus Profile: Author ID: 12790466400</a></p></li>
+<li><a href="https://github.com/JeffreyRacine"><i class="fa-brands fa-github" aria-hidden="true"></i>&nbsp;GitHub Profile: github.com/JeffreyRacine</a></li>
+<li><a href="https://scholar.google.com/citations?user=TXeKxGsAAAAJ"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ</a></li>
+<li><a href="https://ideas.repec.org/e/pra175.html"><i class="fa-solid fa-globe" aria-hidden="true"></i>&nbsp;IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html</a></li>
+<li><a href="https://profiles.impactstory.org/u/0000-0002-5680-3705"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>&nbsp;Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705</a></li>
+<li><a href="https://experts.mcmaster.ca/display/racinej"><i class="fa-solid fa-university" aria-hidden="true"></i>&nbsp;McMaster Website: experts.mcmaster.ca/display/racinej</a></li>
+<li><a href="https://orcid.org/0000-0002-5680-3705"><i class="ai ai-orcid" aria-hidden="true"></i>&nbsp;ORCID Profile: orcid.org/0000-0002-5680-3705</a></li>
+<li><a href="https://jeffreyracine.github.io/blog"><i class="fa-solid fa-blog" aria-hidden="true"></i>&nbsp;Personal Blog: jeffreyracine.github.io/blog</a></li>
+<li><a href="https://www.researchgate.net/profile/Jeffrey_Racine"><i class="ai ai-researchgate" aria-hidden="true"></i>&nbsp;ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine</a></li>
+<li><a href="https://www.scopus.com/authid/detail.uri?authorId=12790466400"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Scopus Profile: Author ID: 12790466400</a></li>
 </ul>
 </section>
 <section id="academic-background" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="academic-background">Academic Background</h2>
 <ul>
-<li><p>&nbsp;<em>Education:</em></p>
+<li><p><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>&nbsp;<em>Education:</em></p>
 <p>Ph.D.&nbsp;Economics (1989), the University of Western Ontario, London, Canada (Aman Ullah, Supervisor)<br>
 M.A.&nbsp;Economics (1985), McMaster University<br>
 B.A.&nbsp;Economics (1984), <em>Summa Cum Laude</em>, McMaster University</p></li>
@@ -183,70 +275,70 @@ International Symposia for Nonparametric Statistics (ISNPS)</p></li>
 <section id="current-positions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="current-positions">Current Positions</h2>
 <ul>
-<li><p>Professor, Department of Economics, McMaster University (2005-)</p></li>
-<li><p>Professor, Graduate Program in Statistics, Department of Mathematics and Statistics, McMaster University (2006-)</p></li>
-<li><p>Senator William McMaster Chair in Econometrics, McMaster University (2005-)</p></li>
-<li><p>Senior Research Associate, Info-Metrics Institute, American University, D.C., U.S.A (2010-)</p></li>
-<li><p>Senior Fellow, Rimini Center for Economic Analysis, Rimini, Italy (2010-)</p></li>
+<li>Professor, Department of Economics, McMaster University (2005-)</li>
+<li>Professor, Graduate Program in Statistics, Department of Mathematics and Statistics, McMaster University (2006-)</li>
+<li>Senator William McMaster Chair in Econometrics, McMaster University (2005-)</li>
+<li>Senior Research Associate, Info-Metrics Institute, American University, D.C., U.S.A (2010-)</li>
+<li>Senior Fellow, Rimini Center for Economic Analysis, Rimini, Italy (2010-)</li>
 </ul>
 </section>
 <section id="past-positions" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="past-positions">Past Positions</h2>
 <ul>
-<li><p>International Research Fellow, CREATES, Aarhus University, Aarhus, Denmark (2013-2017)</p></li>
-<li><p>Associate Department Chair, Department of Economics, McMaster University (2009-2011)</p></li>
-<li><p>Associate Professor, Department of Economics, Syracuse University, Syracuse, U.S.A. (2002-2005)</p></li>
-<li><p>Senior Research Associate, Center for Policy Research, Syracuse University, Syracuse, U.S.A. (2002-2005)</p></li>
-<li><p>Associate Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1999-2002)</p></li>
-<li><p>Assistant Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1993-1999)</p></li>
-<li><p>Visiting Assistant Professor, Department of Economics, the University of California San Diego, San Diego, U.S.A. (1991-1993)</p></li>
-<li><p>Assistant Professor, Department of Economics, York University, Toronto, Canada (1989-1993)</p></li>
-<li><p>Instructor, Department of Economics, the University of Western Ontario, London, Canada (1986-1989)</p></li>
-<li><p>Summer Intern, the International Monetary Fund, D.C., U.S.A (1988)</p></li>
+<li>International Research Fellow, CREATES, Aarhus University, Aarhus, Denmark (2013-2017)</li>
+<li>Associate Department Chair, Department of Economics, McMaster University (2009-2011)</li>
+<li>Associate Professor, Department of Economics, Syracuse University, Syracuse, U.S.A. (2002-2005)</li>
+<li>Senior Research Associate, Center for Policy Research, Syracuse University, Syracuse, U.S.A. (2002-2005)</li>
+<li>Associate Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1999-2002)</li>
+<li>Assistant Professor, Department of Economics, the University of South Florida, Tampa, U.S.A. (1993-1999)</li>
+<li>Visiting Assistant Professor, Department of Economics, the University of California San Diego, San Diego, U.S.A. (1991-1993)</li>
+<li>Assistant Professor, Department of Economics, York University, Toronto, Canada (1989-1993)</li>
+<li>Instructor, Department of Economics, the University of Western Ontario, London, Canada (1986-1989)</li>
+<li>Summer Intern, the International Monetary Fund, D.C., U.S.A (1988)</li>
 </ul>
 </section>
 <section id="honours-and-awards" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="honours-and-awards">&nbsp;Honours and Awards</h2>
+<h2 class="unnumbered anchored" data-anchor-id="honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i>&nbsp;Honours and Awards</h2>
 <ul>
-<li><p>Fellow, <em>Journal of Econometrics</em> (2014-)</p></li>
-<li><p>Editorial Fellow, <em>Econometric Reviews</em> (2018-)</p></li>
-<li><p><em>David J.&nbsp;and Helen C.&nbsp;Kahn Teaching Award</em> (the University of South Florida, 1997, $1,000)</p></li>
-<li><p><em>Outstanding Undergraduate Teaching Award</em> (the University of South Florida, 1997, $2,000)</p></li>
-<li><p><em>Sam Lawrence Prize in Labour Economics</em> (McMaster University, 1984, $225)</p></li>
+<li>Fellow, <em>Journal of Econometrics</em> (2014-)</li>
+<li>Editorial Fellow, <em>Econometric Reviews</em> (2018-)</li>
+<li><em>David J.&nbsp;and Helen C.&nbsp;Kahn Teaching Award</em> (the University of South Florida, 1997, $1,000)</li>
+<li><em>Outstanding Undergraduate Teaching Award</em> (the University of South Florida, 1997, $2,000)</li>
+<li><em>Sam Lawrence Prize in Labour Economics</em> (McMaster University, 1984, $225)</li>
 </ul>
 </section>
 <section id="editorial-positions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="editorial-positions">&nbsp;Editorial Positions</h2>
+<h2 class="unnumbered anchored" data-anchor-id="editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Editorial Positions</h2>
 <ul>
-<li><p>Guest Editor (with M. Gorfine and J. de Uña Alvarez), <em>Journal of Nonparametric Statistics</em>, ISNPS 2024 Special Volumes (2024-)</p></li>
-<li><p>Associate Editor, <a href="http://www.tandfonline.com/action/journalInformation?show=editorialBoard&amp;journalCode=lecr20"><em>Econometric Reviews</em></a>, (2012-)</p></li>
-<li><p>Deputy Editor-in-Chief, <a href="http://www.mdpi.com/journal/econometrics/editors"><em>Econometrics</em></a>, (2016-2019)</p></li>
-<li><p>Associate Editor, <a href="http://www.degruyter.com/view/j/jem"><em>Journal of Econometric Methods</em></a>, (2010-2018)</p></li>
-<li><p>Editorial Board, <em>Book Series on Econometrics</em>, World Scientific and Imperial College Press, (2013-)</p></li>
-<li><p>Editor (with L.&nbsp;Su and A.&nbsp;Ullah), <em>Oxford Handbook of Semiparametric and Nonparametric Econometric Methods</em>, (2011-2014)</p></li>
-<li><p>Guest Editor (with Q.&nbsp;Li), <em>Advances in Econometrics</em>, Volume 24, Nonparametric Methods (2009-2010)</p></li>
+<li>Guest Editor (with M. Gorfine and J. de Uña Alvarez), <em>Journal of Nonparametric Statistics</em>, ISNPS 2024 Special Volumes (2024-)</li>
+<li>Associate Editor, <a href="http://www.tandfonline.com/action/journalInformation?show=editorialBoard&amp;journalCode=lecr20"><em>Econometric Reviews</em></a>, (2012-)</li>
+<li>Deputy Editor-in-Chief, <a href="http://www.mdpi.com/journal/econometrics/editors"><em>Econometrics</em></a>, (2016-2019)</li>
+<li>Associate Editor, <a href="http://www.degruyter.com/view/j/jem"><em>Journal of Econometric Methods</em></a>, (2010-2018)</li>
+<li>Editorial Board, <em>Book Series on Econometrics</em>, World Scientific and Imperial College Press, (2013-)</li>
+<li>Editor (with L.&nbsp;Su and A.&nbsp;Ullah), <em>Oxford Handbook of Semiparametric and Nonparametric Econometric Methods</em>, (2011-2014)</li>
+<li>Guest Editor (with Q.&nbsp;Li), <em>Advances in Econometrics</em>, Volume 24, Nonparametric Methods (2009-2010)</li>
 </ul>
 </section>
 <section id="visiting-appointments" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="visiting-appointments">Visiting Appointments</h2>
 <ul>
-<li><p>Visiting Fellow, ENSAI (<span class="math inline">\(\acute{\text E}\)</span>cole nationale de la statistique et de l’analyse d l’information), Rennes, France (2022)</p></li>
-<li><p>Visiting Fellow, ENSAI (<span class="math inline">\(\acute{\text E}\)</span>cole nationale de la statistique et de l’analyse d l’information), Rennes, France (2016)</p></li>
-<li><p>Visiting Fellow, CSIR (Council for Scientific and Industrial Research), Pretoria, South Africa (2016)</p></li>
-<li><p>Visiting Fellow, ENSAI (<span class="math inline">\(\acute{\text E}\)</span>cole nationale de la statistique et de l’analyse d l’information), Rennes, France (2015)</p></li>
-<li><p>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2015)</p></li>
-<li><p>Visiting Research Scholar, the University of Melbourne, Melbourne, Australia (2014)</p></li>
-<li><p>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2014)</p></li>
-<li><p>Visiting Fellow, Cowles Foundation, Yale University, New Haven, U.S.A. (2014)</p></li>
-<li><p>Visiting Fellow, QuanTM Institute, Emory University, Atlanta, U.S.A. (2013)</p></li>
-<li><p>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2011)</p></li>
-<li><p>Visiting Fellow, the Toulouse School of Economics, Toulouse, France (2011)</p></li>
-<li><p>Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2010)</p></li>
-<li><p>Visiting Fellow, Info-Metrics Institute, American University, D.C., U.S.A. (2010)</p></li>
-<li><p>Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2008)</p></li>
-<li><p>Visiting Fellow, Department of Economics and Finance, La Trobe University, Melbourne, Australia (2008)</p></li>
-<li><p>Visiting Fellow, Centre interuniversitaire de recherce en économie quantitative, McGill University, Montreal, Canada (2007)</p></li>
-<li><p>Visiting Fellow, Mathematical Sciences Institute, the Australian National University, Canberra, Australia (2002)</p></li>
+<li>Visiting Fellow, ENSAI (École nationale de la statistique et de l’analyse d l’information), Rennes, France (2022)</li>
+<li>Visiting Fellow, ENSAI (École nationale de la statistique et de l’analyse d l’information), Rennes, France (2016)</li>
+<li>Visiting Fellow, CSIR (Council for Scientific and Industrial Research), Pretoria, South Africa (2016)</li>
+<li>Visiting Fellow, ENSAI (École nationale de la statistique et de l’analyse d l’information), Rennes, France (2015)</li>
+<li>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2015)</li>
+<li>Visiting Research Scholar, the University of Melbourne, Melbourne, Australia (2014)</li>
+<li>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2014)</li>
+<li>Visiting Fellow, Cowles Foundation, Yale University, New Haven, U.S.A. (2014)</li>
+<li>Visiting Fellow, QuanTM Institute, Emory University, Atlanta, U.S.A. (2013)</li>
+<li>Visiting Fellow, CREATES, Aarhus University, Aarhus, Denmark (2011)</li>
+<li>Visiting Fellow, the Toulouse School of Economics, Toulouse, France (2011)</li>
+<li>Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2010)</li>
+<li>Visiting Fellow, Info-Metrics Institute, American University, D.C., U.S.A. (2010)</li>
+<li>Visiting Fellow, GREMAQ, the Toulouse School of Economics, Toulouse, France (2008)</li>
+<li>Visiting Fellow, Department of Economics and Finance, La Trobe University, Melbourne, Australia (2008)</li>
+<li>Visiting Fellow, Centre interuniversitaire de recherce en économie quantitative, McGill University, Montreal, Canada (2007)</li>
+<li>Visiting Fellow, Mathematical Sciences Institute, the Australian National University, Canberra, Australia (2002)</li>
 </ul>
 </section>
 <section id="courses-taught" class="level2 unnumbered">
@@ -281,44 +373,43 @@ Analysis of Economic Data I</p></li>
 <section id="ph.d.-candidate-supervision-and-examination" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ph.d.-candidate-supervision-and-examination">Ph.D.&nbsp;Candidate Supervision and Examination</h2>
 <ul>
-<li><p><em>Thesis Supervisor:</em></p>
+<li><em>Thesis Supervisor:</em>
 <ol type="1">
-<li><p>Ugarte Bravo, Karen (2022, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of Toronto)</p></li>
-<li><p>Sexton, Sean (2022, Economics, McMaster University, as of Summer 2022 Part-Time Instructor in the Department of Statistics, University of Toronto)</p></li>
-<li><p>Simardone, Camille (2021, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of British Colombia, Okanagan Campus)</p></li>
-<li><p>Kiwon, Francis (2019, M.Sc., Mathematics (Statistics), McMaster University, currently a Ph.D.&nbsp;student in the Department of Statistics at the University of Waterloo, Canada)</p></li>
-<li><p>Clair, Luc (2017, Economics, McMaster University, currently on faculty at the University of Winnipeg, Canada)</p></li>
-<li><p>Kealey, John (2016, Economics, McMaster University)</p></li>
-<li><p>Thompson, John (2014, M.Sc., Mathematics (Statistics), McMaster University, as of Fall 2021 on faculty in the Department of Mathematics at the University of British Colombia, Okanagan Campus)</p></li>
+<li>Ugarte Bravo, Karen (2022, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of Toronto)</li>
+<li>Sexton, Sean (2022, Economics, McMaster University, as of Summer 2022 Part-Time Instructor in the Department of Statistics, University of Toronto)</li>
+<li>Simardone, Camille (2021, Economics, McMaster University, as of Fall 2021 on faculty in the Department of Economics at the University of British Colombia, Okanagan Campus)</li>
+<li>Kiwon, Francis (2019, M.Sc., Mathematics (Statistics), McMaster University, currently a Ph.D.&nbsp;student in the Department of Statistics at the University of Waterloo, Canada)</li>
+<li>Clair, Luc (2017, Economics, McMaster University, currently on faculty at the University of Winnipeg, Canada)</li>
+<li>Kealey, John (2016, Economics, McMaster University)</li>
+<li>Thompson, John (2014, M.Sc., Mathematics (Statistics), McMaster University, as of Fall 2021 on faculty in the Department of Mathematics at the University of British Colombia, Okanagan Campus)</li>
 </ol></li>
-<li><p><em>Thesis Committee Member:</em></p>
+<li><em>Thesis Committee Member:</em>
 <ol type="1">
-<li><p>Roberts, Keith (2025-, Economics, McMaster University)</p></li>
-<li><p>Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)</p></li>
-<li><p>Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)</p></li>
-<li><p>Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)</p></li>
-<li><p>Shamsi, Azam (2018, School of Business, McMaster University, currently on faculty at the University of New Brunswick, Canada)</p></li>
-<li><p>Thomas, Stephanie (2016, Economics, McMaster University, currently on faculty at Curtin University, Australia)</p></li>
-<li><p>Olagunju, Waheed (2016, Economics, McMaster University, currently working at the King Abdullah Petroleum Studies and Research Center, Saudi Arabia)</p></li>
-<li><p>Tellez, Juan (2014, Economics, the University of Geneva, currently a Post-Doctoral Fellow at the Harvard Kennedy School, U.S.A.)</p></li>
-<li><p>Meredith, Evan (2012, Economics, McMaster University, currently working at Human Services Alberta, Canada)</p></li>
-<li><p>Li, Jinhu (2011, Economics, McMaster University, currently on faculty at the University of Melbourne, Australia)</p></li>
-<li><p>McLeod, Logan (2010, Economics, McMaster University, currently on faculty at Wilfrid Laurier University, Canada)</p></li>
-<li><p>de Oliveira, Claire (2008, Economics, McMaster University, currently on faculty at the University of York, UK)</p></li>
-<li><p>Liu, Long (2008, Economics, Syracuse, currently on faculty at the University of Texas at San Antonio, U.S.A.)</p></li>
-<li><p>Dammert, Ana (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)</p></li>
-<li><p>Galdo, Jose (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)</p>
-<p>[NB - from 1993-2002 I was a faculty member in the Department of Economics at the University of South Florida and, at that time, they did not have a Ph.D.&nbsp;program]</p></li>
-<li><p>Papanastasiou, John (1992, Economics, York, currently on faculty at the University of Macedonia, Thessaloniki, Greece)</p></li>
+<li>Roberts, Keith (2025-, Economics, McMaster University)</li>
+<li>Neal, Mackenzie (2023-, Mathematics (Statistics), McMaster University)</li>
+<li>Owusu, Julius (2023, Economics, McMaster University, currently on faculty at the University of Bristol, England)</li>
+<li>Gallaugher, Michael (2020, Mathematics (Statistics), McMaster University, currently Banting Fellow on faculty at Baylor University, Texas U.S.A.)</li>
+<li>Shamsi, Azam (2018, School of Business, McMaster University, currently on faculty at the University of New Brunswick, Canada)</li>
+<li>Thomas, Stephanie (2016, Economics, McMaster University, currently on faculty at Curtin University, Australia)</li>
+<li>Olagunju, Waheed (2016, Economics, McMaster University, currently working at the King Abdullah Petroleum Studies and Research Center, Saudi Arabia)</li>
+<li>Tellez, Juan (2014, Economics, the University of Geneva, currently a Post-Doctoral Fellow at the Harvard Kennedy School, U.S.A.)</li>
+<li>Meredith, Evan (2012, Economics, McMaster University, currently working at Human Services Alberta, Canada)</li>
+<li>Li, Jinhu (2011, Economics, McMaster University, currently on faculty at the University of Melbourne, Australia)</li>
+<li>McLeod, Logan (2010, Economics, McMaster University, currently on faculty at Wilfrid Laurier University, Canada)</li>
+<li>de Oliveira, Claire (2008, Economics, McMaster University, currently on faculty at the University of York, UK)</li>
+<li>Liu, Long (2008, Economics, Syracuse, currently on faculty at the University of Texas at San Antonio, U.S.A.)</li>
+<li>Dammert, Ana (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)</li>
+<li>Galdo, Jose (2006, Economics, Syracuse, currently on faculty at Carleton University, Canada)</li>
+<li>Papanastasiou, John (1992, Economics, York, currently on faculty at the University of Macedonia, Thessaloniki, Greece)</li>
 </ol></li>
-<li><p><em>Thesis External Examiner:</em></p>
+<li><em>Thesis External Examiner:</em>
 <ol type="1">
-<li><p>Håkon Otneim (2016), Mathematics, the University of Bergen, Norway.</p></li>
-<li><p>Henpitahewage Thilaksha Tharanganie (2015), Econometrics and Business Statistics, Monash University, Australia.</p></li>
-<li><p>Marcos Gómez (2011), Economics, Universidad de Zaragoza, España.</p></li>
-<li><p>Lindsay Tedds (2005), Economics, McMaster University.</p></li>
-<li><p>Yulia Kotlyarova (2005), Economics, McGill University, Canada.</p></li>
-<li><p>Dingding Li (2002), Economics, the University of Guelph, Canada.</p></li>
+<li>Håkon Otneim (2016), Mathematics, the University of Bergen, Norway.</li>
+<li>Henpitahewage Thilaksha Tharanganie (2015), Econometrics and Business Statistics, Monash University, Australia.</li>
+<li>Marcos Gómez (2011), Economics, Universidad de Zaragoza, España.</li>
+<li>Lindsay Tedds (2005), Economics, McMaster University.</li>
+<li>Yulia Kotlyarova (2005), Economics, McGill University, Canada.</li>
+<li>Dingding Li (2002), Economics, the University of Guelph, Canada.</li>
 </ol></li>
 </ul>
 </section>
@@ -442,7 +533,7 @@ Date: May 1, 1999 - December 31, 2000</p></li>
 Amount: $7,500<br>
 Date: January 1, 1999 - December 31, 1999</p></li>
 <li><p>USF Division of Sponsored Research - <em>Research and Creative Scholarship Award</em></p>
-<p>Title: <em>Finite-Sample Corrections for</em> <span class="math inline">\(hv\)</span>-Block Cross-Validation<br>
+<p>Title: <em>Finite-Sample Corrections for</em> hv-Block Cross-Validation<br>
 Amount: $7,500<br>
 Date: January 1, 1997 - December 31, 1997</p></li>
 <li><p>National Science Foundation SBR Grant - <em>Research Grant</em></p>
@@ -480,205 +571,868 @@ Date: 1985-1986</p></li>
 </ol>
 </section>
 <section id="google-scholar-citation-summary" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="google-scholar-citation-summary">&nbsp;Google Scholar Citation Summary</h2>
-<center>
-<div class="cell" data-layout-align="center">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 12%">
-<col style="width: 18%">
-</colgroup>
+<h2 class="unnumbered anchored" data-anchor-id="google-scholar-citation-summary"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Citation Summary</h2>
+<div id="kyhtnmeeku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kyhtnmeeku table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kyhtnmeeku thead, #kyhtnmeeku tbody, #kyhtnmeeku tfoot, #kyhtnmeeku tr, #kyhtnmeeku td, #kyhtnmeeku th {
+  border-style: none;
+}
+
+#kyhtnmeeku p {
+  margin: 0;
+  padding: 0;
+}
+
+#kyhtnmeeku .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 50%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kyhtnmeeku .gt_title {
+  color: #333333;
+  font-size: 12px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kyhtnmeeku .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kyhtnmeeku .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kyhtnmeeku .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kyhtnmeeku .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kyhtnmeeku .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kyhtnmeeku .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kyhtnmeeku .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kyhtnmeeku .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kyhtnmeeku .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kyhtnmeeku .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kyhtnmeeku .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kyhtnmeeku .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kyhtnmeeku .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kyhtnmeeku .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kyhtnmeeku .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kyhtnmeeku .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kyhtnmeeku .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kyhtnmeeku .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kyhtnmeeku .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kyhtnmeeku .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kyhtnmeeku .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kyhtnmeeku .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kyhtnmeeku .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kyhtnmeeku .gt_left {
+  text-align: left;
+}
+
+#kyhtnmeeku .gt_center {
+  text-align: center;
+}
+
+#kyhtnmeeku .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kyhtnmeeku .gt_font_normal {
+  font-weight: normal;
+}
+
+#kyhtnmeeku .gt_font_bold {
+  font-weight: bold;
+}
+
+#kyhtnmeeku .gt_font_italic {
+  font-style: italic;
+}
+
+#kyhtnmeeku .gt_super {
+  font-size: 65%;
+}
+
+#kyhtnmeeku .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kyhtnmeeku .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kyhtnmeeku .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kyhtnmeeku .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kyhtnmeeku .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kyhtnmeeku .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kyhtnmeeku .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kyhtnmeeku .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kyhtnmeeku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th style="text-align: left;">index</th>
-<th style="text-align: right;">All</th>
-<th style="text-align: right;">Since 2021</th>
+<tr class="gt_col_headings header">
+<th id="index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">index</th>
+<th id="All" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">All</th>
+<th id="Since-2021" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Since 2021</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td style="text-align: left;">Citations</td>
-<td style="text-align: right;">14,418</td>
-<td style="text-align: right;">4,230</td>
+<td class="gt_row gt_left" headers="index">Citations</td>
+<td class="gt_row gt_center" headers="All">14,416</td>
+<td class="gt_row gt_center" headers="Since 2021">4,228</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">h-index</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">26</td>
+<td class="gt_row gt_left" headers="index">h-index</td>
+<td class="gt_row gt_center" headers="All">45</td>
+<td class="gt_row gt_center" headers="Since 2021">26</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">i10-index</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">54</td>
+<td class="gt_row gt_left" headers="index">i10-index</td>
+<td class="gt_row gt_center" headers="All">89</td>
+<td class="gt_row gt_center" headers="Since 2021">54</td>
 </tr>
 </tbody>
 </table>
+
 </div>
-</center>
 <div class="cell" data-layout-align="center">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="index_files/figure-html/fooplot-1.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%" data-fig-pos="H"></p>
+<p><img src="index_files/figure-html/gseplots-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </section>
 <section id="books" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="books">&nbsp;Books</h2>
-<ul>
-<li><p>Racine, J.S.&nbsp;(2019), <em>An Introduction to the Advanced Theory and Practice of Nonparametric Econometrics (A Replicable Approach Using R),</em> Cambridge University Press, ISBN 9781108483407, 408 pages.</p></li>
-<li><p>Racine, J.S.&nbsp;(2019), <em>Reproducible Econometrics Using R,</em> Oxford University Press, ISBN: 9780190900663, 293 pages.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2007), <em>Nonparametric Econometrics: Theory and Practice,</em> Princeton University Press, ISBN: 9780691121611, 746 pages.</p>
-<p>Chinese Edition:</p>
-<p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2015), <em>Nonparametric Econometrics: Theory and Practice,</em> Translated by Ye Azhong, Wu Xiangbo et al., Peking University Press, ISBN: 9787301249673.</p></li>
-</ul>
+<h2 class="unnumbered anchored" data-anchor-id="books"><i class="fa-solid fa-book" aria-hidden="true"></i>&nbsp;Books</h2>
+<div id="refs-books" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-book-racine_2019a" class="csl-entry" role="listitem">
+1. J.S. Racine “An introduction to the advanced theory and practice of nonparametric econometrics: A replicable approach using <span>R</span>” (2019), Cambridge University Press, 408 pages total, ISBN: 9781108483407, doi: <a href="https://doi.org/10.1017/9781108649841">10.1017/9781108649841</a>
+</div>
+<div id="ref-book-racine_2019b" class="csl-entry" role="listitem">
+2. J.S. Racine “Reproducible econometrics using <span>R</span>” (2019), Oxford University Press, 293 pages total, ISBN: 9780190900663, doi: <a href="https://doi.org/10.1093/oso/9780190900663.001.0001">10.1093/oso/9780190900663.001.0001</a>
+</div>
+<div id="ref-book-li_2007" class="csl-entry" role="listitem">
+3. Q. Li and J.S. Racine “Nonparametric econometrics: Theory and practice” (2007), Princeton University Press, 746 pages total, ISBN: 9780691121611, URL: <a href="https://press.princeton.edu/books/hardcover/9780691121611/nonparametric-econometrics">https://press.princeton.edu/books/hardcover/9780691121611/nonparametric-econometrics</a>
+</div>
+<div id="ref-book-li_2015" class="csl-entry" role="listitem">
+4. Q. Li and J.S. Racine “Nonparametric econometrics: Theory and practice” (2015), Peking University Press, Chinese Edition. Translated by Ye Azhong, Wu Xiangbo et al., ISBN: 9787301249673, URL: <a href="https://book.douban.com/subject/26375376/">https://book.douban.com/subject/26375376/</a>
+</div>
+</div>
 </section>
 <section id="edited-volumes" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="edited-volumes">&nbsp;Edited Volumes</h2>
-<ul>
-<li><p><em>Nonparametric Econometric Methods</em> (2009), Volume 25 of the book series: Advances in Econometrics, ISBN: 9781849506236, Edited by: Qi Li, Jeffrey S.&nbsp;Racine.</p></li>
-<li><p><em>Oxford Handbook of Semiparametric and Nonparametric Econometric Methods</em> (2014), ISBN 9780199857944, Edited By Jeffrey S.&nbsp;Racine, Liangjun Su, and Aman Ullah.</p></li>
-</ul>
+<h2 class="unnumbered anchored" data-anchor-id="edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Edited Volumes</h2>
+<div id="refs-edited" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-edited-nonparametric_2009" class="csl-entry" role="listitem">
+1. “Nonparametric econometric methods” Vol. 25 (2009), Emerald Group Publishing Limited, Volume 25 of the book series: Advances in Econometrics, ISBN: 9781849506236, Edited by Qi Li and Jeffrey S. Racine., ISBN: 9781849506236, doi: <a href="https://doi.org/10.1108/s0731-9053(2009)25">10.1108/s0731-9053(2009)25</a>
+</div>
+<div id="ref-edited-oxford-handbook_2014" class="csl-entry" role="listitem">
+2. “Oxford handbook of semiparametric and nonparametric econometric methods” (2014), Oxford University Press, ISBN: 9780199857944; Edited by Jeffrey S. Racine, Liangjun Su, and Aman Ullah., ISBN: 9780199857944, doi: <a href="https://doi.org/10.1093/oxfordhb/9780199857944.001.0001">10.1093/oxfordhb/9780199857944.001.0001</a>
+</div>
+</div>
 </section>
 <section id="packages" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="packages">&nbsp;Packages</h2>
-<ul>
-<li><p>The `np’ package for R available directly from the Comprehensive R Archive Network <a href="https://cran.r-project.org/web/packages/np/index.html" class="uri">https://cran.r-project.org/web/packages/np/index.html</a>.</p></li>
-<li><p>The `npiv’ package for R available directly from the Comprehensive R Archive Network <a href="https://cran.r-project.org/web/packages/npiv/index.html" class="uri">https://cran.r-project.org/web/packages/npiv/index.html</a>.</p></li>
-<li><p>The `npRmpi’ package for R available directly from the Comprehensive R Archive Network <a href="https://cran.r-project.org/web/packages/np/index.html" class="uri">https://cran.r-project.org/web/packages/np/index.html</a>.</p></li>
-<li><p>The `crs’ package for R available directly from the Comprehensive R Archive Network <a href="https://cran.r-project.org/web/packages/crs/index.html" class="uri">https://cran.r-project.org/web/packages/crs/index.html</a>.</p></li>
-<li><p>The `ma’ package for R <a href="https://github.com/JeffreyRacine/R-Package-ma" class="uri">https://github.com/JeffreyRacine/R-Package-ma</a>.</p></li>
-<li><p>The `hr’ package for R <a href="https://github.com/JeffreyRacine/R-Package-hr" class="uri">https://github.com/JeffreyRacine/R-Package-hr</a>.</p></li>
-</ul>
+<h2 class="unnumbered anchored" data-anchor-id="packages"><img src="r-logo.png" title="R" alt="R logo" class="r-logo" aria-hidden="true">&nbsp;Packages</h2>
+<div id="refs-packages" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-np_package" class="csl-entry" role="listitem">
+1. J.S. Racine and T. Hayfield “<span class="nocase">np</span>: Nonparametric kernel smoothing methods for mixed data types” (2024), Version 0.60-18; CRAN package, doi: <a href="https://doi.org/10.32614/CRAN.package.np">10.32614/CRAN.package.np</a>, URL: <a href="https://cran.r-project.org/package=np">https://cran.r-project.org/package=np</a>
+</div>
+<div id="ref-crs_package" class="csl-entry" role="listitem">
+2. J.S. Racine, Z. Nie, and B.D. Ripley “<span class="nocase">crs</span>: Categorical regression splines” (2024), Version 0.15-38; CRAN package, doi: <a href="https://doi.org/10.32614/CRAN.package.crs">10.32614/CRAN.package.crs</a>, URL: <a href="https://cran.r-project.org/package=crs">https://cran.r-project.org/package=crs</a>
+</div>
+<div id="ref-npiv_package" class="csl-entry" role="listitem">
+3. X. Chen, T. Christensen, and S. Kankanala “<span class="nocase">npiv</span>: Nonparametric instrumental variables estimation and inference” (2025), Version 0.1.3; CRAN package, doi: <a href="https://doi.org/10.32614/CRAN.package.npiv">10.32614/CRAN.package.npiv</a>, URL: <a href="https://cran.r-project.org/package=npiv">https://cran.r-project.org/package=npiv</a>
+</div>
+<div id="ref-npRmpi_package" class="csl-entry" role="listitem">
+4. J.S. Racine et al. “<span class="nocase">npRmpi</span>: Parallel interfaces for np (archived)” (2015), Archived on CRAN (2015-03-13); see CRAN Archive, doi: <a href="https://doi.org/10.1002/jae.1221">10.1002/jae.1221</a>, URL: <a href="https://cran.r-project.org/src/contrib/Archive/npRmpi">https://cran.r-project.org/src/contrib/Archive/npRmpi</a>
+</div>
+<div id="ref-ma_package" class="csl-entry" role="listitem">
+5. J.S. Racine “<span class="nocase">ma</span>: Model averaging” (2017), GitHub package; Version 1.0-8 (2017-06-21), doi: <a href="https://doi.org/10.1017/cbo9780511790485.008">10.1017/cbo9780511790485.008</a>, URL: <a href="https://github.com/JeffreyRacine/R-Package-ma">https://github.com/JeffreyRacine/R-Package-ma</a>
+</div>
+<div id="ref-hr_package" class="csl-entry" role="listitem">
+6. J.S. Racine “<span class="nocase">hr</span>: Hansen-racine bootstrap model average unit root test” (2018), GitHub package; Version 1.0-2 (2018-04-04), doi: <a href="https://doi.org/10.2139/ssrn.3156028">10.2139/ssrn.3156028</a>, URL: <a href="https://github.com/JeffreyRacine/R-Package-hr">https://github.com/JeffreyRacine/R-Package-hr</a>
+</div>
+</div>
 </section>
 <section id="peer-reviewed-publications" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="peer-reviewed-publications">Peer Reviewed Publications</h2>
-<ol type="1">
-<li><p>Patilea, V. and J.S. Racine (in press), “Locally Adaptive Online Functional Data Analysis,” <em>Journal of Nonparametric Statistics</em>.</p></li>
-<li><p>Racine, J.S. (in press), “Quarto the Assassin”, Advanced Studies in Theoretical and Applied Econometrics, Volume 56, <em>Springer Nature</em>, https://link.springer.com/book/9783031979415.</p></li>
-<li><p>Wang, L., J.S. Racine and Q. Wang (2025), “Bootstrap Inference on a Factor Model Based Average Treatment Effects Estimator,” <em>Econometric Reviews</em>, 44 (1) 80-89, https://doi.org/10.1080/07474938.2024.2390392.</p></li>
-<li><p>Racine, J.S., Q. Li and Q. Wang (2024), “Boundary-Adaptive Kernel Density Estimation: The Case of (Near) Uniform Density,” <em>Journal of Nonparametric Statistics</em>, 36 (1), 146–164, https://doi.org/10.1080/10485252.2023.2250011.</p></li>
-<li><p>Hansen, B.E.&nbsp;and J.S.&nbsp;Racine (2024), “Bootstrap Model Averaging Unit Root Inference,” <em>Advances in Econometrics: Essays in Honor of Subal Kumbhakar</em>, Parmeter, C., Tsionas, M. and H.J. Wang Eds., Volume 46, 81–98.</p></li>
-<li><p>Du, P., C. Parmeter and J.S. Racine (2024), “Shape Constrained Kernel PDF and PMF Estimation,” <em>Statistica Sinica</em>, 34 (1), 257–289, https://doi.org/10.5705/ss.202021.0112.</p></li>
-<li><p>Racine, J.S., Q.&nbsp;Li, D.&nbsp;Yu and L.&nbsp;Zheng (2023), “Optimal Model Averaging of Mixed-Data Kernel-Weighted Spline Regressions,” <em>Journal of Business and Economic Statistics</em>, 41 (4), 1251–1261, https://doi.org/10.1080/07350015.2022.2118126.</p></li>
-<li><p>Simardone, C.&nbsp;and J.S.&nbsp;Racine (2021), “Nonparametric Estimation and Inference: Kernel Estimation from a Local Perspective,” <em>Handbook of Labor, Human Resources and Population</em>, Klaus F. Zimmermann Ed., Springer, https://doi.org/10.1007/978-3-319-57365-6, 1–30.</p></li>
-<li><p>Racine, J.S. and I. Van Keilegom (2020), “A Smooth Nonparametric, Multivariate, Mixed-Data Location-Scale Test,” <em>Journal of Business &amp; Economic Statistics</em>, 38 (4), 784-795, (12 additional pages of supplementary material available at https://doi.org/10.1080/07350015.2019.1574227).</p></li>
-<li><p>Ma, S., J.S.&nbsp;Racine and A.&nbsp;Ullah (2020), “Nonparametric Estimation of Marginal Effects in Regression-Spline Random Effects Models,” <em>Econometric Reviews</em>, 39 (8), 792-825, https://doi.org/10.1080/07474938.2020.1772569.</p></li>
-<li><p>Racine, J.S.&nbsp;, Q.&nbsp;Li and K.X.&nbsp;Yan (2020), “Kernel Smoothed Probability Mass Functions for Ordered Datatypes,” <em>Journal of Nonparametric Statistics</em>, 32 (3), 563-586, https://doi.org/10.1080/10485252.2020.1759595.</p></li>
-<li><p>Racine, J.S. (2019), “Energy, Economics, Replication &amp; Reproduction,” <em>Energy Economics</em>, 82, 264-275.</p></li>
-<li><p>Parmeter, C.&nbsp;and J.S.&nbsp;Racine (2019), “Nonparametric Estimation and Inference for Panel Data Models,” <em>Panel Data Econometrics: Foundations and Applications</em>, Volume 1, Chapter 4, Academic Press (an imprint of Elsevier), 97-129.</p></li>
-<li><p>Beheshti, N., J.S.&nbsp;Racine and E.S.&nbsp;Soofi (2019), “Information Measures of Kernel Estimation,” <em>Econometric Reviews</em>, 28 (1), 47-68.</p></li>
-<li><p>Li, C., Q.&nbsp;Li, J.S.&nbsp;Racine and D.&nbsp;Zhang (2018), “Optimal Model Averaging of Varying Coefficient Models,” <em>Statistica Sinica</em>, 28, 2795-2809.</p></li>
-<li><p>Das, S. and J.S.&nbsp;Racine (2018), “Interactive Nonparametric Analysis of Complex Nonlinear Systems,” <em>Physica A</em> 5 (10), 290-301.</p></li>
-<li><p>Florens, J.P., J.S.&nbsp;Racine and S.&nbsp;Centorrino (2018), “Nonparametric Instrumental Variable Derivative Estimation,” <em>Journal of Nonparametric Statistics</em>, Volume 30 (2), 368-391.</p></li>
-<li><p>Centorrino, S. and J.S.&nbsp;Racine (2017), “Semiparametric Varying Coefficient Models With Endogenous Covariates,” <em>Annals of Economics and Statistics</em>, Number 128, 261-295.</p></li>
-<li><p>Racine, J.S.&nbsp;and K.&nbsp;Li (2017), “Nonparametric Conditional Quantile Estimation: A Locally Weighted Quantile Kernel Approach,” <em>Journal of Econometrics</em>, Volume 201 (1), pages 72-94.</p></li>
-<li><p>Li, C., H.&nbsp;Li and J.S.&nbsp;Racine (2017), “Cross-Validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions,” <em>Econometric Reviews</em>, Volume 36 (6-9), pages 970-987.</p></li>
-<li><p>Kiefer, N.M.&nbsp;and J.S.&nbsp;Racine (2017), “The Smooth Colonel and the Reverend Find Common Ground,” <em>Econometric Reviews</em>, Volume 36 (1-3), pages 241-256.</p></li>
-<li><p>Koch, S. and J.S.&nbsp;Racine (2016), “Health Care Facility Choice and User Fee Abolition: Regression Discontinuity in a Multinomial Choice Setting,” <em>Journal of the Royal Statistical Society</em>, Series A, Volume 179, pages 927-950.</p></li>
-<li><p>Racine, J.S.&nbsp;(2016), “Local Polynomial Derivative Estimation: Analytic or Taylor?” <em>Advances in Econometrics</em>, Volume 36, pages 617-633.</p></li>
-<li><p>Bugden, J., I.&nbsp;Fraser, J.S.&nbsp;Racine and R.&nbsp;Waschik (2016), “Nonparametric Hedonic Analysis of Tax Changes and House Prices,” <em>Global Business and Economics Review</em>, Volume 18, pages 533-549.</p></li>
-<li><p>Maasoumi, E. and J.S.&nbsp;Racine (2016), “A Solution to Aggregation and an Application to Multidimensional `Well-Being’ Frontiers,” <em>Journal of Econometrics</em>, Volume 191, pages 374-383.</p></li>
-<li><p>Chakrabarty, M., A. Majumder and J.S.&nbsp;Racine (2015), “Household Preference Distribution and Welfare Implication: An Application of Multivariate Distributional Statistics,” <em>Journal of Applied Statistics</em>, Volume 42, Issue 12, pages 2754-2768.</p></li>
-<li><p>Ma, S., J.S.&nbsp;Racine and L.&nbsp;Yang (2015), “Spline Regression in the Presence of Categorical Predictors,” <em>Journal of Applied Econometrics</em>, Volume 30, pages 705-717.</p></li>
-<li><p>Hall, P.&nbsp;and J.S.&nbsp;Racine (2015), “Infinite Order Cross-Validated Local Polynomial Regression,” <em>Journal of Econometrics</em>, Volume 185, pages 510-525.</p></li>
-<li><p>Racine, J.S. (2015), “Mixed Data Kernel Copulas,” <em>Empirical Economics</em>, Volume 48, pages 37-59.</p></li>
-<li><p>Gao, Q., L.&nbsp;Liu and J.S.&nbsp;Racine (2015), “A Partially Linear Kernel Estimator for Categorical Data,” <em>Econometric Reviews</em>, Volume 34 (6-10), pages 958-977.</p></li>
-<li><p>Gyimah-Brempong, K.&nbsp;and J.S.&nbsp;Racine (2014), “Aid and Economic Growth: A Robust Approach,” <em>Journal of African Development</em>, Volume 16 (1), pages 1-35.</p></li>
-<li><p>Racine, J.S.&nbsp;and C.&nbsp;Parmeter (2014), “Data-Driven Model Evaluation: A Test for Revealed Performance,” <em>Handbook of Applied Nonparametric and Semiparametric Econometrics and Statistics</em>, (A.&nbsp;Ullah, J.S.&nbsp;Racine and L.&nbsp;Su Eds.), Oxford University Press, New York, pages 308-345.</p></li>
-<li><p>Du, P., C.&nbsp;Parmeter and J.S.&nbsp;Racine (2013), “Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints,” <em>Statistica Sinica</em>, Volume 23, Number 3, pages 1343-1372.</p></li>
-<li><p>Li, C.&nbsp;and J.S.&nbsp;Racine (2013), “A Smooth Nonparametric Conditional Density Test for Categorical Responses,” <em>Econometric Theory</em>, Volume 29, Issue 03, pages 629-641.</p></li>
-<li><p>Li, Q.&nbsp;, D.&nbsp;Ouyang and J.S.&nbsp;Racine (2013), “Categorical Semiparametric Varying Coefficient Models,” <em>Journal of Applied Econometrics</em>, Volume 28, pages 551-579.</p></li>
-<li><p>Ma, S.&nbsp;and J.S.&nbsp;Racine (2013), “Additive Regression Splines with Irrelevant Categorical and Continuous Regressors,” <em>Statistica Sinica</em>, Volume 23, pages 515-541.</p></li>
-<li><p>Li, Q., J.&nbsp;Lin and J.S.&nbsp;Racine (2013), “Optimal Bandwidth Selection for Nonparametric Conditional Distribution and Quantile Functions,” <em>Journal of Business &amp; Economic Statistics</em>, Volume 31, Number 1, pages 57-65 (19 additional pages of supplementary material (proofs are available online at http://tandfonline.com/r/JBES).</p></li>
-<li><p>Nie, Z.&nbsp;and J.S.&nbsp;Racine (2012), “The crs Package: Nonparametric Regression Splines for Continuous and Categorical Predictors,” <em>The R Journal</em>, Volume 4, Issue 2, pages 48-56.</p></li>
-<li><p>Parmeter, C.&nbsp;and J.S.&nbsp;Racine (2012), “Smooth Constrained Frontier Analysis,” <em>Recent Advances and Future Directions in Causality, Prediction, and Specification Analysis: Essays in Honor of Halbert L. White Jr.</em>, Springer Verlag, (X.&nbsp;Chen and N.R.&nbsp;Swanson Eds.), pages 463-488.</p></li>
-<li><p>Racine, J.S.&nbsp;(2012), “RStudio: A Platform-Independent IDE for R and Sweave,” <em>Journal of Applied Econometrics</em>, Volume 27, Issue 1, pages 167-172.</p></li>
-<li><p>Hansen, B.&nbsp;and J.S.&nbsp;Racine (2012), “Jackknife Model Averaging,” <em>Journal of Econometrics</em>, Volume 167, Issue 1, pages 38-46.</p></li>
-<li><p>Gyimah-Brempong, K., J.S.&nbsp;Racine and A.&nbsp;Gyapong (2012), “Aid and Economic Growth: Sensitivity Analysis,” <em>Journal of International Development</em>, Volume 24, Issue 1, pages 17-33.</p></li>
-<li><p>Zhang, Z., D.&nbsp;Chen, W.&nbsp;Liu, J.S.&nbsp;Racine, S. Ong, Y.&nbsp;Chen, G.&nbsp;Zhao and Q.&nbsp;Ziang (2011), “Nonparametric Evaluation of Dynamic Disease Risk: A Spatio-Temporal Kernel Approach,” <em>PLoS ONE</em>, Volume 6, Number 3, e17381, pages 1-8.</p></li>
-<li><p>Racine, J.S. (2011), “Nonparametric Kernel Methods for Qualitative and Quantitative Data,” <em>The Handbook of Empirical Economics and Finance</em>, (A.&nbsp;Ullah and D.E.A.&nbsp;Giles Eds.), CRC Press, Chapman &amp; Hall, pages 183-204.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2010), “Smooth Varying Coefficient Estimation and Inference for Qualitative and Quantitative Data,” <em>Econometric Theory</em>, Volume 26, Issue 06, pages 1607-1637.</p></li>
-<li><p>Gyimah-Brempong, K.&nbsp;and J.S.&nbsp;Racine (2010), “Aid and Investment in LDCs: A Robust Approach,” <em>Journal of International Trade &amp; Economic Development</em>, Volume 19, Number 2, pages 319-349.</p></li>
-<li><p>Racine, J.S.&nbsp;(2009), “Nonparametric and Semiparametric Methods in R,” <em>Advances in Econometrics: Nonparametric Econometric Methods</em>, Elsevier Science, Volume 25, pages 335-375.</p></li>
-<li><p>Li, C., D.&nbsp;Ouyang and J.S.&nbsp;Racine (2009), “Nonparametric Regression with Weakly Dependent Data: The Discrete and Continuous Regressor Case,” <em>Journal of Nonparametric Statistics</em>, Volume 21, Number 6, pages 697-711.</p></li>
-<li><p>Kiefer, N.M.&nbsp;and J.S.&nbsp;Racine (2009), “The Smooth Colonel Meets the Reverend,” <em>Journal of Nonparametric Statistics</em>, Volume 21, pages 521-533.</p></li>
-<li><p>Li, Q., J.S.&nbsp;Racine and J.&nbsp;Wooldridge (2009), “Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data,” <em>Journal of Business &amp; Economic Statistics</em>, Volume 27, pages 206-223.</p></li>
-<li><p>Meredith, E. and J.S.&nbsp;Racine (2009), “Towards Reproducible Econometric Research: The Sweave Framework,” <em>Journal of Applied Econometrics</em>, Volume 24, pages 366-374.</p></li>
-<li><p>Li, Q., E.&nbsp;Maasoumi and J.S.&nbsp;Racine (2009), “A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data,” <em>Journal of Econometrics</em>, Volume 148, pages 186-200.</p></li>
-<li><p>Ouyang, D., Q.&nbsp;Li and J.S.&nbsp;Racine (2009), “Nonparametric Estimation of Regression Functions with Discrete Regressors,” <em>Econometric Theory</em>, Volume 25, pages 1-42.</p></li>
-<li><p>Maasoumi, E.&nbsp;and J.S.&nbsp;Racine (2009), “A Robust Entropy-Based Test of Asymmetry for Discrete and Continuous Processes,” <em>Econometric Reviews</em>, Volume 28, pages 246-261.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2008), “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data,” <em>Journal of Business &amp; Economic Statistics</em>, Volume 26, Number 4, pages 423-434.</p></li>
-<li><p>Hayfield, T.&nbsp;and J.S.&nbsp;Racine (2008), “Nonparametric Econometrics: The np Package,” <em>Journal of Statistical Software</em>, Volume 27, Number 5, pages 1-32.</p></li>
-<li><p>Li, Q., J.S.&nbsp;Racine and J.&nbsp;Wooldridge (2008), “Estimating Average Treatment Effects with Continuous and Discrete Covariates: The Case of Swan-Ganz Catherization,” <em>American Economic Review</em>, Volume 98, Number 2, pages 357-62.</p></li>
-<li><p>Li, J.&nbsp;and J.S.&nbsp;Racine (2008), “Maxima: An Open Source Computer Algebra System,” <em>Journal of Applied Econometrics</em>, Volume 23, Issue 4, pages 515-523.</p></li>
-<li><p>Racine, J.S.&nbsp;(2008), “Nonparametric Econometrics: A Primer,” <em>Foundations and Trends in Econometrics</em>, Volume 3, Number 1, pages 1-88.</p>
-<p>An edited version of this monograph is reprinted in Russian and appears as follows:</p>
-<p>Racine, J.S.&nbsp;(2008), “Nonparametric Econometrics: A Primer,” <em>Quantile</em>, Number 4, pages 7-56.</p></li>
-<li><p>Hall, P., Q.&nbsp;Li and J.S.&nbsp;Racine (2007), “Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors,” <em>The Review of Economics and Statistics</em>, Volume 89, Issue 4, pages 784-789.</p></li>
-<li><p>Hayfield, T.&nbsp;and J.S.&nbsp;Racine (2007), “The np Package,” <em>RNews</em>, Volume 7, pages 36-43.</p></li>
-<li><p>Hsiao, C., Q.&nbsp;Li and J.S.&nbsp;Racine (2007), “A Consistent Model Specification Test with Mixed Categorical and Continuous Data,” <em>Journal of Econometrics</em>, Volume 140, Issue 2, pages 802-826.</p></li>
-<li><p>Racine, J.S.&nbsp;and J.&nbsp;G.&nbsp;MacKinnon (2007), “Inference via Kernel Smoothing of Bootstrap <span class="math inline">\(P\)</span> Values,” <em>Computational Statistics and Data Analysis</em>, Volume 51, Issue 12, pages 5949-5957.</p></li>
-<li><p>Racine, J.S.&nbsp;and E.&nbsp;Maasoumi (2007), “A Versatile and Robust Metric Entropy Test of Time Reversibility and other Hypotheses,” <em>Journal of Econometrics</em>, Volume 138, pages 547-567.</p></li>
-<li><p>Racine, J.S.&nbsp;and J.&nbsp;G.&nbsp;MacKinnon (2007), “Simulation-Based Tests that can use any Number of Simulations,” <em>Communications in Statistics</em>, Volume 36, Number 2, pages 357-365.</p></li>
-<li><p>Maasoumi, E., J.S.&nbsp;Racine and T. Stengos (2007), “Growth and Convergence: A Profile of Distribution Dynamics and Mobility,” <em>Journal of Econometrics</em>, Volume 136, pages 483-508.</p></li>
-<li><p>Chakrabarty, M., A.&nbsp;Schmalenbach and J.S.&nbsp;Racine (2006), “On the Distributional Effects of Income in an Aggregate Consumption Relation,” <em>Canadian Journal of Economics</em>, Volume 39, pages 1221-1243.</p></li>
-<li><p>Racine, J.S., J.&nbsp;Hart and Q.&nbsp;Li (2006), “Testing the Significance of Categorical Predictor Variables in Nonparametric Regression Models,” <em>Econometric Reviews</em>, Volume 25, pages 523-544.</p></li>
-<li><p>Gyimah-Brempong,&nbsp;K.&nbsp;and J.S. Racine (2006), “Alcohol Availability and Crime: A Robust Approach,” <em>Applied Economics</em>, Volume 38, pages 1293-1307.</p></li>
-<li><p>Racine, J.S.&nbsp;(2006), “gnuplot 4.0: A Portable Interactive Plotting Utility,” <em>Journal of Applied Econometrics</em>, Volume 21, pages 133-141.</p></li>
-<li><p>Racine, J.S.&nbsp;and A.&nbsp;Ullah (2006), “Nonparametric Econometrics,” <em>Palgrave Handbook of Econometrics:</em> Volume 1, Theoretical Econometrics, page 1001-1034.</p></li>
-<li><p>Racine, J.S.&nbsp;and A.&nbsp;Ker (2006), “Rating Crop Insurance Policies with Efficient Nonparametric Estimators That Admit Mixed Data Types,” <em>Journal of Agricultural and Resource Economics</em>, Volume 31, Number 1, pages 27-39.</p></li>
-<li><p>Ouyang, D., Q.&nbsp;Li and J.S.&nbsp;Racine (2006), “Cross-Validation and the Estimation of Probability Distributions with Categorical Data,” <em>Journal of Nonparametric Statistics</em>, Volume 18, Number 1, pages 69-100.</p></li>
-<li><p>Racine, J.S., Q.&nbsp;Li. and X.&nbsp;Zhu (2004), “Kernel Estimation of Multivariate Conditional Distributions,” <em>Annals of Economics and Finance</em>, Volume 5, Number 2, pages 211-235.</p></li>
-<li><p>Hall, P., J.S.&nbsp;Racine and Q.&nbsp;Li (2004), “Cross-Validation and the Estimation of Conditional Probability Densities,” <em>Journal of The American Statistical Association</em>, Volume 99, Number 468, pages 1015-1026.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2004), “Predictor Relevance and Extramarital Affairs,” <em>Journal of Applied Econometrics</em>, July/August, Volume 19, Number 4, pages 533-535.</p></li>
-<li><p>Granger, C., E.&nbsp;Maasoumi and J.S.&nbsp;Racine&nbsp;(2004), “A Dependence Metric for Possibly Nonlinear Processes,” <em>Journal of Time Series Analysis</em>, May, Volume 25, Number 5, pages 649-669.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2004), “Cross-Validated Local Linear Nonparametric Regression,” <em>Statistica Sinica</em>, Volume 14, Number 2, pages 485-512.</p></li>
-<li><p>Racine, J.S.&nbsp;and Q.&nbsp;Li (2004), “Nonparametric Estimation of Regression Functions with Both Categorical and Continuous Data,” <em>Journal of Econometrics</em>, March, Volume 119, Issue 1, pages 99-130.</p></li>
-<li><p>Li, Q.&nbsp;and J.S.&nbsp;Racine (2003), “Nonparametric Estimation of Distributions with Categorical and Continuous Data,” <em>Journal of Multivariate Analysis</em>, August, Volume 86, Issue 2, pages 266-292.</p></li>
-<li><p>Racine, J.S.&nbsp;(2002), “Parallel Distributed Kernel Estimation,” <em>Computational Statistics and Data Analysis</em>, August, Volume 40, Issue 2, pages 293-302.</p></li>
-<li><p>Racine, J.S.&nbsp;and R.&nbsp;Hyndman (2002), “Using R to Teach Econometrics,” <em>Journal of Applied Econometrics</em>, March/April, Volume 17, Issue 2, pages 175-189.</p></li>
-<li><p>Maasoumi, E.&nbsp;and J.S.&nbsp;Racine (2002), “Entropy and Predictability of Stock Market Returns,” <em>Journal of Econometrics</em>, March, Volume 107, Issue 2, pages 291-312.</p></li>
-<li><p>Racine, J.S.&nbsp;(2002), “`New and Improved’ Direct Marketing: A Nonparametric Approach,” <em>Advances in Econometrics:</em> Econometric Models in Marketing, A.&nbsp;Montgomery and P.&nbsp;H. Franses (Eds), Elsevier Science, Volume 16, pages 141-164.</p></li>
-<li><p>Racine, J.S.&nbsp;(2002), “Generalized Semiparametric Binary Prediction,” <em>Annals of Economics and Finance</em>, Volume 3, pages 131-147.</p></li>
-<li><p>Racine, J.S.&nbsp;(2002), “Index-Free, Density-Based Multinomial Choice,” <em>Handbook of Applied Econometrics and Statistical Inference</em>, Ullah, A.&nbsp;and A.&nbsp;Wan and A.&nbsp;Chaturvedi (Eds), Marcel Dekker Inc., pages 115-142.</p></li>
-<li><p>Racine, J.S.&nbsp;(2001), “On The Nonlinear Predictability of Stock Returns Using Financial and Economic Variables,” <em>Journal of Business &amp; Economic Statistics</em>, July, Volume 19, Number 3, pages 380-382.</p></li>
-<li><p>White, H.&nbsp;and J.S.&nbsp;Racine (2001), “Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates,” <em>IEEE Transactions on Neural Networks:</em> Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 657-673.</p></li>
-<li><p>Chen, X., J.S.&nbsp;Racine and N.&nbsp;R.&nbsp;Swanson (2001), “Semiparametric ARX Neural Network Models with an Application to Forecasting Inflation,” <em>IEEE Transactions on Neural Networks:</em> Special Issue on Neural Networks in Financial Engineering, July, Volume 12, Number 4, pages 674-684.</p></li>
-<li><p>Racine, J.S.&nbsp;(2001), “Bias-Corrected Kernel Regression,” <em>Journal of Quantitative Economics</em>, January, Volume 17, Number 1, pages 25-42.</p></li>
-<li><p>Racine, J.S.&nbsp;(2000), “A Consistent Cross-Validatory Method for Dependent Data: hv-Block Cross-Validation,” <em>Journal of Econometrics</em>, November, Volume 9, Issue 1, pages 39-61.</p></li>
-<li><p>Racine, J.S.&nbsp;and J.&nbsp;B.&nbsp;Smith (2000), “Nonparametric Estimation of Growth in Replenishable Resource Stocks,” <em>Advances in Econometrics:</em> Applying Kernel and Nonparametric Estimation to Economic Topics, R.&nbsp;Carter-Hill and T.&nbsp;Fomby (eds.), JAI Press Inc., Volume 14, pages 309-327.</p></li>
-<li><p>Racine, J.S.&nbsp;(2000), “Feasible Resampling for Nonparametric Kernel Estimators,” <em>Journal of Quantitative Economics</em>, July, Vol 16, Number 2, pages 19-30.</p></li>
-<li><p>Racine, J.S.&nbsp;(2000), “The Cygwin Tools: A GNU Toolkit for Windows,” <em>Journal of Applied Econometrics</em>, July, Volume 15, Number 3, pages 331-341.</p></li>
-<li><p>Racine, J.S.&nbsp;(1997), “Consistent Significance Testing for Nonparametric Regression,” <em>Journal of Business &amp; Economic Statistics</em>, July, Volume 15, Number 3, pages 369-379.</p></li>
-<li><p>Racine, J.S.&nbsp;(1997), “Feasible Cross-Validatory Model Selection for General Stationary Processes,” <em>Journal of Applied Econometrics</em>, March/April, Volume 12, pages 169-179.</p></li>
-<li><p>Morrow, G.&nbsp;D., R.&nbsp;M.&nbsp;Stein, J.S.&nbsp;Racine and J. Siegel-Bartelt (1997), “Computerized Videokeratography of Kerataconus Kindreds,” <em>Canadian Journal of Ophthalmology</em>, June, Volume 32, Number 4, pages 233-243.</p></li>
-<li><p>Racine, J.S.&nbsp;and P.&nbsp;Rilstone&nbsp;(1995), “The Reverse Regression Problem: Statistical Paradox or Artefact of Misspecification?,” <em>Canadian Journal of Economics</em>, August, Volume 28, Number 3, pages 502-531.</p></li>
-<li><p>González-Rivera, G.&nbsp;and J.S.&nbsp;Racine (1995), “Maximum Likelihood Estimation and Testing Strategies in GARCH Models,” <em>Proceedings of the American Statistical Association</em>, Joint Statistical Meetings, Orlando, Florida, pages 47-54.</p></li>
-<li><p>Racine, J.S.&nbsp;(1993), “An Efficient Cross-Validation Algorithm For Window Width Selection for Nonparametric Kernel Regression,” <em>Communications in Statistics</em>, October, Volume 22, Issue 4, pages 1107-1114.</p></li>
-<li><p>Ullah, A.&nbsp;and J.S.&nbsp;Racine (1992), “Smooth Improved Estimators of Econometric Parameters,” in W.&nbsp;E.&nbsp;Griffiths, H. Lütkepohl and M.&nbsp;E.&nbsp;Bock, Editors, <em>Readings in Econometric Theory and Practice</em>, A Volume in Honour of George Judge, North Holland, pages 197-213.</p></li>
-</ol>
+<div id="refs-articles" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-patilea_forthcoming" class="csl-entry" role="listitem">
+1. V. Patilea and J.S. Racine “Locally adaptive online functional data analysis”. In: <em>Journal of Nonparametric Statistics</em> (forthcoming)
+</div>
+<div id="ref-racine_forthcoming" class="csl-entry" role="listitem">
+2. J.S. Racine “Quarto the assassin”. In: <em>Advanced studies in theoretical and applied econometrics</em> Vol. 56 (forthcoming), doi: <a href="https://doi.org/10.1007/978-3-031-97941-5">10.1007/978-3-031-97941-5</a>
+</div>
+<div id="ref-wang_2025" class="csl-entry" role="listitem">
+3. L. Wang, J.S. Racine, and Q. Wang “Bootstrap inference on a factor model based average treatment effects estimator”. In: <em>Econometric Reviews</em> Vol. 44 (1) (2025), pp. 80–89, doi: <a href="https://doi.org/10.1080/07474938.2024.2390392">10.1080/07474938.2024.2390392</a>
+</div>
+<div id="ref-racine_2024" class="csl-entry" role="listitem">
+4. J.S. Racine, Q. Li, and Q. Wang “Boundary-adaptive kernel density estimation: The case of (near) uniform density”. In: <em>Journal of Nonparametric Statistics</em> Vol. 36 (1) (2024), pp. 146–164, doi: <a href="https://doi.org/10.1080/10485252.2023.2250011">10.1080/10485252.2023.2250011</a>
+</div>
+<div id="ref-hansen_2024" class="csl-entry" role="listitem">
+5. B.E. Hansen and J.S. Racine “Bootstrap model averaging unit root inference”. In: <em>Advances in econometrics: Essays in honor of subal kumbhakar</em> Vol. 46 (2024), pp. 81–98, doi: <a href="https://doi.org/10.1108/S0731-905320240000046005">10.1108/S0731-905320240000046005</a>
+</div>
+<div id="ref-du_2024" class="csl-entry" role="listitem">
+6. P. Du, C. Parmeter, and J.S. Racine “Shape constrained kernel PDF and PMF estimation”. In: <em>Statistica Sinica</em> Vol. 34 (1) (2024), pp. 257–289, doi: <a href="https://doi.org/10.5705/ss.202021.0112">10.5705/ss.202021.0112</a>
+</div>
+<div id="ref-racine_2023" class="csl-entry" role="listitem">
+7. J.S. Racine, Q. Li, D. Yu, and L. Zheng “Optimal model averaging of mixed-data kernel-weighted spline regressions”. In: <em>Journal of Business and Economic Statistics</em> Vol. 41 (4) (2023), pp. 1251–1261, doi: <a href="https://doi.org/10.1080/07350015.2022.2118126">10.1080/07350015.2022.2118126</a>
+</div>
+<div id="ref-simardone_2021" class="csl-entry" role="listitem">
+8. C. Simardone and J.S. Racine “Nonparametric estimation and inference: Kernel estimation from a local perspective”. In: <em>Handbook of labor, human resources and population economics</em> (2021), pp. 1–30, doi: <a href="https://doi.org/10.1007/978-3-319-57365-6">10.1007/978-3-319-57365-6</a>
+</div>
+<div id="ref-racine_2020a" class="csl-entry" role="listitem">
+9. J.S. Racine and I. Van Keilegom “A smooth nonparametric, multivariate, mixed-data location-scale test”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 38 (4) (2020), pp. 784–795, doi: <a href="https://doi.org/10.1080/07350015.2019.1574227">10.1080/07350015.2019.1574227</a>
+</div>
+<div id="ref-ma_2020" class="csl-entry" role="listitem">
+10. S. Ma, J.S. Racine, and A. Ullah “Nonparametric estimation of marginal effects in regression-spline random effects models”. In: <em>Econometric Reviews</em> Vol. 39 (8) (2020), pp. 792–825, doi: <a href="https://doi.org/10.1080/07474938.2020.1772569">10.1080/07474938.2020.1772569</a>
+</div>
+<div id="ref-racine_2020b" class="csl-entry" role="listitem">
+11. J.S. Racine, Q. Li, and K.X. Yan “Kernel smoothed probability mass functions for ordered datatypes”. In: <em>Journal of Nonparametric Statistics</em> Vol. 32 (3) (2020), pp. 563–586, doi: <a href="https://doi.org/10.1080/10485252.2020.1759595">10.1080/10485252.2020.1759595</a>
+</div>
+<div id="ref-racine_2019a" class="csl-entry" role="listitem">
+12. J.S. Racine “Energy, economics, replication &amp; reproduction”. In: <em>Energy Economics</em> Vol. 82 (2019), pp. 264–275, doi: <a href="https://doi.org/10.1016/j.eneco.2017.06.027">10.1016/j.eneco.2017.06.027</a>
+</div>
+<div id="ref-parmeter_2019" class="csl-entry" role="listitem">
+13. C. Parmeter and J.S. Racine “Nonparametric estimation and inference for panel data models”. In: <em>Panel data econometrics: Foundations and applications</em> Vol. 1 (2019), pp. 97–129, doi: <a href="https://doi.org/10.1016/B978-0-12-814367-4.00004-6">10.1016/B978-0-12-814367-4.00004-6</a>
+</div>
+<div id="ref-beheshti_2019" class="csl-entry" role="listitem">
+14. N. Beheshti, J.S. Racine, and E.S. Soofi “Information measures of kernel estimation”. In: <em>Econometric Reviews</em> Vol. 28 (1) (2019), pp. 47–68, doi: <a href="https://doi.org/10.1080/07474938.2016.1222236">10.1080/07474938.2016.1222236</a>
+</div>
+<div id="ref-li_2018a" class="csl-entry" role="listitem">
+15. C. Li, Q. Li, J.S. Racine, and D. Zhang “Optimal model averaging of varying coefficient models”. In: <em>Statistica Sinica</em> Vol. 28 (2018), pp. 2795–2809, doi: <a href="https://doi.org/10.5705/ss.202017.0034">10.5705/ss.202017.0034</a>
+</div>
+<div id="ref-das_2018" class="csl-entry" role="listitem">
+16. S. Das and J.S. Racine “Interactive nonparametric analysis of complex nonlinear systems”. In: <em>Physica A</em> Vol. 510 (2018), pp. 290–301, doi: <a href="https://doi.org/10.1016/j.physa.2018.06.071">10.1016/j.physa.2018.06.071</a>
+</div>
+<div id="ref-florens_2018" class="csl-entry" role="listitem">
+17. J.P. Florens, J.S. Racine, and S. Centorrino “Nonparametric instrumental variable derivative estimation”. In: <em>Journal of Nonparametric Statistics</em> Vol. 30 (2) (2018), pp. 368–391, doi: <a href="https://doi.org/10.1080/10485252.2018.1428745">10.1080/10485252.2018.1428745</a>
+</div>
+<div id="ref-centorrino_2017" class="csl-entry" role="listitem">
+18. S. Centorrino and J.S. Racine “Semiparametric varying coefficient models with endogenous covariates”. In: <em>Annals of Economics and Statistics</em> (128) (2017), pp. 261–295, doi: <a href="https://doi.org/10.15609/annaeconstat2009.128.0261">10.15609/annaeconstat2009.128.0261</a>
+</div>
+<div id="ref-racine_2017a" class="csl-entry" role="listitem">
+19. J.S. Racine and K. Li “Nonparametric conditional quantile estimation: A locally weighted quantile kernel approach”. In: <em>Journal of Econometrics</em> Vol. 201 (1) (2017), pp. 72–94, doi: <a href="https://doi.org/10.1016/j.jeconom.2017.06.020">10.1016/j.jeconom.2017.06.020</a>
+</div>
+<div id="ref-li_2017" class="csl-entry" role="listitem">
+20. C. Li, H. Li, and J.S. Racine “Cross-validated mixed datatype bandwidth selection for nonparametric cumulative distribution/survivor functions”. In: <em>Econometric Reviews</em> Vol. 36 (6-9) (2017), pp. 970–987, doi: <a href="https://doi.org/10.1080/07474938.2017.1307900">10.1080/07474938.2017.1307900</a>
+</div>
+<div id="ref-kiefer_2017" class="csl-entry" role="listitem">
+21. N.M. Kiefer and J.S. Racine “The smooth colonel and the reverend find common ground”. In: <em>Econometric Reviews</em> Vol. 36 (1-3) (2017), pp. 241–256, doi: <a href="https://doi.org/10.1080/07474938.2015.1114304">10.1080/07474938.2015.1114304</a>
+</div>
+<div id="ref-koch_2016" class="csl-entry" role="listitem">
+22. S. Koch and J.S. Racine “Health care facility choice and user fee abolition: Regression discontinuity in a multinomial choice setting”. In: <em>Journal of the Royal Statistical Society</em> Vol. 179 (2016), pp. 927–950, doi: <a href="https://doi.org/10.1111/rssa.12161">10.1111/rssa.12161</a>
+</div>
+<div id="ref-racine_2016a" class="csl-entry" role="listitem">
+23. J.S. Racine “Local polynomial derivative estimation: Analytic or taylor?”. In: <em>Advances in Econometrics</em> Vol. 36 (2016), pp. 617–633, doi: <a href="https://doi.org/10.1108/s0731-905320160000036027">10.1108/s0731-905320160000036027</a>
+</div>
+<div id="ref-bugden_2016" class="csl-entry" role="listitem">
+24. J. Bugden, I. Fraser, J.S. Racine, and R. Waschik “Nonparametric hedonic analysis of tax changes and house prices”. In: <em>Global Business and Economics Review</em> Vol. 18 (2016), pp. 533–549, doi: <a href="https://doi.org/10.1504/gber.2016.078669">10.1504/gber.2016.078669</a>
+</div>
+<div id="ref-maasoumi_2016" class="csl-entry" role="listitem">
+25. E. Maasoumi and J.S. Racine “A solution to aggregation and an application to multidimensional <span>“well-being”</span> frontiers”. In: <em>Journal of Econometrics</em> Vol. 191 (2016), pp. 374–383, doi: <a href="https://doi.org/10.1016/j.jeconom.2015.12.008">10.1016/j.jeconom.2015.12.008</a>
+</div>
+<div id="ref-chakrabarty_2015" class="csl-entry" role="listitem">
+26. M. Chakrabarty, A. Majumder, and J.S. Racine “Household preference distribution and welfare implication: An application of multivariate distributional statistics”. In: <em>Journal of Applied Statistics</em> Vol. 42 (2015), pp. 2754–2768, doi: <a href="https://doi.org/10.1080/02664763.2015.1049132">10.1080/02664763.2015.1049132</a>
+</div>
+<div id="ref-ma_2015" class="csl-entry" role="listitem">
+27. S. Ma, J.S. Racine, and L. Yang “Spline regression in the presence of categorical predictors”. In: <em>Journal of Applied Econometrics</em> Vol. 30 (2015), pp. 705–717, doi: <a href="https://doi.org/10.1002/jae.2410">10.1002/jae.2410</a>
+</div>
+<div id="ref-hall_2015a" class="csl-entry" role="listitem">
+28. P. Hall and J.S. Racine “Infinite order cross-validated local polynomial regression”. In: <em>Journal of Econometrics</em> Vol. 185 (2015), pp. 510–525, doi: <a href="https://doi.org/10.1016/j.jeconom.2014.06.003">10.1016/j.jeconom.2014.06.003</a>
+</div>
+<div id="ref-racine_2015a" class="csl-entry" role="listitem">
+29. J.S. Racine “Mixed data kernel copulas”. In: <em>Empirical Economics</em> Vol. 48 (2015), pp. 37–59, doi: <a href="https://doi.org/10.1007/s00181-015-0913-3">10.1007/s00181-015-0913-3</a>
+</div>
+<div id="ref-gao_2015" class="csl-entry" role="listitem">
+30. Q. Gao, L. Liu, and J.S. Racine “A partially linear kernel estimator for categorical data”. In: <em>Econometric Reviews</em> Vol. 34 (6-10) (2015), pp. 958–977, doi: <a href="https://doi.org/10.1080/07474938.2014.956613">10.1080/07474938.2014.956613</a>
+</div>
+<div id="ref-gyimahbrempong_2014" class="csl-entry" role="listitem">
+31. K. Gyimah-Brempong and J.S. Racine “Aid and economic growth: A robust approach”. In: <em>Journal of African Development</em> Vol. 16 (1) (2014), pp. 1–35, doi: <a href="https://doi.org/10.5325/jafrideve.16.1.0001">10.5325/jafrideve.16.1.0001</a>
+</div>
+<div id="ref-racine_2014a" class="csl-entry" role="listitem">
+32. J.S. Racine and C. Parmeter “Data-driven model evaluation: A test for revealed performance”. In: <em>Handbook of applied nonparametric and semiparametric econometrics and statistics</em> (2014), pp. 308–345, doi: <a href="https://doi.org/10.1093/oxfordhb/9780199857944.013.010">10.1093/oxfordhb/9780199857944.013.010</a>
+</div>
+<div id="ref-du_2013" class="csl-entry" role="listitem">
+33. P. Du, C. Parmeter, and J.S. Racine “Nonparametric kernel regression with multiple predictors and multiple shape constraints”. In: <em>Statistica Sinica</em> Vol. 23 (3) (2013), pp. 1343–1372
+</div>
+<div id="ref-li_2013a" class="csl-entry" role="listitem">
+34. C. Li and J.S. Racine “A smooth nonparametric conditional density test for categorical responses”. In: <em>Econometric Theory</em> Vol. 29 (2013), pp. 629–641, doi: <a href="https://doi.org/10.1017/s0266466612000382">10.1017/s0266466612000382</a>
+</div>
+<div id="ref-li_2013b" class="csl-entry" role="listitem">
+35. Q. Li, D. Ouyang, and J.S. Racine “Categorical semiparametric varying coefficient models”. In: <em>Journal of Applied Econometrics</em> Vol. 28 (2013), pp. 551–579, doi: <a href="https://doi.org/10.1002/jae.1261">10.1002/jae.1261</a>
+</div>
+<div id="ref-ma_2013" class="csl-entry" role="listitem">
+36. S. Ma and J.S. Racine “Additive regression splines with irrelevant categorical and continuous regressors”. In: <em>Statistica Sinica</em> Vol. 23 (2013), pp. 515–541, doi: <a href="https://doi.org/10.5705/ss.2011.096">10.5705/ss.2011.096</a>
+</div>
+<div id="ref-li_2013c" class="csl-entry" role="listitem">
+37. Q. Li, J. Lin, and J.S. Racine “Optimal bandwidth selection for nonparametric conditional distribution and quantile functions”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 31 (1) (2013), pp. 57–65, doi: <a href="https://doi.org/10.1080/07350015.2012.738955">10.1080/07350015.2012.738955</a>
+</div>
+<div id="ref-nie_2012" class="csl-entry" role="listitem">
+38. Z. Nie and J.S. Racine “The crs package: Nonparametric regression splines for continuous and categorical predictors”. In: <em>The <span>R</span> Journal</em> Vol. 4 (2012), pp. 48–56, doi: <a href="https://doi.org/10.32614/rj-2012-012">10.32614/rj-2012-012</a>
+</div>
+<div id="ref-parmeter_2012" class="csl-entry" role="listitem">
+39. C. Parmeter and J.S. Racine “Smooth constrained frontier analysis”. In: <em>Recent advances and future directions in causality, prediction, and specification analysis: Essays in honor of halbert l. White jr.</em> (2012), pp. 463–488, doi: <a href="https://doi.org/10.1007/978-1-4614-1653-1_18">10.1007/978-1-4614-1653-1_18</a>
+</div>
+<div id="ref-racine_2012a" class="csl-entry" role="listitem">
+40. J.S. Racine “RStudio: A platform-independent IDE for <span>R</span> and sweave”. In: <em>Journal of Applied Econometrics</em> Vol. 27 (2012), pp. 167–172, doi: <a href="https://doi.org/10.1002/jae.1278">10.1002/jae.1278</a>
+</div>
+<div id="ref-hansen_2012" class="csl-entry" role="listitem">
+41. B. Hansen and J.S. Racine “Jackknife model averaging”. In: <em>Journal of Econometrics</em> Vol. 167 (2012), pp. 38–46, doi: <a href="https://doi.org/10.1016/j.jeconom.2011.06.019">10.1016/j.jeconom.2011.06.019</a>
+</div>
+<div id="ref-gyimahbrempong_2012" class="csl-entry" role="listitem">
+42. K. Gyimah-Brempong, J.S. Racine, and A. Gyapong “Aid and economic growth: Sensitivity analysis”. In: <em>Journal of International Development</em> Vol. 24 (2012), pp. 17–33, doi: <a href="https://doi.org/10.1002/jid.1708">10.1002/jid.1708</a>
+</div>
+<div id="ref-zhang_2011" class="csl-entry" role="listitem">
+43. Z. Zhang, D. Chen, W. Liu, J.S. Racine, S. Ong, Y. Chen, G. Zhao, and Q. Ziang “Nonparametric evaluation of dynamic disease risk: A spatio-temporal kernel approach”. In: <em>PLoS ONE</em> Vol. 6 (3) (2011), pp. e17381, doi: <a href="https://doi.org/10.1371/journal.pone.0017381">10.1371/journal.pone.0017381</a>
+</div>
+<div id="ref-racine_2011" class="csl-entry" role="listitem">
+44. J.S. Racine “Nonparametric kernel methods for qualitative and quantitative data”. In: <em>The handbook of empirical economics and finance</em> (2011), pp. 183–204, doi: <a href="https://doi.org/10.1201/b10440-11">10.1201/b10440-11</a>
+</div>
+<div id="ref-li_2010" class="csl-entry" role="listitem">
+45. Q. Li and J.S. Racine “Smooth varying coefficient estimation and inference for qualitative and quantitative data”. In: <em>Econometric Theory</em> Vol. 26 (2010), pp. 1607–1637, doi: <a href="https://doi.org/10.1017/s0266466609990739">10.1017/s0266466609990739</a>
+</div>
+<div id="ref-gyimahbrempong_2010" class="csl-entry" role="listitem">
+46. K. Gyimah-Brempong and J.S. Racine “Aid and investment in LDCs: A robust approach”. In: <em>Journal of International Trade &amp; Economic Development</em> Vol. 19 (2) (2010), pp. 319–349, doi: <a href="https://doi.org/10.1080/09638190802464974">10.1080/09638190802464974</a>
+</div>
+<div id="ref-racine_2009a" class="csl-entry" role="listitem">
+47. J.S. Racine “Nonparametric and semiparametric methods in r”. In: <em>Advances in econometrics: Nonparametric econometric methods</em> Vol. 25 (2009), pp. 335–375, doi: <a href="https://doi.org/10.1108/s0731-9053(2009)0000025014">10.1108/s0731-9053(2009)0000025014</a>
+</div>
+<div id="ref-li_2009a" class="csl-entry" role="listitem">
+48. C. Li, D. Ouyang, and J.S. Racine “Nonparametric regression with weakly dependent data: The discrete and continuous regressor case”. In: <em>Journal of Nonparametric Statistics</em> Vol. 21 (6) (2009), pp. 697–711, doi: <a href="https://doi.org/10.1080/10485250902928435">10.1080/10485250902928435</a>
+</div>
+<div id="ref-kiefer_2009" class="csl-entry" role="listitem">
+49. N.M. Kiefer and J.S. Racine “The smooth colonel meets the reverend”. In: <em>Journal of Nonparametric Statistics</em> Vol. 21 (2009), pp. 521–533, doi: <a href="https://doi.org/10.1080/10485250902818792">10.1080/10485250902818792</a>
+</div>
+<div id="ref-li_2009b" class="csl-entry" role="listitem">
+50. Q. Li, J.S. Racine, and J. Wooldridge “Efficient estimation of average treatment effects with mixed categorical and continuous data”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 27 (2009), pp. 206–223, doi: <a href="https://doi.org/10.1198/jbes.2009.0015">10.1198/jbes.2009.0015</a>
+</div>
+<div id="ref-meredith_2009" class="csl-entry" role="listitem">
+51. E. Meredith and J.S. Racine “Towards reproducible econometric research: The sweave framework”. In: <em>Journal of Applied Econometrics</em> Vol. 24 (2009), pp. 366–374, doi: <a href="https://doi.org/10.1002/jae.1030">10.1002/jae.1030</a>
+</div>
+<div id="ref-li_2009c" class="csl-entry" role="listitem">
+52. Q. Li, E. Maasoumi, and J.S. Racine “A nonparametric test for equality of distributions with mixed categorical and continuous data”. In: <em>Journal of Econometrics</em> Vol. 148 (2009), pp. 186–200, doi: <a href="https://doi.org/10.1016/j.jeconom.2008.10.007">10.1016/j.jeconom.2008.10.007</a>
+</div>
+<div id="ref-ouyang_2009" class="csl-entry" role="listitem">
+53. D. Ouyang, Q. Li, and J.S. Racine “Nonparametric estimation of regression functions with discrete regressors”. In: <em>Econometric Theory</em> Vol. 25 (2009), pp. 1–42, doi: <a href="https://doi.org/10.1017/s0266466608090014">10.1017/s0266466608090014</a>
+</div>
+<div id="ref-maasoumi_2009" class="csl-entry" role="listitem">
+54. E. Maasoumi and J.S. Racine “A robust entropy-based test of asymmetry for discrete and continuous processes”. In: <em>Econometric Reviews</em> Vol. 28 (2009), pp. 246–261, doi: <a href="https://doi.org/10.1080/07474930802388066">10.1080/07474930802388066</a>
+</div>
+<div id="ref-li_2008a" class="csl-entry" role="listitem">
+55. Q. Li and J.S. Racine “Nonparametric estimation of conditional CDF and quantile functions with mixed categorical and continuous data”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 26 (4) (2008), pp. 423–434, doi: <a href="https://doi.org/10.1198/073500107000000250">10.1198/073500107000000250</a>
+</div>
+<div id="ref-hayfield_2008" class="csl-entry" role="listitem">
+56. T. Hayfield and J.S. Racine “Nonparametric econometrics: The np package”. In: <em>Journal of Statistical Software</em> Vol. 27 (5) (2008), pp. 1–32, doi: <a href="https://doi.org/10.18637/jss.v027.i05">10.18637/jss.v027.i05</a>
+</div>
+<div id="ref-li_2008b" class="csl-entry" role="listitem">
+57. Q. Li, J.S. Racine, and J. Wooldridge “Estimating average treatment effects with continuous and discrete covariates: The case of swan-ganz catherization”. In: <em>American Economic Review</em> Vol. 98 (2) (2008), pp. 357–62, doi: <a href="https://doi.org/10.1257/aer.98.2.357">10.1257/aer.98.2.357</a>
+</div>
+<div id="ref-li_2008c" class="csl-entry" role="listitem">
+58. J. Li and J.S. Racine “Maxima: An open source computer algebra system”. In: <em>Journal of Applied Econometrics</em> Vol. 23 (2008), pp. 515–523, doi: <a href="https://doi.org/10.1002/jae.1007">10.1002/jae.1007</a>
+</div>
+<div id="ref-racine_2008" class="csl-entry" role="listitem">
+59. J.S. Racine “Nonparametric econometrics: A primer”. In: <em>Foundations and Trends in Econometrics</em> Vol. 3 (1) (2008), pp. 1–88, doi: <a href="https://doi.org/10.1561/0800000009">10.1561/0800000009</a>
+</div>
+<div id="ref-hall_2007" class="csl-entry" role="listitem">
+60. P. Hall, Q. Li, and J.S. Racine “Nonparametric estimation of regression functions in the presence of irrelevant regressors”. In: <em>The Review of Economics and Statistics</em> Vol. 89 (2007), pp. 784–789, doi: <a href="https://doi.org/10.1162/rest.89.4.784">10.1162/rest.89.4.784</a>
+</div>
+<div id="ref-hayfield_2007" class="csl-entry" role="listitem">
+61. T. Hayfield and J.S. Racine “The np package”. In: <em>RNews</em> Vol. 7 (2007), pp. 36–43, doi: <a href="https://doi.org/10.18637/jss.v027.i05">10.18637/jss.v027.i05</a>
+</div>
+<div id="ref-hsiao_2007" class="csl-entry" role="listitem">
+62. C. Hsiao, Q. Li, and J.S. Racine “A consistent model specification test with mixed categorical and continuous data”. In: <em>Journal of Econometrics</em> Vol. 140 (2007), pp. 802–826, doi: <a href="https://doi.org/10.1016/j.jeconom.2006.07.015">10.1016/j.jeconom.2006.07.015</a>
+</div>
+<div id="ref-racine_2007a" class="csl-entry" role="listitem">
+63. J.S. Racine and J.G. MacKinnon “Inference via kernel smoothing of bootstrap <span class="math inline">\(P\)</span> values”. In: <em>Computational Statistics and Data Analysis</em> Vol. 51 (2007), pp. 5949–5957, doi: <a href="https://doi.org/10.1016/j.csda.2006.11.013">10.1016/j.csda.2006.11.013</a>
+</div>
+<div id="ref-racine_2007b" class="csl-entry" role="listitem">
+64. J.S. Racine and E. Maasoumi “A versatile and robust metric entropy test of time reversibility and other hypotheses”. In: <em>Journal of Econometrics</em> Vol. 138 (2007), pp. 547–567, doi: <a href="https://doi.org/10.1016/j.jeconom.2006.05.009">10.1016/j.jeconom.2006.05.009</a>
+</div>
+<div id="ref-racine_2007c" class="csl-entry" role="listitem">
+65. J.S. Racine and J.G. MacKinnon “Simulation-based tests that can use any number of simulations”. In: <em>Communications in Statistics</em> Vol. 36 (2) (2007), pp. 357–365, doi: <a href="https://doi.org/10.1080/03610910601161256">10.1080/03610910601161256</a>
+</div>
+<div id="ref-maasoumi_2007" class="csl-entry" role="listitem">
+66. E. Maasoumi, J.S. Racine, and T. Stengos “Growth and convergence: A profile of distribution dynamics and mobility”. In: <em>Journal of Econometrics</em> Vol. 136 (2007), pp. 483–508, doi: <a href="https://doi.org/10.1016/j.jeconom.2005.11.012">10.1016/j.jeconom.2005.11.012</a>
+</div>
+<div id="ref-chakrabarty_2006" class="csl-entry" role="listitem">
+67. M. Chakrabarty, A. Schmalenbach, and J.S. Racine “On the distributional effects of income in an aggregate consumption relation”. In: <em>Canadian Journal of Economics</em> Vol. 39 (2006), pp. 1221–1243, doi: <a href="https://doi.org/10.1111/j.1540-5982.2006.00388.x">10.1111/j.1540-5982.2006.00388.x</a>
+</div>
+<div id="ref-racine_2006a" class="csl-entry" role="listitem">
+68. J.S. Racine, J. Hart, and Q. Li “Testing the significance of categorical predictor variables in nonparametric regression models”. In: <em>Econometric Reviews</em> Vol. 25 (2006), pp. 523–544, doi: <a href="https://doi.org/10.1080/07474930600972590">10.1080/07474930600972590</a>
+</div>
+<div id="ref-gyimahbrempong_2006" class="csl-entry" role="listitem">
+69. K. Gyimah-Brempong and J.S. Racine “Alcohol availability and crime: A robust approach”. In: <em>Applied Economics</em> Vol. 38 (2006), pp. 1293–1307, doi: <a href="https://doi.org/10.1080/00036840500398869">10.1080/00036840500398869</a>
+</div>
+<div id="ref-racine_2006b" class="csl-entry" role="listitem">
+70. J.S. Racine “Gnuplot 4.0: A portable interactive plotting utility”. In: <em>Journal of Applied Econometrics</em> Vol. 21 (2006), pp. 133–141, doi: <a href="https://doi.org/10.1002/jae.885">10.1002/jae.885</a>
+</div>
+<div id="ref-racine_2006c" class="csl-entry" role="listitem">
+71. J.S. Racine and A. Ullah “Nonparametric econometrics”. In: <em>Palgrave handbook of econometrics: Volume 1, theoretical econometrics</em> (2006), pp. 1001–1034, doi: <a href="https://doi.org/10.12660/bre.v22n12002.2747">10.12660/bre.v22n12002.2747</a>
+</div>
+<div id="ref-racine_2006d" class="csl-entry" role="listitem">
+72. J.S. Racine and A. Ker “Rating crop insurance policies with efficient nonparametric estimators that admit mixed data types”. In: <em>Journal of Agricultural and Resource Economics</em> Vol. 31 (1) (2006), pp. 27–39
+</div>
+<div id="ref-ouyang_2006" class="csl-entry" role="listitem">
+73. D. Ouyang, Q. Li, and J.S. Racine “Cross-validation and the estimation of probability distributions with categorical data”. In: <em>Journal of Nonparametric Statistics</em> Vol. 18 (1) (2006), pp. 69–100, doi: <a href="https://doi.org/10.1080/10485250600569002">10.1080/10485250600569002</a>
+</div>
+<div id="ref-racine_2004a" class="csl-entry" role="listitem">
+74. J.S. Racine, Q. Li, and X. Zhu “Kernel estimation of multivariate conditional distributions”. In: <em>Annals of Economics and Finance</em> Vol. 5 (2) (2004), pp. 211–235
+</div>
+<div id="ref-hall_2004" class="csl-entry" role="listitem">
+75. P. Hall, Q. Li, and J.S. Racine “Cross-validation and the estimation of conditional probability densities”. In: <em>Journal of The American Statistical Association</em> (2004), doi: <a href="https://doi.org/10.1198/016214504000000548">10.1198/016214504000000548</a>
+</div>
+<div id="ref-li_2004a" class="csl-entry" role="listitem">
+76. Q. Li and J.S. Racine “Predictor relevance and extramarital affairs”. In: <em>Journal of Applied Econometrics</em> Vol. 19 (4) (2004), pp. 205–220, doi: <a href="https://doi.org/10.1002/jae.777">10.1002/jae.777</a>
+</div>
+<div id="ref-granger_2004" class="csl-entry" role="listitem">
+77. C. Granger, E. Maasoumi, and J.S. Racine “A dependence metric for possibly nonlinear processes”. In: <em>Journal of Time Series Analysis</em> Vol. 25 (5) (2004), pp. 649–669, doi: <a href="https://doi.org/10.1111/j.1467-9892.2004.01866.x">10.1111/j.1467-9892.2004.01866.x</a>
+</div>
+<div id="ref-li_2004b" class="csl-entry" role="listitem">
+78. Q. Li and J.S. Racine “Cross-validated local linear nonparametric regression”. In: <em>Statistica Sinica</em> Vol. 14 (2) (2004), pp. 485–512, doi: <a href="https://doi.org/10.1201/b15416-13">10.1201/b15416-13</a>
+</div>
+<div id="ref-racine_2004b" class="csl-entry" role="listitem">
+79. J.S. Racine and Q. Li “Nonparametric estimation of regression functions with both categorical and continuous data”. In: <em>Journal of Econometrics</em> Vol. 119 (2004), pp. 99–130, doi: <a href="https://doi.org/10.1016/s0304-4076(03)00157-x">10.1016/s0304-4076(03)00157-x</a>
+</div>
+<div id="ref-li_2004c" class="csl-entry" role="listitem">
+80. Q. Li and J.S. Racine “Nonparametric estimation of distributions with categorical and continuous data”. In: <em>Journal of Multivariate Analysis</em> Vol. 86 (2004), pp. 266–292, doi: <a href="https://doi.org/10.1016/s0047-259x(02)00025-8">10.1016/s0047-259x(02)00025-8</a>
+</div>
+<div id="ref-racine_2002a" class="csl-entry" role="listitem">
+81. J.S. Racine “Parallel distributed kernel estimation”. In: <em>Computational Statistics and Data Analysis</em> Vol. 40 (2002), pp. 293–302, doi: <a href="https://doi.org/10.1016/s0167-9473(01)00109-8">10.1016/s0167-9473(01)00109-8</a>
+</div>
+<div id="ref-racine_2002b" class="csl-entry" role="listitem">
+82. J.S. Racine and R. Hyndman “Using <span>R</span> to teach econometrics”. In: <em>Journal of Applied Econometrics</em> Vol. 17 (2002), pp. 175–189, doi: <a href="https://doi.org/10.1002/jae.657">10.1002/jae.657</a>
+</div>
+<div id="ref-maasoumi_2002" class="csl-entry" role="listitem">
+83. E. Maasoumi and J.S. Racine “Entropy and predictability of stock market returns”. In: <em>Journal of Econometrics</em> Vol. 107 (2002), pp. 291–312, doi: <a href="https://doi.org/10.1016/s0304-4076(01)00125-7">10.1016/s0304-4076(01)00125-7</a>
+</div>
+<div id="ref-racine_2002c" class="csl-entry" role="listitem">
+84. J.S. Racine “<span>“New and improved”</span> direct marketing: A nonparametric approach”. In: <em>Advances in econometrics: Econometric models in marketing</em> Vol. 16 (2002), pp. 141–164, doi: <a href="https://doi.org/10.1016/S0731-9053(02)16007-5">10.1016/S0731-9053(02)16007-5</a>
+</div>
+<div id="ref-racine_2002d" class="csl-entry" role="listitem">
+85. J.S. Racine “Generalized semiparametric binary prediction”. In: <em>Annals of Economics and Finance</em> Vol. 3 (2002), pp. 131–147
+</div>
+<div id="ref-racine_2002e" class="csl-entry" role="listitem">
+86. J.S. Racine “Index-free, density-based multinomial choice”. In: <em>Handbook of applied econometrics and statistical inference</em> (2002), pp. 115–142, doi: <a href="https://doi.org/10.1016/b978-0-12-201150-4.50016-5">10.1016/b978-0-12-201150-4.50016-5</a>
+</div>
+<div id="ref-racine_2001a" class="csl-entry" role="listitem">
+87. J.S. Racine “On the nonlinear predictability of stock returns using financial and economic variables”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 19 (3) (2001), pp. 380–382, doi: <a href="https://doi.org/10.1080/07350015.1999.10524830">10.1080/07350015.1999.10524830</a>
+</div>
+<div id="ref-white_2001" class="csl-entry" role="listitem">
+88. H. White and J.S. Racine “Statistical inference, the bootstrap, and neural network modelling with application to foreign exchange rates”. In: <em>IEEE Transactions on Neural Networks</em> Vol. 12 (4) (2001), pp. 657–673, doi: <a href="https://doi.org/10.1109/72.935080">10.1109/72.935080</a>
+</div>
+<div id="ref-chen_2001" class="csl-entry" role="listitem">
+89. X. Chen, J.S. Racine, and N.R. Swanson “Semiparametric ARX neural network models with an application to forecasting inflation”. In: <em>IEEE Transactions on Neural Networks</em> Vol. 12 (4) (2001), pp. 674–684, doi: <a href="https://doi.org/10.1109/72.935081">10.1109/72.935081</a>
+</div>
+<div id="ref-racine_2001b" class="csl-entry" role="listitem">
+90. J.S. Racine “Bias-corrected kernel regression”. In: <em>Journal of Quantitative Economics</em> Vol. 17 (1) (2001), pp. 25–42
+</div>
+<div id="ref-racine_2001c" class="csl-entry" role="listitem">
+91. J.S. Racine “A consistent cross-validatory method for dependent data: <span class="nocase">hv</span>-block cross-validation”. In: <em>Journal of Econometrics</em> Vol. 99 (2001), pp. 39–61, doi: <a href="https://doi.org/10.1016/S0304-4076(00)00030-0">10.1016/S0304-4076(00)00030-0</a>
+</div>
+<div id="ref-racine_2001d" class="csl-entry" role="listitem">
+92. J.S. Racine and J.B. Smith “Nonparametric estimation of growth in replenishable resource stocks”. In: <em>Advances in econometrics: Applying kernel and nonparametric estimation to economic topics</em> Vol. 14 (2001), pp. 309–327
+</div>
+<div id="ref-racine_2001e" class="csl-entry" role="listitem">
+93. J.S. Racine “Feasible resampling for nonparametric kernel estimators”. In: <em>Journal of Quantitative Economics</em> Vol. 16 (2) (2001), pp. 19–30
+</div>
+<div id="ref-racine_2000a" class="csl-entry" role="listitem">
+94. J.S. Racine “The cygwin tools: A GNU toolkit for windows”. In: <em>Journal of Applied Econometrics</em> Vol. 15 (3) (2000), pp. 331–336, doi: <a href="https://doi.org/10.1002/1099-1255(200005/06)15:3<331::aid-jae558>3.0.co;2-g">10.1002/1099-1255(200005/06)15:3&lt;331::aid-jae558&gt;3.0.co;2-g</a>
+</div>
+<div id="ref-racine_2000b" class="csl-entry" role="listitem">
+95. J.S. Racine “Consistent significance testing for nonparametric regression”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 15 (3) (2000), pp. 369–379, doi: <a href="https://doi.org/10.1080/07350015.1997.10524714">10.1080/07350015.1997.10524714</a>
+</div>
+<div id="ref-racine_2000c" class="csl-entry" role="listitem">
+96. J.S. Racine “Feasible cross-validatory model selection for general stationary processes”. In: <em>Journal of Applied Econometrics</em> Vol. 12 (2000), pp. 169–179, doi: <a href="https://doi.org/10.1002/(sici)1099-1255(199703)12:2<169::aid-jae426>3.0.co;2-p">10.1002/(sici)1099-1255(199703)12:2&lt;169::aid-jae426&gt;3.0.co;2-p</a>
+</div>
+<div id="ref-morrow_1997" class="csl-entry" role="listitem">
+97. G.D. Morrow, R.M. Stein, J.S. Racine, and J. Siegel-Bartelt “Computerized videokeratography of kerataconus kindreds”. In: <em>Canadian Journal of Ophthalmology</em> Vol. 32 (4) (1997), pp. 233–243
+</div>
+<div id="ref-rilstone_1995" class="csl-entry" role="listitem">
+98. J.S. Racine and P. Rilstone “The reverse regression problem: Statistical paradox or artefact of misspecification?”. In: <em>Canadian Journal of Economics</em> Vol. 28 (3) (1995), pp. 502–531
+</div>
+<div id="ref-gonzalezrivera_1995" class="csl-entry" role="listitem">
+99. G. González-Rivera and J.S. Racine “Maximum likelihood estimation and testing strategies in GARCH models”. In: <em>Proceedings of the american statistical association</em> (1995), pp. 47–54
+</div>
+<div id="ref-racine_1993" class="csl-entry" role="listitem">
+100. J.S. Racine “An efficient cross-validation algorithm for window width selection for nonparametric kernel regression”. In: <em>Communications in Statistics</em> Vol. 22 (1993), pp. 1107–1114
+</div>
+<div id="ref-ullah_1992" class="csl-entry" role="listitem">
+101. A. Ullah and J.S. Racine “Smooth improved estimators of econometric parameters”. In: <em>Readings in econometric theory and practice</em> (1992), pp. 197–213
+</div>
+</div>
 </section>
 <section id="published-book-reviews" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="published-book-reviews">Published Book Reviews</h2>
-<ul>
-<li><p>Racine, J.S.&nbsp;(2005), “Finite Sample Econometrics by Aman Ullah,” <em>Economic Record</em>, Volume 81, Issue 1, pages 94-95.</p></li>
-<li><p>Racine, J.S.&nbsp;(2001), “Nonparametric Econometrics - Themes in Modern Econometrics by Adrian Pagan and Aman Ullah,” <em>Journal of The American Statistical Association</em>, March, Volume 96, Number 453, pages 343-345.</p></li>
-</ul>
+<div id="refs-reviews" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-racine_2005_review_ullah" class="csl-entry" role="listitem">
+1. J.S. Racine “Finite sample econometrics by <span>A</span>man <span>U</span>llah”. In: <em>Economic Record</em> Vol. 81 (1) (2005), pp. 94–95
+</div>
+<div id="ref-racine_2001_review_pagan" class="csl-entry" role="listitem">
+2. J.S. Racine “Nonparametric econometrics - themes in modern econometrics by <span>A</span>drian <span>P</span>agan and <span>A</span>man <span>U</span>llah”. In: <em>Journal of The American Statistical Association</em> Vol. 96 (453) (2001), pp. 343–345
+</div>
+</div>
 </section>
 <section id="work-submitted-for-publication" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="work-submitted-for-publication">Work Submitted for Publication</h2>
 <ul>
 <li>Chen, X., T. Christensen, S. Kankanala and J.S. Racine, “npiv: Estimation and Inference for Nonparametric Instrumental Variables Models Using R,” submitted for publication.</li>
 </ul>
-<!--
-
-- Smits, J. and J.S.\ Racine, "Testing Exclusion Restrictions in Nonseparable Triangular Models," submitted for publication.
-
-- Grootendorst, P.\ and J.S.\ Racine, "Distributional Effects of Needs-Based Drug Subsidies: Regional Evidence From Canada," submitted for publication.
-
--->
 </section>
 <section id="workshops" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="workshops">Workshops</h2>
@@ -688,8 +1442,7 @@ Date: 1985-1986</p></li>
 <li><p>2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador, April 19, 2023, “Nonparametric Regression in R.”</p></li>
 <li><p>Center for Research in Empirical Social Sciences (CRESS) Transparent Research Series, McMaster University, November 8, 2019, “Leveraging R for Reproducible Research.”</p></li>
 <li><p>Indian Institute of Management Calcutta, August 13, 14 &amp; 16, 2018, “Nonparametric Methods for Practitioners: Theory with Applications in R.”</p></li>
-<li><p>The University of Crete, 13th Advanced Summer School in Economics, Rethymno, Crete, July 16-20, 2018, “Nonparametric Methods for Practitioners: Theory with Applications in R.”</p>
-<!-- 5030+3715+8000+8483+2590+19718+10940+19400+4000+12712+6298+7282+4500+12000+5000+3500+3400 [1] 136568 --></li>
+<li><p>The University of Crete, 13th Advanced Summer School in Economics, Rethymno, Crete, July 16-20, 2018, “Nonparametric Methods for Practitioners: Theory with Applications in R.”</p></li>
 <li><p>Universidad del Rosario, April 16-20, 2018, “Applied Nonparametric Econometrics.”</p></li>
 <li><p>Spring School Coimbra, May 12-14, 2016, “Applied Nonparametric Econometrics.”</p></li>
 <li><p>CeMMAP University College London, June 22-26, 2015, “Applied Nonparametric Econometrics.”</p></li>
@@ -719,280 +1472,280 @@ Date: 1985-1986</p></li>
 <section id="conference-presentations-and-invited-lectures" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conference-presentations-and-invited-lectures">Conference Presentations and Invited Lectures</h2>
 <ol type="1">
-<li><p>The University of Washington, Seattle, February 18, 2025, “Boundary Corrected Adaptive Conditional Kernel Density Estimation.”</p></li>
-<li><p>The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>2024 Econometrics Workshop, University of Kansas, April 27, 2024, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>6TH Workshop on Goodness-Of-Fit, Change-Point and Related Problems, Skukuza Lodge, Kruger National Park, South Africa, August 27, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>University of Pretoria (Department of Economics), August 21, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>Georgia Institute of Technology (Department of Economics), April 28, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>Emory University (Department of Economics), April 24, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador (keynote speaker), April 19, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>McMaster University (Graduate Program in Statistics), April 4, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>McGill University (Department of Economics), March 10, 2023, “Locally Adaptive Online Functional Data Analysis.”</p></li>
-<li><p>The 5th Conference of the International Symposia for Nonparametric Statistics, June 23, 2022, Paphos Cyprus, “Boundary-Adaptive Kernel Density Estimation.”</p></li>
-<li><p>New Directions in Economic Theory and Empirical Economics Conference (keynote speaker), Indian Institute of Management Kolkata, August 17, 2018, “Dealing with model uncertainty via frequentist model averaging.”</p></li>
-<li><p>Indian Statistical Institute Kolkata, August 10, 2018, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>Universidad del Rosario, April 19, 2018, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>State University of New York Albany, April 5, 2018, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>West Indies Economics Conference, The University of the West Indies, Kingston, Jamaica, March 8, 2018, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), February 27, 2018, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>Shape-Constrained Methods: Inference, Applications, and Practice, Banff International Research Station for Mathematical Innovation and Discovery, January 30, 2018, “Shape Constrained Nonparametric Instrumental Regression.”</p></li>
-<li><p>32nd Annual Congress of the European Economic Association &amp; 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal, “Optimal Model Averaging of Varying Coefficient Models.”</p></li>
-<li><p>3<sup>rd</sup> International Workshop on <em>Financial Markets and Nonlinear Dynamics</em> (keynote speaker), June 2, 2017, Paris, France, “Bootstrap Model Averaging Unit Root Inference.”</p></li>
-<li><p>The University of Cambridge, INET-cemmap Panel Data Conference held at Trinity College, May 23, 2017, “Regression Spline Random Effects Models.”</p></li>
-<li><p>New York Econometrics Camp XII, April 8, 2017, “Optimal Model Averaging of Varying Coefficient Models.”</p></li>
-<li><p>Syracuse University, October 5, 2016, “Nonparametric Regression-Spline Random Effects Models.”</p></li>
-<li><p>Cornell University, October 4, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Bergen, Department of Mathematics, September 22, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Miami, September 27, 2016, “Nonparametric Regression-Spline Random Effects Models.”</p></li>
-<li><p>The University of Ferrara Nonparametric Workshop, May 24 2016, “Smoothing Categorical Covariates - A Bayesian Interpretation.”</p></li>
-<li><p>CSIR (Council for Scientific and Industrial Research, Pretoria South Africa), April 25 2016, “Recent Developments in Nonparametric Estimation - Smoothing Categorical Covariates.”</p></li>
-<li><p>The University of the Witwatersrand CoE-MaSS (Center of Excellence in Mathematical and Statistical Sciences), April 21 2016, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The Johns Hopkins University, February 3, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Queensland, November 25, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>ENSAI (<span class="math inline">\(\acute{\text E}\)</span>cole nationale de la statistique et de l’analyse d l’information), November 12, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>Groupement de Recherche en Economie Quantitative d’Aix-Marseille, October 27, 2015, “Nonparametric Regression-Spline Random Effects Models”</p></li>
-<li><p>Aarhus Universitet (CREATES), September 29, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>Statistische Woche 2015, Hamburg, September 15, 2015, “Smoothing Categorical Regressors.”</p></li>
-<li><p>The University of Colorado Boulder, September 4, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>11th World Congress of the Econometric Society, Montreal, August 21, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The Bristol Econometric Study Group, July 10, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>CR Rao Prize Conference, Penn State University, May 14, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Rochester, April 24, 2015, “Shape Constrained Nonparametric Instrumental Regression.”</p></li>
-<li><p>New York Econometrics Camp X, April 11, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Laval, April 9, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of California, Riverside, Conference in Honor of Aman Ullah, March 13-15, 2015, “Local Polynomial Derivative Estimation: Analytic or Taylor?”</p></li>
-<li><p>State University of New York Stony Brook, February 25, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>The University of Wisconsin-Milwaukee, February 20, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>McMaster University, November 26, 2014, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>Econometrics Conference in Honor of Esfandiar Maasoumi, Emory University, November 15, 2014, “Cross-validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions.”</p></li>
-<li><p>The University of Waterloo, October 10, 2014, “Direct Nonparametric Conditional Quantile Estimation.”</p></li>
-<li><p>School of Computational Science and Engineering, McMaster University, October 8, 2014, “Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach.”</p></li>
-<li><p>The 6th Annual Health Econometrics Workshop (keynote speaker), the University of Toronto, September 26, 2014, “Recent Advances in Nonparametric Instrumental Regression.”</p></li>
-<li><p>The 21st International Conference on Computational Statistics (COMPSTAT 2014), Geneva, Switzerland, August 21, 2014, “Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach.”</p></li>
-<li><p>International Workshop on Applied Probability, Antalya, Turkey, June 18, 2014, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>Rimini Center for Economic Analysis, June 9, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</p></li>
-<li><p>Monash University, May 30, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The University of Melbourne, May 28, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</p></li>
-<li><p>La Trobe University, May 27, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The University of Sydney, May 23, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Københavns Universitet, May 9, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Københavns Universitet, May 9, 2014, “Nonparametric Kernel Regression: An Introduction.”</p></li>
-<li><p>Aarhus Universitet (CREATES), April 30, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The Cowles Foundation, Yale University, March 31, 2014, “Shape Constrained Nonparametric Estimation and Inference - An Overview of Recent Developments.”</p></li>
-<li><p>The Cowles Foundation, Yale University, March 26, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The Cowles Foundation, Yale University, March 24, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</p></li>
-<li><p>The Singapore Management University, February 26, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>National University of Singapore, February 25, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The Nanyang Technological University, Singapore, February 24, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The Canadian Econometrics Study Group, October 19, 2013, Waterloo, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>The American Statistical Association Joint Statistical Meetings, Montreal, August 5, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Universidad de Murcia, May 15, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Universidad Nacional de Educación a Distancia, May 13, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>New York Econometrics Camp VIII, April 6, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Yale University (Department of Economics/Cowles Foundation), March 28, 2013, “Smoothing Parameter Selection for NP Hard Problems.”</p></li>
-<li><p>Fordham University (Department of Economics), March 26, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Emory University (Department of Economics), February 28, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>Emory University (Department of Biostatistics &amp; Bioinformatics), February 15, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), January 29, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</p></li>
-<li><p>McMaster University, November 28, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>The University of Pretoria (Department of Economics), November 15, 2012, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The University of Pretoria (Department of Statistics), November 14, 2012, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 13, 2012, “Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints.”</p></li>
-<li><p>The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 12, 2012, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>Plenary Talk at the 54th Annual Conference of the South African Statistical Association, Nelson Mandela Metropolitan University, November 6, 2012, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>Nelson Mandela Metropolitan University (Department of Statistics), November 3, 2012, “An Overview of Categorical Smoothing Methods and Their Application to Splines.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), October 2, 2012, “On Reproducible Research: R, Sweave, and knitr.”</p></li>
-<li><p>The 1st Conference of the International Society for Nonparametric Statistics, June 15, 2012, Chalkidiki Greece, “Constrained Nonparametric Instrumental Regression.”</p></li>
-<li><p>Monash University, May 25, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>La Trobe University, May 18, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>The University of Melbourne, May 15, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>Cornell University, April 18, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>The University of California Davis, April 9, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>University College London, February 29, 2012, “Nonparametric Instrumental Derivatives.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), January 23, 2012, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The Third French Econometrics Conference (Keynote Speaker), Aix-en-Provence, December 12, 2011, “Mitigating the Curse-of-Dimensionality in Nonparametric Regression.”</p></li>
-<li><p>Carleton University, November 4, 2011, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>McMaster University, October 5, 2011, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The Toulouse School of Economics, May 18, 2011, “Programming with R.”</p></li>
-<li><p>New York Econometrics Camp VI, April 9, 2011, “Categorical Semiparametric Varying Coefficient Models.”</p></li>
-<li><p>The University of Miami, March 25, 2011, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>Universidad de Zaragoza, March 3, 2011, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The University of Manitoba, December 3, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of Windsor (Department of Mathematics and Statistics), November 25, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of Toronto (Department of Statistics), November 11, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The Canadian Econometrics Study Group, October 22, 2010, Vancouver, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>New York Econometrics Camp V, October 2, 2010, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>The Rimini Center for Economic Analysis, June 11, 2010, “Spline Regression in the Presence of Categorical Predictors.”</p></li>
-<li><p>Aarhus Universitet (CREATES), April 15, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>Universidad Carlos III de Madrid, April 12, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The Toulouse School of Economics, April 2, 2010, “Computational Methods in Economics: Reproducible Research.”</p></li>
-<li><p>Vanderbilt University, February 18, 2010, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>Michigan State University (Department of Statistics), February 9, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The American University Info-Metrics Institute, January 25, 2010, “Entropy in Hypothesis Testing: Review and Applications.”</p></li>
-<li><p>The University of Guelph, November 20, 2009, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>Lakehead University, November 6, 2009, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>Michigan State University, October 23, 2009, “Smooth Constrained Frontier Analysis.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), September 29, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of Western Ontario, September 25, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The Canadian Econometrics Study Group, September 19, 2009, “Data-Driven Model Evaluation: A Test for Revealed Performance.”</p></li>
-<li><p>AAEA Meetings, Milwaukee, Wisconsin, July 28, 2009, “The Use of R in Econometric Modeling.”</p></li>
-<li><p>Nuffield College, Oxford, June 19, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>AECON Workshop, Køge, Denmark, June 15, 2009, “Methods in Econometrics.”</p></li>
-<li><p>The University of California, Riverside, May 8, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of California, Los Angeles, May 6, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of California, San Diego, May 5, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>New York Econometrics Camp IV, April 4, 2009, “Data-Driven Model Evaluation: A Test for Revealed Performance.”</p></li>
-<li><p>Queens University, April 2, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of British Columbia, November 28, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The University of Victoria, November 27, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>Simon Fraser University, November 25, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>Advances in Econometrics Conference, Louisiana State University, November 15, 2008, “Nonparametric and Semiparametric Methods in R.”</p></li>
-<li><p>Louisiana State University, November 14, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>Groupement de Recherche en Economie Quantitative d’Aix-Marseille, October 9, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The Toulouse School of Economics, October 6, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>The Canadian Econometrics Study Group, September 27, 2008, “Jackknife Model Averaging.”</p></li>
-<li><p>Syracuse University, September 12, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</p></li>
-<li><p>Cornell University, April 8, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</p></li>
-<li><p>New York Econometrics Camp III, April 4, 2008, “Jackknife Model Averaging.”</p></li>
-<li><p>Southern Methodist University, February 26, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</p></li>
-<li><p>Texas Econometrics Camp XIII, February 16, 2008, “A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>Monash University, February 1, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</p></li>
-<li><p>The University of Melbourne, January 23, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</p></li>
-<li><p>McMaster University, November 20, 2007, “Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors.”</p></li>
-<li><p>The Virginia Polytechnical Institute, October 29, 2007, “Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data.”</p></li>
-<li><p>Indiana University, October 19, 2007, “Kernel Regression with Irrelevant Regressors.”</p></li>
-<li><p>The Canadian Econometrics Study Group, September 28, 2007, “Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data.”</p></li>
-<li><p>The University of Alberta, May 11, 2007, “Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors.”</p></li>
-<li><p>McGill University, April 6, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</p></li>
-<li><p>Cornell University, February 27, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</p></li>
-<li><p>Oregon State University, January 26, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</p></li>
-<li><p>The South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006, “A Partially Linear Kernel Estimator for Categorical Data.”</p></li>
-<li><p>HEC Montreal, November 16, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</p></li>
-<li><p>The University of Toronto, November 10, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</p></li>
-<li><p>SHARCNET Fall Workshop, the University of Waterloo, October 16, 2006, “Topics on scientific and statistical parallel computing using R on distributed systems.”</p></li>
-<li><p>The Far East Meetings of the Econometric Society, Tsinghua University, Beijing, China, July 9th-12th, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</p></li>
-<li><p>useR! 2006, Wirtschaftsuniversität Wien, Vienna, Austria, June 16, 2006, “np: A Package for Nonparametric Kernel Smoothing with Mixed Datatypes.”</p></li>
-<li><p>The Southern Methodist University, May 8, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</p></li>
-<li><p>Texas A&amp;M University, May 4, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</p></li>
-<li><p>The University of Waterloo, March 31, 2006, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>New York Econometrics Camp I, February 4, 2006, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance.”</p></li>
-<li><p>The Georgia Institute of Technology, November 8, 2005, “Recent Developments in Kernel Smoothing with both Categorical and Continuous Data.”</p></li>
-<li><p>The Canadian Econometrics Study Group, October 22, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>McMaster University (Department of Mathematics and Statistics), September 27, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance.”</p></li>
-<li><p>The 9th World Congress of the Econometric Society, University College London, August 24, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 10, 2005, “A Nonparametric Wald Test of General Nonlinear Restrictions.”</p></li>
-<li><p>SPIDA, York University, June 3, 2005, “Bootstrapping When Only a Small Number of Replications are Possible.”</p></li>
-<li><p>The University of Toronto, May 26, 2005, Keynote Speaker, Canadian Health Economics Study Group, “Nonparametric Methods for Mixed Categorical and Continuous Processes with Applications in the Health Arena.”</p></li>
-<li><p>Texas A&amp;M University, January 19, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>Southern Economic Association, November 21, 2004, “A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The University of California Riverside, November 8, 2004, “Kernel Methods in Mixed Data Models.”</p></li>
-<li><p>New York University, November 5, 2004, “Kernel Methods in Mixed Data Models.”</p></li>
-<li><p>The Midwest Econometrics Group, Northwestern University, October 16, 2004, “Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The Canadian Econometric Study Group 2004, York University, September 25, 2004, “A Versatile and Robust Metric Entropy Test of Time Reversibility and Dependence.”</p></li>
-<li><p>Georgia State University, September 10, 2004, “Nonparametric Estimation and Inference with Mixed Data Types.”</p></li>
-<li><p>McMaster University, April 30, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>McGill University, April 2, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>Syracuse University, February 26, 2004, “Parallel Distributed Numerical Computation.”</p></li>
-<li><p>The University of Toronto, February 2, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>Simon Fraser University, December 2, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>The University of British Columbia, December 1, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>State University of New York, Binghamton, November 21, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>Queens University, November 4, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>The Canadian Econometric Study Group 2003, McMaster University, September 20, 2003, “A Nonparametric Analysis of the Determinants of Child Schooling in Indonesia.”</p></li>
-<li><p>York University, September 19, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>Syracuse University, March 26, 2003, “An Introduction to Kernel Smoothing with Mixed Data Types.”</p></li>
-<li><p>Texas Econometrics Camp VIII, February 23, 2003, “Inference via Kernel Smoothing of Bootstrap P Values.”</p></li>
-<li><p>Southern Methodist University, February 21, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>The University of Guelph, November 15, 2002, “Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables.”</p></li>
-<li><p>Cornell University, October 1, 2002, “Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables.”</p></li>
-<li><p>The Australian National University, September 20, 2002, “To smooth or not to smooth? Kernel smoothing for mixed data with applications.”</p></li>
-<li><p>International Conference on Current Advances and Trends in Nonparametric Statistics held in Crete, Greece, July 15-19, 2002, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</p></li>
-<li><p>Texas Econometrics Camp VII, February 24, 2002, “Growth and Convergence: A Profile of Distribution Dynamics and Mobility.”</p></li>
-<li><p>Syracuse University, November 16, 2001, “Nonparametric Estimation and Inference with Mixed Data Types.”</p></li>
-<li><p>The University of Miami, October 12, 2001, “Nonparametric Estimation and Inference with Mixed Data Types.”</p></li>
-<li><p>The University of Central Florida, September 7, 2001, “Cells and Kernels: Nonparametric Estimation with Mixed Data Types.”</p></li>
-<li><p>La Trobe University, July 20, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</p></li>
-<li><p>Monash University, July 19, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</p></li>
-<li><p>The University of Melbourne, July 16, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</p></li>
-<li><p>Interface ’01, The 33rd Symposium on the Interface of Computing Science and Statistics, Los Angeles, June 14, 2001, “Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates.”</p></li>
-<li><p>Texas A&amp;M University, April 19, 2001, “Nonparametric Estimation with Mixed Data Types.”</p></li>
-<li><p>The University of Arizona, January 18, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</p></li>
-<li><p>Southern Methodist University, November 17, 2000, “A Global Nonparametric Wald-Type Test of Equality Restrictions with Mixed Data Types.”</p></li>
-<li><p>The University of Rochester, November 9, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>Cornell University, November 7, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The Canadian Econometric Study Group 2000, the University of Guelph, September 29, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 16, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 15, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>Southern Methodist University, April 17, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The University of Texas, Austin, April 15, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</p></li>
-<li><p>The Canadian Econometric Study Group 1999, Montreal, September 25, 1999, “A Metric Entropy and a New Test of Independence.”</p></li>
-<li><p>The Far East Meetings of the Econometric Society, Singapore, July 3, 1999, “Generalized Semiparametric Binary Choice.”</p></li>
-<li><p>The University of South Florida, April 23, 1999, “A Metric Entropy and a New Test of Independence.”</p></li>
-<li><p>Texas Econometrics Camp IV, February 27, 1999, “A Metric Entropy and a New Test of Independence.”</p></li>
-<li><p>The University of South Florida, November, 1998, “Density Based Multinomial Choice.”</p></li>
-<li><p>Pennsylvania State University, October 9, 1998, “Density Based Multinomial Choice.”</p></li>
-<li><p>The University of South Florida, February, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</p></li>
-<li><p>The North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, June, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</p></li>
-<li><p>The University of South Florida Department of Epidemiology and Biostatistics, May, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</p></li>
-<li><p>The North American Summer Meetings of the Econometric Society, Caltech, June, 1997, “Bias-Corrected Kernel Regression.”</p></li>
-<li><p>Wilfrid Laurier University, March, 1997, “Bias-Corrected Kernel Regression.”</p></li>
-<li><p>The University of Florida, November, 1996, “A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation.”</p></li>
-<li><p>The University of South Florida, September, 1996, “A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation.”</p></li>
-<li><p>North American Summer Meetings of the Econometric Society, July, 1994, “Statistical Inference, the Bootstrap, and Neural Network Modelling.”</p></li>
-<li><p>Florida State University, March, 1994, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>The Canadian Econometric Study Group 1994, the University of Toronto, September, 1993, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>The University of South Florida, March, 1993, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>The University of California San Diego, March, 1993, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>The University of California Riverside, February, 1993, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>Georgia State University, February, 1993, “Consistent Significance Testing for Nonparametric Regression.”</p></li>
-<li><p>South East Asia Meetings of the Econometric Society, Bombay India, December, 1992, “Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds.”</p></li>
-<li><p>The University of California San Diego, October 1992, “Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds.”</p></li>
-<li><p>McMaster University, September 1992, “The Reverse Regression Paradox: Some New Evidence.”</p></li>
-<li><p>The Canadian Economics Association Meetings, September 1992, “The Reverse Regression Paradox: Some New Evidence.”</p></li>
-<li><p>York University, March 1992, “The Reverse Regression Paradox: Some New Evidence.”</p></li>
-<li><p>The University of Toronto, November, 1991, “Computer Assisted Corneal Topography of Kerataconus Kindreds.”</p></li>
-<li><p>The Canadian Econometric Study Group 1990, September, 1990, “A Semiparametric Approach to the Estimation of Systems of Equations Models in the Presence of Heteroscedasticity of Unknown Form.”</p></li>
-<li><p>York University, February, 1989, “Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form.”</p></li>
-<li><p>The University of Missouri, Columbia, February, 1989, “Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form.”</p></li>
-<li><p>The University of Windsor, February, 1989, “Semiparametric Estimation of SUR models: A Heteroscedasticity Consistent Approach.”</p></li>
+<li>The University of Washington, Seattle, February 18, 2025, “Boundary Corrected Adaptive Conditional Kernel Density Estimation.”</li>
+<li>The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>2024 Econometrics Workshop, University of Kansas, April 27, 2024, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>6TH Workshop on Goodness-Of-Fit, Change-Point and Related Problems, Skukuza Lodge, Kruger National Park, South Africa, August 27, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>University of Pretoria (Department of Economics), August 21, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>Georgia Institute of Technology (Department of Economics), April 28, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>Emory University (Department of Economics), April 24, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador (keynote speaker), April 19, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>McMaster University (Graduate Program in Statistics), April 4, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>McGill University (Department of Economics), March 10, 2023, “Locally Adaptive Online Functional Data Analysis.”</li>
+<li>The 5th Conference of the International Symposia for Nonparametric Statistics, June 23, 2022, Paphos Cyprus, “Boundary-Adaptive Kernel Density Estimation.”</li>
+<li>New Directions in Economic Theory and Empirical Economics Conference (keynote speaker), Indian Institute of Management Kolkata, August 17, 2018, “Dealing with model uncertainty via frequentist model averaging.”</li>
+<li>Indian Statistical Institute Kolkata, August 10, 2018, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>Universidad del Rosario, April 19, 2018, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>State University of New York Albany, April 5, 2018, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>West Indies Economics Conference, The University of the West Indies, Kingston, Jamaica, March 8, 2018, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), February 27, 2018, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>Shape-Constrained Methods: Inference, Applications, and Practice, Banff International Research Station for Mathematical Innovation and Discovery, January 30, 2018, “Shape Constrained Nonparametric Instrumental Regression.”</li>
+<li>32nd Annual Congress of the European Economic Association &amp; 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal, “Optimal Model Averaging of Varying Coefficient Models.”</li>
+<li>3<sup>rd</sup> International Workshop on <em>Financial Markets and Nonlinear Dynamics</em> (keynote speaker), June 2, 2017, Paris, France, “Bootstrap Model Averaging Unit Root Inference.”</li>
+<li>The University of Cambridge, INET-cemmap Panel Data Conference held at Trinity College, May 23, 2017, “Regression Spline Random Effects Models.”</li>
+<li>New York Econometrics Camp XII, April 8, 2017, “Optimal Model Averaging of Varying Coefficient Models.”</li>
+<li>Syracuse University, October 5, 2016, “Nonparametric Regression-Spline Random Effects Models.”</li>
+<li>Cornell University, October 4, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Bergen, Department of Mathematics, September 22, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Miami, September 27, 2016, “Nonparametric Regression-Spline Random Effects Models.”</li>
+<li>The University of Ferrara Nonparametric Workshop, May 24 2016, “Smoothing Categorical Covariates - A Bayesian Interpretation.”</li>
+<li>CSIR (Council for Scientific and Industrial Research, Pretoria South Africa), April 25 2016, “Recent Developments in Nonparametric Estimation - Smoothing Categorical Covariates.”</li>
+<li>The University of the Witwatersrand CoE-MaSS (Center of Excellence in Mathematical and Statistical Sciences), April 21 2016, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The Johns Hopkins University, February 3, 2016, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Queensland, November 25, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>ENSAI (École nationale de la statistique et de l’analyse d l’information), November 12, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>Groupement de Recherche en Economie Quantitative d’Aix-Marseille, October 27, 2015, “Nonparametric Regression-Spline Random Effects Models”</li>
+<li>Aarhus Universitet (CREATES), September 29, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>Statistische Woche 2015, Hamburg, September 15, 2015, “Smoothing Categorical Regressors.”</li>
+<li>The University of Colorado Boulder, September 4, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>11th World Congress of the Econometric Society, Montreal, August 21, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The Bristol Econometric Study Group, July 10, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>CR Rao Prize Conference, Penn State University, May 14, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Rochester, April 24, 2015, “Shape Constrained Nonparametric Instrumental Regression.”</li>
+<li>New York Econometrics Camp X, April 11, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Laval, April 9, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of California, Riverside, Conference in Honor of Aman Ullah, March 13-15, 2015, “Local Polynomial Derivative Estimation: Analytic or Taylor?”</li>
+<li>State University of New York Stony Brook, February 25, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>The University of Wisconsin-Milwaukee, February 20, 2015, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>McMaster University, November 26, 2014, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>Econometrics Conference in Honor of Esfandiar Maasoumi, Emory University, November 15, 2014, “Cross-validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions.”</li>
+<li>The University of Waterloo, October 10, 2014, “Direct Nonparametric Conditional Quantile Estimation.”</li>
+<li>School of Computational Science and Engineering, McMaster University, October 8, 2014, “Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach.”</li>
+<li>The 6th Annual Health Econometrics Workshop (keynote speaker), the University of Toronto, September 26, 2014, “Recent Advances in Nonparametric Instrumental Regression.”</li>
+<li>The 21st International Conference on Computational Statistics (COMPSTAT 2014), Geneva, Switzerland, August 21, 2014, “Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach.”</li>
+<li>International Workshop on Applied Probability, Antalya, Turkey, June 18, 2014, “Smooth Constrained Frontier Analysis.”</li>
+<li>Rimini Center for Economic Analysis, June 9, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</li>
+<li>Monash University, May 30, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The University of Melbourne, May 28, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</li>
+<li>La Trobe University, May 27, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The University of Sydney, May 23, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Københavns Universitet, May 9, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Københavns Universitet, May 9, 2014, “Nonparametric Kernel Regression: An Introduction.”</li>
+<li>Aarhus Universitet (CREATES), April 30, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The Cowles Foundation, Yale University, March 31, 2014, “Shape Constrained Nonparametric Estimation and Inference - An Overview of Recent Developments.”</li>
+<li>The Cowles Foundation, Yale University, March 26, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The Cowles Foundation, Yale University, March 24, 2014, “The Smooth Colonel and the Reverend Find Common Ground.”</li>
+<li>The Singapore Management University, February 26, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>National University of Singapore, February 25, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The Nanyang Technological University, Singapore, February 24, 2014, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The Canadian Econometrics Study Group, October 19, 2013, Waterloo, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>The American Statistical Association Joint Statistical Meetings, Montreal, August 5, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Universidad de Murcia, May 15, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Universidad Nacional de Educación a Distancia, May 13, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>New York Econometrics Camp VIII, April 6, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Yale University (Department of Economics/Cowles Foundation), March 28, 2013, “Smoothing Parameter Selection for NP Hard Problems.”</li>
+<li>Fordham University (Department of Economics), March 26, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Emory University (Department of Economics), February 28, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>Emory University (Department of Biostatistics &amp; Bioinformatics), February 15, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), January 29, 2013, “Infinite Order Cross-Validated Local Polynomial Regression.”</li>
+<li>McMaster University, November 28, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>The University of Pretoria (Department of Economics), November 15, 2012, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The University of Pretoria (Department of Statistics), November 14, 2012, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 13, 2012, “Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints.”</li>
+<li>The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 12, 2012, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>Plenary Talk at the 54th Annual Conference of the South African Statistical Association, Nelson Mandela Metropolitan University, November 6, 2012, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>Nelson Mandela Metropolitan University (Department of Statistics), November 3, 2012, “An Overview of Categorical Smoothing Methods and Their Application to Splines.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), October 2, 2012, “On Reproducible Research: R, Sweave, and knitr.”</li>
+<li>The 1st Conference of the International Society for Nonparametric Statistics, June 15, 2012, Chalkidiki Greece, “Constrained Nonparametric Instrumental Regression.”</li>
+<li>Monash University, May 25, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>La Trobe University, May 18, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>The University of Melbourne, May 15, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>Cornell University, April 18, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>The University of California Davis, April 9, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>University College London, February 29, 2012, “Nonparametric Instrumental Derivatives.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), January 23, 2012, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The Third French Econometrics Conference (Keynote Speaker), Aix-en-Provence, December 12, 2011, “Mitigating the Curse-of-Dimensionality in Nonparametric Regression.”</li>
+<li>Carleton University, November 4, 2011, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>McMaster University, October 5, 2011, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The Toulouse School of Economics, May 18, 2011, “Programming with R.”</li>
+<li>New York Econometrics Camp VI, April 9, 2011, “Categorical Semiparametric Varying Coefficient Models.”</li>
+<li>The University of Miami, March 25, 2011, “Smooth Constrained Frontier Analysis.”</li>
+<li>Universidad de Zaragoza, March 3, 2011, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The University of Manitoba, December 3, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of Windsor (Department of Mathematics and Statistics), November 25, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of Toronto (Department of Statistics), November 11, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The Canadian Econometrics Study Group, October 22, 2010, Vancouver, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>New York Econometrics Camp V, October 2, 2010, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>The Rimini Center for Economic Analysis, June 11, 2010, “Spline Regression in the Presence of Categorical Predictors.”</li>
+<li>Aarhus Universitet (CREATES), April 15, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>Universidad Carlos III de Madrid, April 12, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The Toulouse School of Economics, April 2, 2010, “Computational Methods in Economics: Reproducible Research.”</li>
+<li>Vanderbilt University, February 18, 2010, “Smooth Constrained Frontier Analysis.”</li>
+<li>Michigan State University (Department of Statistics), February 9, 2010, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The American University Info-Metrics Institute, January 25, 2010, “Entropy in Hypothesis Testing: Review and Applications.”</li>
+<li>The University of Guelph, November 20, 2009, “Smooth Constrained Frontier Analysis.”</li>
+<li>Lakehead University, November 6, 2009, “Smooth Constrained Frontier Analysis.”</li>
+<li>Michigan State University, October 23, 2009, “Smooth Constrained Frontier Analysis.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), September 29, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of Western Ontario, September 25, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The Canadian Econometrics Study Group, September 19, 2009, “Data-Driven Model Evaluation: A Test for Revealed Performance.”</li>
+<li>AAEA Meetings, Milwaukee, Wisconsin, July 28, 2009, “The Use of R in Econometric Modeling.”</li>
+<li>Nuffield College, Oxford, June 19, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>AECON Workshop, Køge, Denmark, June 15, 2009, “Methods in Econometrics.”</li>
+<li>The University of California, Riverside, May 8, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of California, Los Angeles, May 6, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of California, San Diego, May 5, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>New York Econometrics Camp IV, April 4, 2009, “Data-Driven Model Evaluation: A Test for Revealed Performance.”</li>
+<li>Queens University, April 2, 2009, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of British Columbia, November 28, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The University of Victoria, November 27, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>Simon Fraser University, November 25, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>Advances in Econometrics Conference, Louisiana State University, November 15, 2008, “Nonparametric and Semiparametric Methods in R.”</li>
+<li>Louisiana State University, November 14, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>Groupement de Recherche en Economie Quantitative d’Aix-Marseille, October 9, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The Toulouse School of Economics, October 6, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>The Canadian Econometrics Study Group, September 27, 2008, “Jackknife Model Averaging.”</li>
+<li>Syracuse University, September 12, 2008, “Constrained Nonparametric Kernel Regression: Estimation and Inference.”</li>
+<li>Cornell University, April 8, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</li>
+<li>New York Econometrics Camp III, April 4, 2008, “Jackknife Model Averaging.”</li>
+<li>Southern Methodist University, February 26, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</li>
+<li>Texas Econometrics Camp XIII, February 16, 2008, “A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data.”</li>
+<li>Monash University, February 1, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</li>
+<li>The University of Melbourne, January 23, 2008, “Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data.”</li>
+<li>McMaster University, November 20, 2007, “Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors.”</li>
+<li>The Virginia Polytechnical Institute, October 29, 2007, “Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data.”</li>
+<li>Indiana University, October 19, 2007, “Kernel Regression with Irrelevant Regressors.”</li>
+<li>The Canadian Econometrics Study Group, September 28, 2007, “Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data.”</li>
+<li>The University of Alberta, May 11, 2007, “Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors.”</li>
+<li>McGill University, April 6, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</li>
+<li>Cornell University, February 27, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</li>
+<li>Oregon State University, January 26, 2007, “A Partially Linear Kernel Estimator for Categorical Data.”</li>
+<li>The South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006, “A Partially Linear Kernel Estimator for Categorical Data.”</li>
+<li>HEC Montreal, November 16, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</li>
+<li>The University of Toronto, November 10, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</li>
+<li>SHARCNET Fall Workshop, the University of Waterloo, October 16, 2006, “Topics on scientific and statistical parallel computing using R on distributed systems.”</li>
+<li>The Far East Meetings of the Econometric Society, Tsinghua University, Beijing, China, July 9th-12th, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</li>
+<li>useR! 2006, Wirtschaftsuniversität Wien, Vienna, Austria, June 16, 2006, “np: A Package for Nonparametric Kernel Smoothing with Mixed Datatypes.”</li>
+<li>The Southern Methodist University, May 8, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</li>
+<li>Texas A&amp;M University, May 4, 2006, “Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data.”</li>
+<li>The University of Waterloo, March 31, 2006, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</li>
+<li>New York Econometrics Camp I, February 4, 2006, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance.”</li>
+<li>The Georgia Institute of Technology, November 8, 2005, “Recent Developments in Kernel Smoothing with both Categorical and Continuous Data.”</li>
+<li>The Canadian Econometrics Study Group, October 22, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</li>
+<li>McMaster University (Department of Mathematics and Statistics), September 27, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance.”</li>
+<li>The 9th World Congress of the Econometric Society, University College London, August 24, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</li>
+<li>The American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 10, 2005, “A Nonparametric Wald Test of General Nonlinear Restrictions.”</li>
+<li>SPIDA, York University, June 3, 2005, “Bootstrapping When Only a Small Number of Replications are Possible.”</li>
+<li>The University of Toronto, May 26, 2005, Keynote Speaker, Canadian Health Economics Study Group, “Nonparametric Methods for Mixed Categorical and Continuous Processes with Applications in the Health Arena.”</li>
+<li>Texas A&amp;M University, January 19, 2005, “Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data.”</li>
+<li>Southern Economic Association, November 21, 2004, “A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data.”</li>
+<li>The University of California Riverside, November 8, 2004, “Kernel Methods in Mixed Data Models.”</li>
+<li>New York University, November 5, 2004, “Kernel Methods in Mixed Data Models.”</li>
+<li>The Midwest Econometrics Group, Northwestern University, October 16, 2004, “Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data.”</li>
+<li>The Canadian Econometric Study Group 2004, York University, September 25, 2004, “A Versatile and Robust Metric Entropy Test of Time Reversibility and Dependence.”</li>
+<li>Georgia State University, September 10, 2004, “Nonparametric Estimation and Inference with Mixed Data Types.”</li>
+<li>McMaster University, April 30, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>McGill University, April 2, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>Syracuse University, February 26, 2004, “Parallel Distributed Numerical Computation.”</li>
+<li>The University of Toronto, February 2, 2004, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>Simon Fraser University, December 2, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>The University of British Columbia, December 1, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>State University of New York, Binghamton, November 21, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>Queens University, November 4, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>The Canadian Econometric Study Group 2003, McMaster University, September 20, 2003, “A Nonparametric Analysis of the Determinants of Child Schooling in Indonesia.”</li>
+<li>York University, September 19, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>Syracuse University, March 26, 2003, “An Introduction to Kernel Smoothing with Mixed Data Types.”</li>
+<li>Texas Econometrics Camp VIII, February 23, 2003, “Inference via Kernel Smoothing of Bootstrap P Values.”</li>
+<li>Southern Methodist University, February 21, 2003, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>The University of Guelph, November 15, 2002, “Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables.”</li>
+<li>Cornell University, October 1, 2002, “Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables.”</li>
+<li>The Australian National University, September 20, 2002, “To smooth or not to smooth? Kernel smoothing for mixed data with applications.”</li>
+<li>International Conference on Current Advances and Trends in Nonparametric Statistics held in Crete, Greece, July 15-19, 2002, “Testing the Significance of Categorical Variables in Nonparametric Regression Models.”</li>
+<li>Texas Econometrics Camp VII, February 24, 2002, “Growth and Convergence: A Profile of Distribution Dynamics and Mobility.”</li>
+<li>Syracuse University, November 16, 2001, “Nonparametric Estimation and Inference with Mixed Data Types.”</li>
+<li>The University of Miami, October 12, 2001, “Nonparametric Estimation and Inference with Mixed Data Types.”</li>
+<li>The University of Central Florida, September 7, 2001, “Cells and Kernels: Nonparametric Estimation with Mixed Data Types.”</li>
+<li>La Trobe University, July 20, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</li>
+<li>Monash University, July 19, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</li>
+<li>The University of Melbourne, July 16, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</li>
+<li>Interface ’01, The 33rd Symposium on the Interface of Computing Science and Statistics, Los Angeles, June 14, 2001, “Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates.”</li>
+<li>Texas A&amp;M University, April 19, 2001, “Nonparametric Estimation with Mixed Data Types.”</li>
+<li>The University of Arizona, January 18, 2001, “Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types.”</li>
+<li>Southern Methodist University, November 17, 2000, “A Global Nonparametric Wald-Type Test of Equality Restrictions with Mixed Data Types.”</li>
+<li>The University of Rochester, November 9, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</li>
+<li>Cornell University, November 7, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</li>
+<li>The Canadian Econometric Study Group 2000, the University of Guelph, September 29, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</li>
+<li>The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 16, 2000, “Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data.”</li>
+<li>The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 15, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</li>
+<li>Southern Methodist University, April 17, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</li>
+<li>The University of Texas, Austin, April 15, 2000, “Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data.”</li>
+<li>The Canadian Econometric Study Group 1999, Montreal, September 25, 1999, “A Metric Entropy and a New Test of Independence.”</li>
+<li>The Far East Meetings of the Econometric Society, Singapore, July 3, 1999, “Generalized Semiparametric Binary Choice.”</li>
+<li>The University of South Florida, April 23, 1999, “A Metric Entropy and a New Test of Independence.”</li>
+<li>Texas Econometrics Camp IV, February 27, 1999, “A Metric Entropy and a New Test of Independence.”</li>
+<li>The University of South Florida, November, 1998, “Density Based Multinomial Choice.”</li>
+<li>Pennsylvania State University, October 9, 1998, “Density Based Multinomial Choice.”</li>
+<li>The University of South Florida, February, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</li>
+<li>The North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, June, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</li>
+<li>The University of South Florida Department of Epidemiology and Biostatistics, May, 1998, “Nonparametric Maximum Likelihood Estimation and Inference.”</li>
+<li>The North American Summer Meetings of the Econometric Society, Caltech, June, 1997, “Bias-Corrected Kernel Regression.”</li>
+<li>Wilfrid Laurier University, March, 1997, “Bias-Corrected Kernel Regression.”</li>
+<li>The University of Florida, November, 1996, “A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation.”</li>
+<li>The University of South Florida, September, 1996, “A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation.”</li>
+<li>North American Summer Meetings of the Econometric Society, July, 1994, “Statistical Inference, the Bootstrap, and Neural Network Modelling.”</li>
+<li>Florida State University, March, 1994, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>The Canadian Econometric Study Group 1994, the University of Toronto, September, 1993, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>The University of South Florida, March, 1993, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>The University of California San Diego, March, 1993, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>The University of California Riverside, February, 1993, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>Georgia State University, February, 1993, “Consistent Significance Testing for Nonparametric Regression.”</li>
+<li>South East Asia Meetings of the Econometric Society, Bombay India, December, 1992, “Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds.”</li>
+<li>The University of California San Diego, October 1992, “Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds.”</li>
+<li>McMaster University, September 1992, “The Reverse Regression Paradox: Some New Evidence.”</li>
+<li>The Canadian Economics Association Meetings, September 1992, “The Reverse Regression Paradox: Some New Evidence.”</li>
+<li>York University, March 1992, “The Reverse Regression Paradox: Some New Evidence.”</li>
+<li>The University of Toronto, November, 1991, “Computer Assisted Corneal Topography of Kerataconus Kindreds.”</li>
+<li>The Canadian Econometric Study Group 1990, September, 1990, “A Semiparametric Approach to the Estimation of Systems of Equations Models in the Presence of Heteroscedasticity of Unknown Form.”</li>
+<li>York University, February, 1989, “Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form.”</li>
+<li>The University of Missouri, Columbia, February, 1989, “Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form.”</li>
+<li>The University of Windsor, February, 1989, “Semiparametric Estimation of SUR models: A Heteroscedasticity Consistent Approach.”</li>
 </ol>
 </section>
 <section id="conference-organization-and-participation" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conference-organization-and-participation">Conference Organization and Participation</h2>
 <ol type="1">
-<li><p>Member of Scientific Committe, Conference Volume Guest Editor, Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 25-29, 2024, held in Braga, Portugal.</p></li>
-<li><p>Discussant for “Kernel Estimation in Regression on Vector and Function Spaces” by Sid Kankanala, Marcia Schafgans, and Victoria Zinde-Walsh, the Canadian Econometrics Study Group, McMaster University, Hamilton Ontario, October 28, 2023.</p></li>
-<li><p>Session Organizer and Chair, <em>International Symposia for Nonparametric Statistics</em>, June 20-24, 2022, held in Paphos, Cyprus.</p></li>
-<li><p>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 11-15, 2018, held in Salerno, Italy.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp XIII, April 7, 2018.</p></li>
-<li><p>Session Chair at the 32nd Annual Congress of the European Economic Association &amp; 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp XII, April 8, 2017.</p></li>
-<li><p>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 11-15, 2016, held in Avignon, France.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp XI, April 9, 2016.</p></li>
-<li><p>Programme Committee member, Info-Metrics Conference on Information-Theoretic Methods of Inference held at Clare College, the University of Cambridge, April 1-2, 2016.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp X, April 12, 2015.</p></li>
-<li><p>Panel Discussant, Info-Metrics Conference on Philosophy of Information and Information Processing, Pembroke College, the University of Oxford, March 27, 2015.</p></li>
-<li><p>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 12-16, 2014, held in Cádiz, España.</p></li>
-<li><p>Session Chair at the Info-Metrics Institute Conference on Information, Instability and Fragility in Networks, Boulder Colorado, November 15, 2013.</p></li>
-<li><p>Discussant for “Quantile Regression for Panel Data Models with Fixed Effects and Small T: Identification and Estimation” by Maria Ponomareva, the Canadian Econometrics Study Group, Ryerson University, Toronto Ontario, October 13, 2011.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp VI, April 10, 2011.</p></li>
-<li><p>Discussant for “Tighter Bounds in Triangular Systems” by Jun, Pinkse and Xu, Canadian Econometrics Study Group, Carleton University, Ottawa Ontario, September 19, 2009.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp IV, April 5, 2009.</p></li>
-<li><p>Session Chair at the New York Econometrics Camp II, March 24, 2007.</p></li>
-<li><p>Session Chair of the Nonparametric/Semiparametric Econometrics Session, South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006.</p></li>
-<li><p>Session Chair of the Model Selection Session, Canadian Econometrics Study Group, Brock University, Niagara Falls, Ontario, October 21, 2006.</p></li>
-<li><p>The Canadian Econometrics Study Group Program Committee, Brock University, Niagara Falls, Ontario, 2006.</p></li>
-<li><p>Discussant for “Nonstandard Asymptotics for Quantile Regression” Chuan Goh (the University of Toronto), Canadian Econometrics Study Group, Simon Fraser University, Vancouver B.C., October 22, 2005.</p></li>
-<li><p>Session Chair of the Nonparametric Estimation II Session at the 9th World Congress of the Econometric Society, University College London, August 24, 2005.</p></li>
-<li><p>Session Chair of the Econometric Methods and Applications Session at the American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 8, 2005.</p></li>
-<li><p>Discussant for “Kernel Estimation When Density Does Not Exist” by Victoria Zinde-Walsh (McGill University), Canadian Economics Association Meeting, May 29, 2005.</p></li>
-<li><p>Session Chair of the Nonparametric Methods II Session at the Fifth World Congress of the Econometric Society, the University of Washington, August 15, 2000.</p></li>
-<li><p>Session Chair of the Applied Econometrics Session at the Far East Meetings of the Econometric Society, Singapore, July 3, 1999.</p></li>
-<li><p>Discussant for “The Relative Measurement Error Bias in Nonparametric and OLS Regression: Implications for Specification Tests” by Chris Bollinger (Georgia State University), North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, July, 1998.</p></li>
-<li><p>Discussant for “Semiparametric Maximum Likelihood Estimation of Nonlinear Regression Models and Monte Carlo Evidence” by Jian Yang (the University of Western Ontario), Canadian Econometric Study Group meetings, Queens University, September, 1997.</p></li>
-<li><p>Discussant for “An Algorithm for Robust Regression” by Lonnie Magee (McMaster University) at the Canadian Econometric Study Group meetings at the University of Laval, September, 1991.</p></li>
+<li>Member of Scientific Committe, Conference Volume Guest Editor, Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 25-29, 2024, held in Braga, Portugal.</li>
+<li>Discussant for “Kernel Estimation in Regression on Vector and Function Spaces” by Sid Kankanala, Marcia Schafgans, and Victoria Zinde-Walsh, the Canadian Econometrics Study Group, McMaster University, Hamilton Ontario, October 28, 2023.</li>
+<li>Session Organizer and Chair, <em>International Symposia for Nonparametric Statistics</em>, June 20-24, 2022, held in Paphos, Cyprus.</li>
+<li>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 11-15, 2018, held in Salerno, Italy.</li>
+<li>Session Chair at the New York Econometrics Camp XIII, April 7, 2018.</li>
+<li>Session Chair at the 32nd Annual Congress of the European Economic Association &amp; 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal.</li>
+<li>Session Chair at the New York Econometrics Camp XII, April 8, 2017.</li>
+<li>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 11-15, 2016, held in Avignon, France.</li>
+<li>Session Chair at the New York Econometrics Camp XI, April 9, 2016.</li>
+<li>Programme Committee member, Info-Metrics Conference on Information-Theoretic Methods of Inference held at Clare College, the University of Cambridge, April 1-2, 2016.</li>
+<li>Session Chair at the New York Econometrics Camp X, April 12, 2015.</li>
+<li>Panel Discussant, Info-Metrics Conference on Philosophy of Information and Information Processing, Pembroke College, the University of Oxford, March 27, 2015.</li>
+<li>Session Organizer and Chair, <em>International Society for Nonparametric Statistics</em>, June 12-16, 2014, held in Cádiz, España.</li>
+<li>Session Chair at the Info-Metrics Institute Conference on Information, Instability and Fragility in Networks, Boulder Colorado, November 15, 2013.</li>
+<li>Discussant for “Quantile Regression for Panel Data Models with Fixed Effects and Small T: Identification and Estimation” by Maria Ponomareva, the Canadian Econometrics Study Group, Ryerson University, Toronto Ontario, October 13, 2011.</li>
+<li>Session Chair at the New York Econometrics Camp VI, April 10, 2011.</li>
+<li>Discussant for “Tighter Bounds in Triangular Systems” by Jun, Pinkse and Xu, Canadian Econometrics Study Group, Carleton University, Ottawa Ontario, September 19, 2009.</li>
+<li>Session Chair at the New York Econometrics Camp IV, April 5, 2009.</li>
+<li>Session Chair at the New York Econometrics Camp II, March 24, 2007.</li>
+<li>Session Chair of the Nonparametric/Semiparametric Econometrics Session, South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006.</li>
+<li>Session Chair of the Model Selection Session, Canadian Econometrics Study Group, Brock University, Niagara Falls, Ontario, October 21, 2006.</li>
+<li>The Canadian Econometrics Study Group Program Committee, Brock University, Niagara Falls, Ontario, 2006.</li>
+<li>Discussant for “Nonstandard Asymptotics for Quantile Regression” Chuan Goh (the University of Toronto), Canadian Econometrics Study Group, Simon Fraser University, Vancouver B.C., October 22, 2005.</li>
+<li>Session Chair of the Nonparametric Estimation II Session at the 9th World Congress of the Econometric Society, University College London, August 24, 2005.</li>
+<li>Session Chair of the Econometric Methods and Applications Session at the American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 8, 2005.</li>
+<li>Discussant for “Kernel Estimation When Density Does Not Exist” by Victoria Zinde-Walsh (McGill University), Canadian Economics Association Meeting, May 29, 2005.</li>
+<li>Session Chair of the Nonparametric Methods II Session at the Fifth World Congress of the Econometric Society, the University of Washington, August 15, 2000.</li>
+<li>Session Chair of the Applied Econometrics Session at the Far East Meetings of the Econometric Society, Singapore, July 3, 1999.</li>
+<li>Discussant for “The Relative Measurement Error Bias in Nonparametric and OLS Regression: Implications for Specification Tests” by Chris Bollinger (Georgia State University), North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, July, 1998.</li>
+<li>Discussant for “Semiparametric Maximum Likelihood Estimation of Nonlinear Regression Models and Monte Carlo Evidence” by Jian Yang (the University of Western Ontario), Canadian Econometric Study Group meetings, Queens University, September, 1997.</li>
+<li>Discussant for “An Algorithm for Robust Regression” by Lonnie Magee (McMaster University) at the Canadian Econometric Study Group meetings at the University of Laval, September, 1991.</li>
 </ol>
 </section>
 <section id="referee-and-review-activities" class="level2 unnumbered">
