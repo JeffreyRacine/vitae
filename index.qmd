@@ -4,7 +4,8 @@ author: "Jeffrey Scott Racine"
 date: now
 date-format: "YYYY-MM-DD"
 # quarto add pandoc-ext/multibib
-# Disable Quarto's global citeproc; HTML uses citeproc + multibib (PDF build removed; use headless Chrome to print HTML to PDF)
+# Disable Quarto's global citeproc; enable citeproc per-format and use multibib for bibliography handling.
+# NOTE: A `pdf` output block is configured below; printing the HTML to PDF via headless Chrome is an alternative workflow if preferred.
 citeproc: false
 # Add multibib filter
 filters:
@@ -29,10 +30,6 @@ format:
       - text: |
           \usepackage{newtxtext}
           \usepackage{microtype}
-          % Adjust CSL bibliography label spacing for PDF: move number left slightly and add a small overall inset
-          %\setlength{\cslhangindent}{1.8em} % increased hanging indent so wrapped lines align with markdown lists
-          %\setlength{\csllabelwidth}{2.4em} % keep label box width
-          %\makeatletter
           \renewenvironment{CSLReferences}[2]{%
             \begin{list}{}{%
               \setlength{\labelwidth}{\csllabelwidth}%
@@ -79,9 +76,9 @@ format:
                 pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
                   const href = a.getAttribute('href') || '';
                   const next = a.nextSibling;
-                  // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
-                  // also append the R logo AFTER the link icon. Avoid inserting duplicates.
-                  // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
+                  // For DOI links: do not insert link icons (they caused layout/clobbering issues).
+                  // For CRAN package DOIs (doi.org/...CRAN.package...), append the R logo (no link icon) and avoid inserting duplicates.
+                  // Non-DOI links are left as-is.
                   if(href.includes('doi.org')){
                     // Do not insert link icons (they caused layout/clobbering issues).
                     // For CRAN package DOIs, still append the R logo (no link icon).
@@ -172,6 +169,7 @@ format:
             });
           </script>
 params:
+  # If true, runs Google Scholar queries during rendering (requires network access and packages like `gcite`/`scholar`); set to `false` to avoid live network lookups.
   gseval: true
   # Spacing parameters for CV layout (tweak to control global spacing)
   #
@@ -208,7 +206,8 @@ header-gseval: true
 #| message: false
 #| warning: false
 #| label: inject-css-variables
-# Inject CSS variables into the rendered HTML from params (editable via YAML)
+# Inject CSS variables into the rendered HTML from params (editable via YAML).
+# Note: this emits an HTML <style> tag intended for HTML output; when rendering to PDF via LaTeX the chunk still runs and will emit the same text (generally harmless). If you prefer this to be HTML-only, wrap the `cat(...)` call in a format check.
 cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-bib-gap:%s;--cv-list-line-height:%s;--cv-list-gap:%s;--cv-list-item-gap:%s;--cv-paragraph-gap:%s;}</style>\n',
             params$spacing$value$body_line_height,
             params$spacing$value$bib_line_height,
