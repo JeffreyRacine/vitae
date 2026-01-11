@@ -29,9 +29,6 @@ format:
       - text: |
           \usepackage{newtxtext}
           \usepackage{microtype}
-          % Increase hanging indent for CSL bibliographies so entries align with section headings in the PDF
-          % Match the standard list indentation used by enumerate/itemize, + small offset for CSL entries
-          \setlength{\cslhangindent}{\dimexpr\leftmargini+1em\relax}
   html:
     toc: true
     css: cv.css
