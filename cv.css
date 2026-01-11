@@ -29,13 +29,29 @@ p {
 
 
 
-.csl-bib-body .csl-entry {
-  text-indent: -2em;
-  margin-left: 2em;
-  margin-top: 0;
-  margin-bottom: var(--cv-bib-gap);
-  padding: 0;
-  line-height: var(--cv-bib-line-height); /* tweakable */
+/* Bibliography numbering: use a CSS counter so markers are sequential and align with other lists */
+.references.csl-bib-body {
+  counter-reset: csl-bib-counter;
+  /* match ol padding so bibliography markers align with other numbered lists */
+  padding-left: 1.5em; /* same as ol padding */
+}
+.references.csl-bib-body .csl-entry {
+  counter-increment: csl-bib-counter;
+  margin: 0 0 var(--cv-bib-gap) 0;
+  padding-left: 0;
+  text-indent: 0;
+  position: relative;
+  line-height: var(--cv-bib-line-height);
+}
+.references.csl-bib-body .csl-entry::before {
+  /* show counter and two non-breaking spaces, and move marker slightly left */
+  content: counter(csl-bib-counter) ".\00a0\00a0";
+  position: absolute;
+  left: -2.3em; /* moved another 0.2em further left as requested */
+  width: 1.8em; /* slightly wider to accommodate extra spacing */
+  text-align: right;
+  font-weight: normal;
+  color: inherit;
 }
 
 /* Tight lists: reduce vertical spacing for lists across the CV */
