@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeffrey Scott Racine">
-<meta name="dcterms.date" content="2026-01-04">
+<meta name="dcterms.date" content="2026-01-11">
 
 <title>Curriculum Vitae</title>
 <style>
@@ -47,83 +47,130 @@ div.csl-indent {
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.0/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@latest/css/academicons.min.css">
 <style>
   /* Small R logo alignment */
   .r-logo svg{ display:inline-block; vertical-align: -0.12em; margin-right: .5rem }
+  /* Icons: add spacing to emulate NBSP in HTML only (won't affect PDF) */
+  i[class*="fa-"], i[class*="ai-"]{ margin-right: .35rem; vertical-align: -0.12em; display:inline-block }
   /* Package link icons */
   #refs-packages .csl-entry a { text-decoration: none }
   .pkg-icon { margin-left: .35rem; vertical-align: middle; display: inline-block }
-  /* Slightly reduce list indent for package section */
+  /* Slightly reduce list indent for package section (preserves R logo alignment) */
   #refs-packages.csl-bib-body { padding-left: 0.5rem }
+  /* Apply the same reduced indent to other bibliography sections so markers line up */
+  #refs-books.csl-bib-body,
+  #refs-edited.csl-bib-body,
+  #refs-articles.csl-bib-body,
+  #refs-reviews.csl-bib-body { padding-left: 0.5rem }
+
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function(){
     const pkgDiv = document.getElementById('refs-packages');
-    if(!pkgDiv) return;
-    pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
-      const href = a.getAttribute('href') || '';
-      const next = a.nextSibling;
-      // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
-      // also append the R logo AFTER the link icon. Avoid inserting duplicates.
-      // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
-      if(href.includes('doi.org')){
-        // Do not insert link icons (they caused layout/clobbering issues).
-        // For CRAN package DOIs, still append the R logo (no link icon).
-        if(href.includes('CRAN.package')){
-          const afterNode = next;
-          if(!(afterNode && afterNode.classList && afterNode.classList.contains('pkg-icon'))){
-            const rimg = document.createElement('img');
-            rimg.src = 'r-logo.png';
-            rimg.alt = 'CRAN';
-            rimg.className = 'pkg-icon';
-            rimg.style.width = '16px'; rimg.style.height = '16px';
-            a.parentNode.insertBefore(rimg, afterNode);
+    if(pkgDiv){
+      pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
+        const href = a.getAttribute('href') || '';
+        const next = a.nextSibling;
+        // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
+        // also append the R logo AFTER the link icon. Avoid inserting duplicates.
+        // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
+        if(href.includes('doi.org')){
+          // Do not insert link icons (they caused layout/clobbering issues).
+          // For CRAN package DOIs, still append the R logo (no link icon).
+          if(href.includes('CRAN.package')){
+            const afterNode = next;
+            if(!(afterNode && afterNode.classList && afterNode.classList.contains('pkg-icon'))){
+              const rimg = document.createElement('img');
+              rimg.src = 'r-logo.png';
+              rimg.alt = 'CRAN';
+              rimg.className = 'pkg-icon';
+              rimg.style.width = '16px'; rimg.style.height = '16px';
+              a.parentNode.insertBefore(rimg, afterNode);
+            }
           }
         }
-      }
-    });
+      });
 
-    // Remove any existing link icons (fa-link) that may have been added previously
-    pkgDiv.querySelectorAll('i.fa-link').forEach(function(ic){ ic.remove(); });
+      // Remove any existing link icons (fa-link) that may have been added previously
+      pkgDiv.querySelectorAll('i.fa-link').forEach(function(ic){ ic.remove(); });
 
-    // Hide long URL anchors when a DOI is present to reduce clutter
-    function hidePackageURLs(){
-      let removedAny = false;
-      pkgDiv.querySelectorAll('.csl-entry').forEach(function(entry){
-        const hasDOI = !!entry.querySelector('a[href*="doi.org"]');
-        if(!hasDOI) return;
-        entry.querySelectorAll('a').forEach(function(a){
-          const href = a.getAttribute('href') || '';
-          // hide non-doi http/https links (these are the long URLs)
-          if(href.startsWith('http') && !href.includes('doi.org')){
-            // remove preceding 'URL:' label if present
-            const prev = a.previousSibling;
-            if(prev && prev.nodeType === Node.TEXT_NODE){
-              prev.textContent = prev.textContent.replace(/\,?\s*URL\s*:\s*/i, '');
+      // Hide long URL anchors when a DOI is present to reduce clutter
+      function hidePackageURLs(){
+        let removedAny = false;
+        pkgDiv.querySelectorAll('.csl-entry').forEach(function(entry){
+          const hasDOI = !!entry.querySelector('a[href*="doi.org"]');
+          if(!hasDOI) return;
+          entry.querySelectorAll('a').forEach(function(a){
+            const href = a.getAttribute('href') || '';
+            // hide non-doi http/https links (these are the long URLs)
+            if(href.startsWith('http') && !href.includes('doi.org')){
+              // remove preceding 'URL:' label if present
+              const prev = a.previousSibling;
+              if(prev && prev.nodeType === Node.TEXT_NODE){
+                prev.textContent = prev.textContent.replace(/\,?\s*URL\s*:\s*/i, '');
+              }
+              a.remove();
+              removedAny = true;
             }
-            a.remove();
-            removedAny = true;
+          });
+        });
+        return removedAny;
+      }
+      // Try immediately and observe for dynamic changes (citeproc may insert anchors later)
+      if(!hidePackageURLs()){
+        const urlObserver = new MutationObserver(function(mutations, obs){
+          if(hidePackageURLs()) obs.disconnect();
+        });
+        urlObserver.observe(pkgDiv, { childList: true, subtree: true });
+      }
+    }
+
+    // Remove leading numeric prefixes from csl bibliography entries and render them as native list items
+    function stripBibliographyNumbers(){
+      let changed = false;
+      document.querySelectorAll('.references.csl-bib-body').forEach(function(bib){
+        bib.querySelectorAll('.csl-entry').forEach(function(entry){
+          // First try to remove any leading numeric prefixes directly from innerHTML
+          const oldHTML = entry.innerHTML || '';
+          const newHTML = oldHTML.replace(/^\s*\d+\.\s*/, '');
+          if(newHTML !== oldHTML){
+            entry.innerHTML = newHTML;
+            changed = true;
+            return;
           }
+          // Fallback: scan child text nodes for leading numeric prefix
+          entry.childNodes.forEach(function(n){
+            if(n.nodeType === Node.TEXT_NODE){
+              const t = n.textContent || '';
+              const nt = t.replace(/^\s*\d+\.\s*/, '');
+              if(nt !== t){
+                n.textContent = nt;
+                changed = true;
+              }
+            }
+          });
         });
       });
-      return removedAny;
+      return changed;
     }
-    // Try immediately and observe for dynamic changes (citeproc may insert anchors later)
-    if(!hidePackageURLs()){
-      const urlObserver = new MutationObserver(function(mutations, obs){
-        if(hidePackageURLs()) obs.disconnect();
+
+    // Run immediately; observe if citeproc inserts entries later
+    if(!stripBibliographyNumbers()){
+      const bibObserver = new MutationObserver(function(muts, obs){
+        if(stripBibliographyNumbers()) obs.disconnect();
       });
-      urlObserver.observe(pkgDiv, { childList: true, subtree: true });
+      document.querySelectorAll('.references.csl-bib-body').forEach(function(b){ bibObserver.observe(b, { childList: true, subtree: true }); });
     }
   });
 </script>
@@ -142,7 +189,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -169,13 +216,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contact-information" id="toc-contact-information" class="nav-link active" data-scroll-target="#contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i>&nbsp;Contact Information</a></li>
-  <li><a href="#academic-profiles-and-websites" id="toc-academic-profiles-and-websites" class="nav-link" data-scroll-target="#academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Academic Profiles and Websites</a></li>
+  <li><a href="#contact-information" id="toc-contact-information" class="nav-link active" data-scroll-target="#contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i> Contact Information</a></li>
+  <li><a href="#academic-profiles-and-websites" id="toc-academic-profiles-and-websites" class="nav-link" data-scroll-target="#academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Academic Profiles and Websites</a></li>
   <li><a href="#academic-background" id="toc-academic-background" class="nav-link" data-scroll-target="#academic-background">Academic Background</a></li>
   <li><a href="#current-positions" id="toc-current-positions" class="nav-link" data-scroll-target="#current-positions">Current Positions</a></li>
   <li><a href="#past-positions" id="toc-past-positions" class="nav-link" data-scroll-target="#past-positions">Past Positions</a></li>
-  <li><a href="#honours-and-awards" id="toc-honours-and-awards" class="nav-link" data-scroll-target="#honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i>&nbsp;Honours and Awards</a></li>
-  <li><a href="#editorial-positions" id="toc-editorial-positions" class="nav-link" data-scroll-target="#editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Editorial Positions</a></li>
+  <li><a href="#honours-and-awards" id="toc-honours-and-awards" class="nav-link" data-scroll-target="#honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i> Honours and Awards</a></li>
+  <li><a href="#editorial-positions" id="toc-editorial-positions" class="nav-link" data-scroll-target="#editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Editorial Positions</a></li>
   <li><a href="#visiting-appointments" id="toc-visiting-appointments" class="nav-link" data-scroll-target="#visiting-appointments">Visiting Appointments</a></li>
   <li><a href="#courses-taught" id="toc-courses-taught" class="nav-link" data-scroll-target="#courses-taught">Courses Taught</a></li>
   <li><a href="#ph.d.-candidate-supervision-and-examination" id="toc-ph.d.-candidate-supervision-and-examination" class="nav-link" data-scroll-target="#ph.d.-candidate-supervision-and-examination">Ph.D.&nbsp;Candidate Supervision and Examination</a></li>
@@ -183,8 +230,8 @@ window.Quarto = {
   <li><a href="#external-service" id="toc-external-service" class="nav-link" data-scroll-target="#external-service">External Service</a></li>
   <li><a href="#grants-and-fellowships" id="toc-grants-and-fellowships" class="nav-link" data-scroll-target="#grants-and-fellowships">Grants and Fellowships</a></li>
   <li><a href="#google-scholar-citation-summary" id="toc-google-scholar-citation-summary" class="nav-link" data-scroll-target="#google-scholar-citation-summary"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Citation Summary</a></li>
-  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books"><i class="fa-solid fa-book" aria-hidden="true"></i>&nbsp;Books</a></li>
-  <li><a href="#edited-volumes" id="toc-edited-volumes" class="nav-link" data-scroll-target="#edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Edited Volumes</a></li>
+  <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books"><i class="fa-solid fa-book" aria-hidden="true"></i> Books</a></li>
+  <li><a href="#edited-volumes" id="toc-edited-volumes" class="nav-link" data-scroll-target="#edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Edited Volumes</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><img src="r-logo.png" title="R" alt="R logo" class="r-logo" aria-hidden="true">&nbsp;Packages</a></li>
   <li><a href="#peer-reviewed-publications" id="toc-peer-reviewed-publications" class="nav-link" data-scroll-target="#peer-reviewed-publications">Peer Reviewed Publications</a></li>
   <li><a href="#published-book-reviews" id="toc-published-book-reviews" class="nav-link" data-scroll-target="#published-book-reviews">Published Book Reviews</a></li>
@@ -217,7 +264,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-04</p>
+      <p class="date">2026-01-11</p>
     </div>
   </div>
   
@@ -230,9 +277,9 @@ window.Quarto = {
 
 
 <section id="contact-information" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i>&nbsp;Contact Information</h2>
+<h2 class="unnumbered anchored" data-anchor-id="contact-information"><i class="fa-solid fa-house" aria-hidden="true"></i> Contact Information</h2>
 <ul>
-<li><p><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>&nbsp;Department of Economics<br>
+<li><p><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Department of Economics<br>
 Kenneth Taylor Hall, Room 426<br>
 McMaster University<br>
 1280 Main Street West<br>
@@ -241,23 +288,23 @@ Hamilton, Ontario, Canada, L8S 4M4</p></li>
 </ul>
 </section>
 <section id="academic-profiles-and-websites" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Academic Profiles and Websites</h2>
+<h2 class="unnumbered anchored" data-anchor-id="academic-profiles-and-websites"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Academic Profiles and Websites</h2>
 <ul>
-<li><a href="https://github.com/JeffreyRacine"><i class="fa-brands fa-github" aria-hidden="true"></i>&nbsp;GitHub Profile: github.com/JeffreyRacine</a></li>
-<li><a href="https://scholar.google.com/citations?user=TXeKxGsAAAAJ"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ</a></li>
-<li><a href="https://ideas.repec.org/e/pra175.html"><i class="fa-solid fa-globe" aria-hidden="true"></i>&nbsp;IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html</a></li>
-<li><a href="https://profiles.impactstory.org/u/0000-0002-5680-3705"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>&nbsp;Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705</a></li>
-<li><a href="https://experts.mcmaster.ca/display/racinej"><i class="fa-solid fa-university" aria-hidden="true"></i>&nbsp;McMaster Website: experts.mcmaster.ca/display/racinej</a></li>
-<li><a href="https://orcid.org/0000-0002-5680-3705"><i class="ai ai-orcid" aria-hidden="true"></i>&nbsp;ORCID Profile: orcid.org/0000-0002-5680-3705</a></li>
-<li><a href="https://jeffreyracine.github.io/blog"><i class="fa-solid fa-blog" aria-hidden="true"></i>&nbsp;Personal Blog: jeffreyracine.github.io/blog</a></li>
-<li><a href="https://www.researchgate.net/profile/Jeffrey_Racine"><i class="ai ai-researchgate" aria-hidden="true"></i>&nbsp;ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine</a></li>
-<li><a href="https://www.scopus.com/authid/detail.uri?authorId=12790466400"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i>&nbsp;Scopus Profile: Author ID: 12790466400</a></li>
+<li><a href="https://github.com/JeffreyRacine"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub Profile: github.com/JeffreyRacine</a></li>
+<li><a href="https://scholar.google.com/citations?user=TXeKxGsAAAAJ"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ</a></li>
+<li><a href="https://ideas.repec.org/e/pra175.html"><i class="fa-solid fa-globe" aria-hidden="true"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html</a></li>
+<li><a href="https://profiles.impactstory.org/u/0000-0002-5680-3705"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705</a></li>
+<li><a href="https://experts.mcmaster.ca/display/racinej"><i class="fa-solid fa-university" aria-hidden="true"></i> McMaster Website: experts.mcmaster.ca/display/racinej</a></li>
+<li><a href="https://orcid.org/0000-0002-5680-3705"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID Profile: orcid.org/0000-0002-5680-3705</a></li>
+<li><a href="https://jeffreyracine.github.io/blog"><i class="fa-solid fa-blog" aria-hidden="true"></i> Personal Blog: jeffreyracine.github.io/blog</a></li>
+<li><a href="https://www.researchgate.net/profile/Jeffrey_Racine"><i class="ai ai-researchgate" aria-hidden="true"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine</a></li>
+<li><a href="https://www.scopus.com/authid/detail.uri?authorId=12790466400"><i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Scopus Profile: Author ID: 12790466400</a></li>
 </ul>
 </section>
 <section id="academic-background" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="academic-background">Academic Background</h2>
 <ul>
-<li><p><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>&nbsp;<em>Education:</em></p>
+<li><p><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> <em>Education:</em></p>
 <p>Ph.D.&nbsp;Economics (1989), the University of Western Ontario, London, Canada (Aman Ullah, Supervisor)<br>
 M.A.&nbsp;Economics (1985), McMaster University<br>
 B.A.&nbsp;Economics (1984), <em>Summa Cum Laude</em>, McMaster University</p></li>
@@ -298,7 +345,7 @@ International Symposia for Nonparametric Statistics (ISNPS)</p></li>
 </ul>
 </section>
 <section id="honours-and-awards" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i>&nbsp;Honours and Awards</h2>
+<h2 class="unnumbered anchored" data-anchor-id="honours-and-awards"><i class="fa-solid fa-award" aria-hidden="true"></i> Honours and Awards</h2>
 <ul>
 <li>Fellow, <em>Journal of Econometrics</em> (2014-)</li>
 <li>Editorial Fellow, <em>Econometric Reviews</em> (2018-)</li>
@@ -308,7 +355,7 @@ International Symposia for Nonparametric Statistics (ISNPS)</p></li>
 </ul>
 </section>
 <section id="editorial-positions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Editorial Positions</h2>
+<h2 class="unnumbered anchored" data-anchor-id="editorial-positions"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Editorial Positions</h2>
 <ul>
 <li>Guest Editor (with M. Gorfine and J. de Uña Alvarez), <em>Journal of Nonparametric Statistics</em>, ISNPS 2024 Special Volumes (2024-)</li>
 <li>Associate Editor, <a href="http://www.tandfonline.com/action/journalInformation?show=editorialBoard&amp;journalCode=lecr20"><em>Econometric Reviews</em></a>, (2012-)</li>
@@ -572,23 +619,23 @@ Date: 1985-1986</p></li>
 </section>
 <section id="google-scholar-citation-summary" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="google-scholar-citation-summary"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Citation Summary</h2>
-<div id="juabetxwpy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#juabetxwpy table {
+<div id="hmwstnofzy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hmwstnofzy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#juabetxwpy thead, #juabetxwpy tbody, #juabetxwpy tfoot, #juabetxwpy tr, #juabetxwpy td, #juabetxwpy th {
+#hmwstnofzy thead, #hmwstnofzy tbody, #hmwstnofzy tfoot, #hmwstnofzy tr, #hmwstnofzy td, #hmwstnofzy th {
   border-style: none;
 }
 
-#juabetxwpy p {
+#hmwstnofzy p {
   margin: 0;
   padding: 0;
 }
 
-#juabetxwpy .gt_table {
+#hmwstnofzy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -614,12 +661,12 @@ Date: 1985-1986</p></li>
   border-left-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_caption {
+#hmwstnofzy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#juabetxwpy .gt_title {
+#hmwstnofzy .gt_title {
   color: #333333;
   font-size: 12px;
   font-weight: initial;
@@ -631,7 +678,7 @@ Date: 1985-1986</p></li>
   border-bottom-width: 0;
 }
 
-#juabetxwpy .gt_subtitle {
+#hmwstnofzy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -643,7 +690,7 @@ Date: 1985-1986</p></li>
   border-top-width: 0;
 }
 
-#juabetxwpy .gt_heading {
+#hmwstnofzy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -655,13 +702,13 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_bottom_border {
+#hmwstnofzy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_col_headings {
+#hmwstnofzy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -676,7 +723,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_col_heading {
+#hmwstnofzy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 12px;
@@ -696,7 +743,7 @@ Date: 1985-1986</p></li>
   overflow-x: hidden;
 }
 
-#juabetxwpy .gt_column_spanner_outer {
+#hmwstnofzy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 12px;
@@ -708,15 +755,15 @@ Date: 1985-1986</p></li>
   padding-right: 4px;
 }
 
-#juabetxwpy .gt_column_spanner_outer:first-child {
+#hmwstnofzy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#juabetxwpy .gt_column_spanner_outer:last-child {
+#hmwstnofzy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#juabetxwpy .gt_column_spanner {
+#hmwstnofzy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -728,11 +775,11 @@ Date: 1985-1986</p></li>
   width: 100%;
 }
 
-#juabetxwpy .gt_spanner_row {
+#hmwstnofzy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#juabetxwpy .gt_group_heading {
+#hmwstnofzy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -758,7 +805,7 @@ Date: 1985-1986</p></li>
   text-align: left;
 }
 
-#juabetxwpy .gt_empty_group_heading {
+#hmwstnofzy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -773,15 +820,15 @@ Date: 1985-1986</p></li>
   vertical-align: middle;
 }
 
-#juabetxwpy .gt_from_md > :first-child {
+#hmwstnofzy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#juabetxwpy .gt_from_md > :last-child {
+#hmwstnofzy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#juabetxwpy .gt_row {
+#hmwstnofzy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -800,7 +847,7 @@ Date: 1985-1986</p></li>
   overflow-x: hidden;
 }
 
-#juabetxwpy .gt_stub {
+#hmwstnofzy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -813,7 +860,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#juabetxwpy .gt_stub_row_group {
+#hmwstnofzy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -827,15 +874,15 @@ Date: 1985-1986</p></li>
   vertical-align: top;
 }
 
-#juabetxwpy .gt_row_group_first td {
+#hmwstnofzy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#juabetxwpy .gt_row_group_first th {
+#hmwstnofzy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#juabetxwpy .gt_summary_row {
+#hmwstnofzy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -845,16 +892,16 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#juabetxwpy .gt_first_summary_row {
+#hmwstnofzy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_first_summary_row.thick {
+#hmwstnofzy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#juabetxwpy .gt_last_summary_row {
+#hmwstnofzy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -864,7 +911,7 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_grand_summary_row {
+#hmwstnofzy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -874,7 +921,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#juabetxwpy .gt_first_grand_summary_row {
+#hmwstnofzy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -884,7 +931,7 @@ Date: 1985-1986</p></li>
   border-top-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_last_grand_summary_row_top {
+#hmwstnofzy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -894,11 +941,11 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_striped {
+#hmwstnofzy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#juabetxwpy .gt_table_body {
+#hmwstnofzy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -907,7 +954,7 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_footnotes {
+#hmwstnofzy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -921,7 +968,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_footnote {
+#hmwstnofzy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -930,7 +977,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#juabetxwpy .gt_sourcenotes {
+#hmwstnofzy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -944,7 +991,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#juabetxwpy .gt_sourcenote {
+#hmwstnofzy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -952,77 +999,77 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#juabetxwpy .gt_left {
+#hmwstnofzy .gt_left {
   text-align: left;
 }
 
-#juabetxwpy .gt_center {
+#hmwstnofzy .gt_center {
   text-align: center;
 }
 
-#juabetxwpy .gt_right {
+#hmwstnofzy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#juabetxwpy .gt_font_normal {
+#hmwstnofzy .gt_font_normal {
   font-weight: normal;
 }
 
-#juabetxwpy .gt_font_bold {
+#hmwstnofzy .gt_font_bold {
   font-weight: bold;
 }
 
-#juabetxwpy .gt_font_italic {
+#hmwstnofzy .gt_font_italic {
   font-style: italic;
 }
 
-#juabetxwpy .gt_super {
+#hmwstnofzy .gt_super {
   font-size: 65%;
 }
 
-#juabetxwpy .gt_footnote_marks {
+#hmwstnofzy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#juabetxwpy .gt_asterisk {
+#hmwstnofzy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#juabetxwpy .gt_indent_1 {
+#hmwstnofzy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#juabetxwpy .gt_indent_2 {
+#hmwstnofzy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#juabetxwpy .gt_indent_3 {
+#hmwstnofzy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#juabetxwpy .gt_indent_4 {
+#hmwstnofzy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#juabetxwpy .gt_indent_5 {
+#hmwstnofzy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#juabetxwpy .katex-display {
+#hmwstnofzy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#juabetxwpy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hmwstnofzy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">index</th>
@@ -1033,8 +1080,8 @@ Date: 1985-1986</p></li>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="index">Citations</td>
-<td class="gt_row gt_center" headers="All">14,416</td>
-<td class="gt_row gt_center" headers="Since 2021">4,228</td>
+<td class="gt_row gt_center" headers="All">14,452</td>
+<td class="gt_row gt_center" headers="Since 2021">4,253</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="index">h-index</td>
@@ -1059,7 +1106,7 @@ Date: 1985-1986</p></li>
 </div>
 </section>
 <section id="books" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="books"><i class="fa-solid fa-book" aria-hidden="true"></i>&nbsp;Books</h2>
+<h2 class="unnumbered anchored" data-anchor-id="books"><i class="fa-solid fa-book" aria-hidden="true"></i> Books</h2>
 <div id="refs-books" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-book-racine_2019a" class="csl-entry" role="listitem">
 1. J.S. Racine “An introduction to the advanced theory and practice of nonparametric econometrics: A replicable approach using <span>R</span>” (2019), Cambridge University Press, 408 pages total, ISBN: 9781108483407, doi: <a href="https://doi.org/10.1017/9781108649841">10.1017/9781108649841</a>
@@ -1076,7 +1123,7 @@ Date: 1985-1986</p></li>
 </div>
 </section>
 <section id="edited-volumes" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i>&nbsp;Edited Volumes</h2>
+<h2 class="unnumbered anchored" data-anchor-id="edited-volumes"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Edited Volumes</h2>
 <div id="refs-edited" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-edited-nonparametric_2009" class="csl-entry" role="listitem">
 1. “Nonparametric econometric methods” Vol. 25 (2009), Emerald Group Publishing Limited, Volume 25 of the book series: Advances in Econometrics, ISBN: 9781849506236, Edited by Qi Li and Jeffrey S. Racine., ISBN: 9781849506236, doi: <a href="https://doi.org/10.1108/s0731-9053(2009)25">10.1108/s0731-9053(2009)25</a>
@@ -1806,13 +1853,14 @@ Date: 1985-1986</p></li>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
