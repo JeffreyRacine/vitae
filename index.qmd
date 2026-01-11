@@ -29,6 +29,9 @@ format:
       - text: |
           \usepackage{newtxtext}
           \usepackage{microtype}
+          % Increase hanging indent for CSL bibliographies so entries align with section headings in the PDF
+          % Match the standard list indentation used by enumerate/itemize, + small offset for CSL entries
+          \setlength{\cslhangindent}{\dimexpr\leftmargini+1em\relax}
   html:
     toc: true
     css: cv.css
@@ -39,10 +42,12 @@ format:
     include-in-header:
       - text: |
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.0/css/academicons.min.css">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@latest/css/academicons.min.css">
           <style>
             /* Small R logo alignment */
             .r-logo svg{ display:inline-block; vertical-align: -0.12em; margin-right: .5rem }
+            /* Icons: add spacing to emulate NBSP in HTML only (won't affect PDF) */
+            i[class*="fa-"], i[class*="ai-"]{ margin-right: .35rem; vertical-align: -0.12em; display:inline-block }
             /* Package link icons */
             #refs-packages .csl-entry a { text-decoration: none }
             .pkg-icon { margin-left: .35rem; vertical-align: middle; display: inline-block }
@@ -158,9 +163,9 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
             params$spacing$value$paragraph_gap))
 ```
 
-## <i class="fa-solid fa-house" aria-hidden="true"></i> Contact Information {.unnumbered}
+## <i class="fa-solid fa-house" aria-hidden="true"></i> Contact Information {.unnumbered}
 
--   <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Department of Economics\
+-   <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Department of Economics\
     Kenneth Taylor Hall, Room 426\
     McMaster University\
     1280 Main Street West\
@@ -168,21 +173,21 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 
 -   [<i class="fa-solid fa-envelope" aria-hidden="true"></i>](mailto:racinej@mcmaster.ca) racinej\@mcmaster.ca
 
-## <i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Academic Profiles and Websites {.unnumbered}
+## <i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Academic Profiles and Websites {.unnumbered}
 
--   [<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
--   [<i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
--   [<i class="fa-solid fa-globe" aria-hidden="true"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html](https://ideas.repec.org/e/pra175.html)
--   [<i class="fa-solid fa-chart-line" aria-hidden="true"></i> Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705](https://profiles.impactstory.org/u/0000-0002-5680-3705)
--   [<i class="fa-solid fa-university" aria-hidden="true"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
--   [<i class="ai ai-orcid" aria-hidden="true"></i> ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
--   [<i class="fa-solid fa-blog" aria-hidden="true"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
--   [<i class="ai ai-researchgate" aria-hidden="true"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
--   [<i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Scopus Profile: Author ID: 12790466400](https://www.scopus.com/authid/detail.uri?authorId=12790466400)
+-   [<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
+-   [<i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
+-   [<i class="fa-solid fa-globe" aria-hidden="true"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html](https://ideas.repec.org/e/pra175.html)
+-   [<i class="fa-solid fa-chart-line" aria-hidden="true"></i> Impactstory Profile: profiles.impactstory.org/u/0000-0002-5680-3705](https://profiles.impactstory.org/u/0000-0002-5680-3705)
+-   [<i class="fa-solid fa-university" aria-hidden="true"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
+-   [<i class="ai ai-orcid" aria-hidden="true"></i> ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
+-   [<i class="fa-solid fa-blog" aria-hidden="true"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
+-   [<i class="ai ai-researchgate" aria-hidden="true"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
+-   [<i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Scopus Profile: Author ID: 12790466400](https://www.scopus.com/authid/detail.uri?authorId=12790466400)
 
 ## Academic Background {.unnumbered}
 
--   <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> *Education:*
+-   <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> *Education:*
 
     Ph.D. Economics (1989), the University of Western Ontario, London, Canada (Aman Ullah, Supervisor)\
     M.A. Economics (1985), McMaster University\
@@ -222,7 +227,7 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 -   Instructor, Department of Economics, the University of Western Ontario, London, Canada (1986-1989)
 -   Summer Intern, the International Monetary Fund, D.C., U.S.A (1988)
 
-## <i class="fa-solid fa-award" aria-hidden="true"></i> Honours and Awards {.unnumbered}
+## <i class="fa-solid fa-award" aria-hidden="true"></i> Honours and Awards {.unnumbered}
 
 -   Fellow, *Journal of Econometrics* (2014-)
 -   Editorial Fellow, *Econometric Reviews* (2018-)
@@ -230,7 +235,7 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 -   *Outstanding Undergraduate Teaching Award* (the University of South Florida, 1997, \$2,000)
 -   *Sam Lawrence Prize in Labour Economics* (McMaster University, 1984, \$225)
 
-## <i class="fa-solid fa-book-open" aria-hidden="true"></i> Editorial Positions {.unnumbered}
+## <i class="fa-solid fa-book-open" aria-hidden="true"></i> Editorial Positions {.unnumbered}
 
 -   Guest Editor (with M. Gorfine and J. de Uña Alvarez), *Journal of Nonparametric Statistics*, ISNPS 2024 Special Volumes (2024-)
 -   Associate Editor, [*Econometric Reviews*](http://www.tandfonline.com/action/journalInformation?show=editorialBoard&journalCode=lecr20), (2012-)
@@ -623,12 +628,12 @@ plot2 <- ggplot(foo$overall_citations,aes(x=year,y=cumsum(n_citations)+adjust))+
 grid.arrange(plot1, plot2, ncol=2)    
 ```
 
-## <i class="fa-solid fa-book" aria-hidden="true"></i> Books {.unnumbered}
+## <i class="fa-solid fa-book" aria-hidden="true"></i> Books {.unnumbered}
 
 ::: {#refs-books}
 :::
 
-## <i class="fa-solid fa-book-open" aria-hidden="true"></i> Edited Volumes {.unnumbered}
+## <i class="fa-solid fa-book-open" aria-hidden="true"></i> Edited Volumes {.unnumbered}
 
 ::: {#refs-edited}
 :::
