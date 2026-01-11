@@ -29,6 +29,21 @@ format:
       - text: |
           \usepackage{newtxtext}
           \usepackage{microtype}
+          % Adjust CSL bibliography label spacing for PDF: move number left slightly and add a small overall inset
+          %\setlength{\cslhangindent}{1.8em} % increased hanging indent so wrapped lines align with markdown lists
+          %\setlength{\csllabelwidth}{2.4em} % keep label box width
+          %\makeatletter
+          \renewenvironment{CSLReferences}[2]{%
+            \begin{list}{}{%
+              \setlength{\labelwidth}{\csllabelwidth}%
+              \setlength{\labelsep}{0.5em}%
+              % Shift labels 0.1in right (less negative offset) while keeping wrapped lines aligned under the entry text
+              \setlength{\leftmargin}{\dimexpr\labelwidth+\labelsep+\cslhangindent-28pt\relax}%
+              \setlength{\itemindent}{-12pt}%
+              \setlength{\parsep}{0pt}%
+              \setlength{\itemsep}{#2\baselineskip}}}%
+          {\end{list}}
+          \makeatother
   html:
     toc: true
     css: cv.css
@@ -48,67 +63,111 @@ format:
             /* Package link icons */
             #refs-packages .csl-entry a { text-decoration: none }
             .pkg-icon { margin-left: .35rem; vertical-align: middle; display: inline-block }
-            /* Slightly reduce list indent for package section */
+            /* Slightly reduce list indent for package section (preserves R logo alignment) */
             #refs-packages.csl-bib-body { padding-left: 0.5rem }
+            /* Apply the same reduced indent to other bibliography sections so markers line up */
+            #refs-books.csl-bib-body,
+            #refs-edited.csl-bib-body,
+            #refs-articles.csl-bib-body,
+            #refs-reviews.csl-bib-body { padding-left: 0.5rem }
+
           </style>
           <script>
             document.addEventListener('DOMContentLoaded', function(){
               const pkgDiv = document.getElementById('refs-packages');
-              if(!pkgDiv) return;
-              pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
-                const href = a.getAttribute('href') || '';
-                const next = a.nextSibling;
-                // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
-                // also append the R logo AFTER the link icon. Avoid inserting duplicates.
-                // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
-                if(href.includes('doi.org')){
-                  // Do not insert link icons (they caused layout/clobbering issues).
-                  // For CRAN package DOIs, still append the R logo (no link icon).
-                  if(href.includes('CRAN.package')){
-                    const afterNode = next;
-                    if(!(afterNode && afterNode.classList && afterNode.classList.contains('pkg-icon'))){
-                      const rimg = document.createElement('img');
-                      rimg.src = 'r-logo.png';
-                      rimg.alt = 'CRAN';
-                      rimg.className = 'pkg-icon';
-                      rimg.style.width = '16px'; rimg.style.height = '16px';
-                      a.parentNode.insertBefore(rimg, afterNode);
+              if(pkgDiv){
+                pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
+                  const href = a.getAttribute('href') || '';
+                  const next = a.nextSibling;
+                  // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
+                  // also append the R logo AFTER the link icon. Avoid inserting duplicates.
+                  // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
+                  if(href.includes('doi.org')){
+                    // Do not insert link icons (they caused layout/clobbering issues).
+                    // For CRAN package DOIs, still append the R logo (no link icon).
+                    if(href.includes('CRAN.package')){
+                      const afterNode = next;
+                      if(!(afterNode && afterNode.classList && afterNode.classList.contains('pkg-icon'))){
+                        const rimg = document.createElement('img');
+                        rimg.src = 'r-logo.png';
+                        rimg.alt = 'CRAN';
+                        rimg.className = 'pkg-icon';
+                        rimg.style.width = '16px'; rimg.style.height = '16px';
+                        a.parentNode.insertBefore(rimg, afterNode);
+                      }
                     }
                   }
-                }
-              });
+                });
 
-              // Remove any existing link icons (fa-link) that may have been added previously
-              pkgDiv.querySelectorAll('i.fa-link').forEach(function(ic){ ic.remove(); });
+                // Remove any existing link icons (fa-link) that may have been added previously
+                pkgDiv.querySelectorAll('i.fa-link').forEach(function(ic){ ic.remove(); });
 
-              // Hide long URL anchors when a DOI is present to reduce clutter
-              function hidePackageURLs(){
-                let removedAny = false;
-                pkgDiv.querySelectorAll('.csl-entry').forEach(function(entry){
-                  const hasDOI = !!entry.querySelector('a[href*="doi.org"]');
-                  if(!hasDOI) return;
-                  entry.querySelectorAll('a').forEach(function(a){
-                    const href = a.getAttribute('href') || '';
-                    // hide non-doi http/https links (these are the long URLs)
-                    if(href.startsWith('http') && !href.includes('doi.org')){
-                      // remove preceding 'URL:' label if present
-                      const prev = a.previousSibling;
-                      if(prev && prev.nodeType === Node.TEXT_NODE){
-                        prev.textContent = prev.textContent.replace(/\,?\s*URL\s*:\s*/i, '');
+                // Hide long URL anchors when a DOI is present to reduce clutter
+                function hidePackageURLs(){
+                  let removedAny = false;
+                  pkgDiv.querySelectorAll('.csl-entry').forEach(function(entry){
+                    const hasDOI = !!entry.querySelector('a[href*="doi.org"]');
+                    if(!hasDOI) return;
+                    entry.querySelectorAll('a').forEach(function(a){
+                      const href = a.getAttribute('href') || '';
+                      // hide non-doi http/https links (these are the long URLs)
+                      if(href.startsWith('http') && !href.includes('doi.org')){
+                        // remove preceding 'URL:' label if present
+                        const prev = a.previousSibling;
+                        if(prev && prev.nodeType === Node.TEXT_NODE){
+                          prev.textContent = prev.textContent.replace(/\,?\s*URL\s*:\s*/i, '');
+                        }
+                        a.remove();
+                        removedAny = true;
                       }
-                      a.remove();
-                      removedAny = true;
+                    });
+                  });
+                  return removedAny;
+                }
+                // Try immediately and observe for dynamic changes (citeproc may insert anchors later)
+                if(!hidePackageURLs()){
+                  const urlObserver = new MutationObserver(function(mutations, obs){
+                    if(hidePackageURLs()) obs.disconnect();
+                  });
+                  urlObserver.observe(pkgDiv, { childList: true, subtree: true });
+                }
+              }
+
+              // Remove leading numeric prefixes from csl bibliography entries and render them as native list items
+              function stripBibliographyNumbers(){
+                let changed = false;
+                document.querySelectorAll('.references.csl-bib-body').forEach(function(bib){
+                  bib.querySelectorAll('.csl-entry').forEach(function(entry){
+                    // First try to remove any leading numeric prefixes directly from innerHTML
+                    const oldHTML = entry.innerHTML || '';
+                    const newHTML = oldHTML.replace(/^\s*\d+\.\s*/, '');
+                    if(newHTML !== oldHTML){
+                      entry.innerHTML = newHTML;
+                      changed = true;
+                      return;
                     }
+                    // Fallback: scan child text nodes for leading numeric prefix
+                    entry.childNodes.forEach(function(n){
+                      if(n.nodeType === Node.TEXT_NODE){
+                        const t = n.textContent || '';
+                        const nt = t.replace(/^\s*\d+\.\s*/, '');
+                        if(nt !== t){
+                          n.textContent = nt;
+                          changed = true;
+                        }
+                      }
+                    });
                   });
                 });
-                return removedAny;
+                return changed;
               }
-              // Try immediately and observe for dynamic changes (citeproc may insert anchors later)
-              if(!hidePackageURLs()){
-                const urlObserver = new MutationObserver(function(mutations, obs){
-                  if(hidePackageURLs()) obs.disconnect();
+
+              // Run immediately; observe if citeproc inserts entries later
+              if(!stripBibliographyNumbers()){
+                const bibObserver = new MutationObserver(function(muts, obs){
+                  if(stripBibliographyNumbers()) obs.disconnect();
                 });
-                urlObserver.observe(pkgDiv, { childList: true, subtree: true });
+                document.querySelectorAll('.references.csl-bib-body').forEach(function(b){ bibObserver.observe(b, { childList: true, subtree: true }); });
               }
             });
           </script>
@@ -719,276 +778,543 @@ grid.arrange(plot1, plot2, ncol=2)
 ## Conference Presentations and Invited Lectures {.unnumbered}
 
 1.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
+
 2.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
+
 3.  XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, "Locally Adaptive Online Functional Data Analysis."
+
 4.  2024 Econometrics Workshop, University of Kansas, April 27, 2024, "Locally Adaptive Online Functional Data Analysis."
+
 5.  6TH Workshop on Goodness-Of-Fit, Change-Point and Related Problems, Skukuza Lodge, Kruger National Park, South Africa, August 27, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 6.  University of Pretoria (Department of Economics), August 21, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 7.  Georgia Institute of Technology (Department of Economics), April 28, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 8.  Emory University (Department of Economics), April 24, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 9.  2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador (keynote speaker), April 19, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 10. McMaster University (Graduate Program in Statistics), April 4, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 11. McGill University (Department of Economics), March 10, 2023, "Locally Adaptive Online Functional Data Analysis."
+
 12. The 5th Conference of the International Symposia for Nonparametric Statistics, June 23, 2022, Paphos Cyprus, "Boundary-Adaptive Kernel Density Estimation."
+
 13. New Directions in Economic Theory and Empirical Economics Conference (keynote speaker), Indian Institute of Management Kolkata, August 17, 2018, "Dealing with model uncertainty via frequentist model averaging."
+
 14. Indian Statistical Institute Kolkata, August 10, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
 15. Universidad del Rosario, April 19, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
 16. State University of New York Albany, April 5, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
 17. West Indies Economics Conference, The University of the West Indies, Kingston, Jamaica, March 8, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
 18. McMaster University (Department of Mathematics and Statistics), February 27, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
 19. Shape-Constrained Methods: Inference, Applications, and Practice, Banff International Research Station for Mathematical Innovation and Discovery, January 30, 2018, "Shape Constrained Nonparametric Instrumental Regression."
+
 20. 32nd Annual Congress of the European Economic Association & 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal, "Optimal Model Averaging of Varying Coefficient Models."
+
 21. 3^rd^ International Workshop on *Financial Markets and Nonlinear Dynamics* (keynote speaker), June 2, 2017, Paris, France, "Bootstrap Model Averaging Unit Root Inference."
+
 22. The University of Cambridge, INET-cemmap Panel Data Conference held at Trinity College, May 23, 2017, "Regression Spline Random Effects Models."
+
 23. New York Econometrics Camp XII, April 8, 2017, "Optimal Model Averaging of Varying Coefficient Models."
+
 24. Syracuse University, October 5, 2016, "Nonparametric Regression-Spline Random Effects Models."
+
 25. Cornell University, October 4, 2016, "Direct Nonparametric Conditional Quantile Estimation."
+
 26. The University of Bergen, Department of Mathematics, September 22, 2016, "Direct Nonparametric Conditional Quantile Estimation."
+
 27. The University of Miami, September 27, 2016, "Nonparametric Regression-Spline Random Effects Models."
+
 28. The University of Ferrara Nonparametric Workshop, May 24 2016, "Smoothing Categorical Covariates - A Bayesian Interpretation."
+
 29. CSIR (Council for Scientific and Industrial Research, Pretoria South Africa), April 25 2016, "Recent Developments in Nonparametric Estimation - Smoothing Categorical Covariates."
+
 30. The University of the Witwatersrand CoE-MaSS (Center of Excellence in Mathematical and Statistical Sciences), April 21 2016, "Direct Nonparametric Conditional Quantile Estimation."
+
 31. The Johns Hopkins University, February 3, 2016, "Direct Nonparametric Conditional Quantile Estimation."
+
 32. The University of Queensland, November 25, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 33. ENSAI (École nationale de la statistique et de l'analyse d l'information), November 12, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 34. Groupement de Recherche en Economie Quantitative d'Aix-Marseille, October 27, 2015, "Nonparametric Regression-Spline Random Effects Models"
+
 35. Aarhus Universitet (CREATES), September 29, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 36. Statistische Woche 2015, Hamburg, September 15, 2015, "Smoothing Categorical Regressors."
+
 37. The University of Colorado Boulder, September 4, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 38. 11th World Congress of the Econometric Society, Montreal, August 21, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 39. The Bristol Econometric Study Group, July 10, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 40. CR Rao Prize Conference, Penn State University, May 14, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 41. The University of Rochester, April 24, 2015, "Shape Constrained Nonparametric Instrumental Regression."
+
 42. New York Econometrics Camp X, April 11, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 43. The University of Laval, April 9, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 44. The University of California, Riverside, Conference in Honor of Aman Ullah, March 13-15, 2015, "Local Polynomial Derivative Estimation: Analytic or Taylor?"
+
 45. State University of New York Stony Brook, February 25, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 46. The University of Wisconsin-Milwaukee, February 20, 2015, "Direct Nonparametric Conditional Quantile Estimation."
+
 47. McMaster University, November 26, 2014, "Direct Nonparametric Conditional Quantile Estimation."
+
 48. Econometrics Conference in Honor of Esfandiar Maasoumi, Emory University, November 15, 2014, "Cross-validated Mixed Datatype Bandwidth Selection for Nonparametric Cumulative Distribution/Survivor Functions."
+
 49. The University of Waterloo, October 10, 2014, "Direct Nonparametric Conditional Quantile Estimation."
+
 50. School of Computational Science and Engineering, McMaster University, October 8, 2014, "Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach."
+
 51. The 6th Annual Health Econometrics Workshop (keynote speaker), the University of Toronto, September 26, 2014, "Recent Advances in Nonparametric Instrumental Regression."
+
 52. The 21st International Conference on Computational Statistics (COMPSTAT 2014), Geneva, Switzerland, August 21, 2014, "Nonparametric Kernel Estimation: An Exact Parallel kd-tree Approach."
+
 53. International Workshop on Applied Probability, Antalya, Turkey, June 18, 2014, "Smooth Constrained Frontier Analysis."
+
 54. Rimini Center for Economic Analysis, June 9, 2014, "The Smooth Colonel and the Reverend Find Common Ground."
+
 55. Monash University, May 30, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 56. The University of Melbourne, May 28, 2014, "The Smooth Colonel and the Reverend Find Common Ground."
+
 57. La Trobe University, May 27, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 58. The University of Sydney, May 23, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 59. Københavns Universitet, May 9, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 60. Københavns Universitet, May 9, 2014, "Nonparametric Kernel Regression: An Introduction."
+
 61. Aarhus Universitet (CREATES), April 30, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 62. The Cowles Foundation, Yale University, March 31, 2014, "Shape Constrained Nonparametric Estimation and Inference - An Overview of Recent Developments."
+
 63. The Cowles Foundation, Yale University, March 26, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 64. The Cowles Foundation, Yale University, March 24, 2014, "The Smooth Colonel and the Reverend Find Common Ground."
+
 65. The Singapore Management University, February 26, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 66. National University of Singapore, February 25, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 67. The Nanyang Technological University, Singapore, February 24, 2014, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 68. The Canadian Econometrics Study Group, October 19, 2013, Waterloo, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 69. The American Statistical Association Joint Statistical Meetings, Montreal, August 5, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 70. Universidad de Murcia, May 15, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 71. Universidad Nacional de Educación a Distancia, May 13, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 72. New York Econometrics Camp VIII, April 6, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 73. Yale University (Department of Economics/Cowles Foundation), March 28, 2013, "Smoothing Parameter Selection for NP Hard Problems."
+
 74. Fordham University (Department of Economics), March 26, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 75. Emory University (Department of Economics), February 28, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 76. Emory University (Department of Biostatistics & Bioinformatics), February 15, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 77. McMaster University (Department of Mathematics and Statistics), January 29, 2013, "Infinite Order Cross-Validated Local Polynomial Regression."
+
 78. McMaster University, November 28, 2012, "Nonparametric Instrumental Derivatives."
+
 79. The University of Pretoria (Department of Economics), November 15, 2012, "Spline Regression in the Presence of Categorical Predictors."
+
 80. The University of Pretoria (Department of Statistics), November 14, 2012, "Spline Regression in the Presence of Categorical Predictors."
+
 81. The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 13, 2012, "Nonparametric Kernel Regression with Multiple Predictors and Multiple Shape Constraints."
+
 82. The University of the Witwatersrand (Department of Statistics and Actuarial Science), November 12, 2012, "Spline Regression in the Presence of Categorical Predictors."
+
 83. Plenary Talk at the 54th Annual Conference of the South African Statistical Association, Nelson Mandela Metropolitan University, November 6, 2012, "Spline Regression in the Presence of Categorical Predictors."
+
 84. Nelson Mandela Metropolitan University (Department of Statistics), November 3, 2012, "An Overview of Categorical Smoothing Methods and Their Application to Splines."
+
 85. McMaster University (Department of Mathematics and Statistics), October 2, 2012, "On Reproducible Research: R, Sweave, and knitr."
+
 86. The 1st Conference of the International Society for Nonparametric Statistics, June 15, 2012, Chalkidiki Greece, "Constrained Nonparametric Instrumental Regression."
+
 87. Monash University, May 25, 2012, "Nonparametric Instrumental Derivatives."
+
 88. La Trobe University, May 18, 2012, "Nonparametric Instrumental Derivatives."
+
 89. The University of Melbourne, May 15, 2012, "Nonparametric Instrumental Derivatives."
+
 90. Cornell University, April 18, 2012, "Nonparametric Instrumental Derivatives."
+
 91. The University of California Davis, April 9, 2012, "Nonparametric Instrumental Derivatives."
+
 92. University College London, February 29, 2012, "Nonparametric Instrumental Derivatives."
+
 93. McMaster University (Department of Mathematics and Statistics), January 23, 2012, "Spline Regression in the Presence of Categorical Predictors."
+
 94. The Third French Econometrics Conference (Keynote Speaker), Aix-en-Provence, December 12, 2011, "Mitigating the Curse-of-Dimensionality in Nonparametric Regression."
+
 95. Carleton University, November 4, 2011, "Spline Regression in the Presence of Categorical Predictors."
+
 96. McMaster University, October 5, 2011, "Spline Regression in the Presence of Categorical Predictors."
+
 97. The Toulouse School of Economics, May 18, 2011, "Programming with R."
+
 98. New York Econometrics Camp VI, April 9, 2011, "Categorical Semiparametric Varying Coefficient Models."
+
 99. The University of Miami, March 25, 2011, "Smooth Constrained Frontier Analysis."
+
 100. Universidad de Zaragoza, March 3, 2011, "Spline Regression in the Presence of Categorical Predictors."
+
 101. The University of Manitoba, December 3, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 102. The University of Windsor (Department of Mathematics and Statistics), November 25, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 103. The University of Toronto (Department of Statistics), November 11, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 104. The Canadian Econometrics Study Group, October 22, 2010, Vancouver, "Spline Regression in the Presence of Categorical Predictors."
+
 105. New York Econometrics Camp V, October 2, 2010, "Spline Regression in the Presence of Categorical Predictors."
+
 106. The Rimini Center for Economic Analysis, June 11, 2010, "Spline Regression in the Presence of Categorical Predictors."
+
 107. Aarhus Universitet (CREATES), April 15, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 108. Universidad Carlos III de Madrid, April 12, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 109. The Toulouse School of Economics, April 2, 2010, "Computational Methods in Economics: Reproducible Research."
+
 110. Vanderbilt University, February 18, 2010, "Smooth Constrained Frontier Analysis."
+
 111. Michigan State University (Department of Statistics), February 9, 2010, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 112. The American University Info-Metrics Institute, January 25, 2010, "Entropy in Hypothesis Testing: Review and Applications."
+
 113. The University of Guelph, November 20, 2009, "Smooth Constrained Frontier Analysis."
+
 114. Lakehead University, November 6, 2009, "Smooth Constrained Frontier Analysis."
+
 115. Michigan State University, October 23, 2009, "Smooth Constrained Frontier Analysis."
+
 116. McMaster University (Department of Mathematics and Statistics), September 29, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 117. The University of Western Ontario, September 25, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 118. The Canadian Econometrics Study Group, September 19, 2009, "Data-Driven Model Evaluation: A Test for Revealed Performance."
+
 119. AAEA Meetings, Milwaukee, Wisconsin, July 28, 2009, "The Use of R in Econometric Modeling."
+
 120. Nuffield College, Oxford, June 19, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 121. AECON Workshop, Køge, Denmark, June 15, 2009, "Methods in Econometrics."
+
 122. The University of California, Riverside, May 8, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 123. The University of California, Los Angeles, May 6, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 124. The University of California, San Diego, May 5, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 125. New York Econometrics Camp IV, April 4, 2009, "Data-Driven Model Evaluation: A Test for Revealed Performance."
+
 126. Queens University, April 2, 2009, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 127. The University of British Columbia, November 28, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 128. The University of Victoria, November 27, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 129. Simon Fraser University, November 25, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 130. Advances in Econometrics Conference, Louisiana State University, November 15, 2008, "Nonparametric and Semiparametric Methods in R."
+
 131. Louisiana State University, November 14, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 132. Groupement de Recherche en Economie Quantitative d'Aix-Marseille, October 9, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 133. The Toulouse School of Economics, October 6, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 134. The Canadian Econometrics Study Group, September 27, 2008, "Jackknife Model Averaging."
+
 135. Syracuse University, September 12, 2008, "Constrained Nonparametric Kernel Regression: Estimation and Inference."
+
 136. Cornell University, April 8, 2008, "Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data."
+
 137. New York Econometrics Camp III, April 4, 2008, "Jackknife Model Averaging."
+
 138. Southern Methodist University, February 26, 2008, "Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data."
+
 139. Texas Econometrics Camp XIII, February 16, 2008, "A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data."
+
 140. Monash University, February 1, 2008, "Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data."
+
 141. The University of Melbourne, January 23, 2008, "Smooth Varying-Coefficient Estimation and Inference for Qualitative and Quantitative Data."
+
 142. McMaster University, November 20, 2007, "Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors."
+
 143. The Virginia Polytechnical Institute, October 29, 2007, "Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data."
+
 144. Indiana University, October 19, 2007, "Kernel Regression with Irrelevant Regressors."
+
 145. The Canadian Econometrics Study Group, September 28, 2007, "Smooth Varying-Coefficient Nonparametric Models for Qualitative and Quantitative Data."
+
 146. The University of Alberta, May 11, 2007, "Nonparametric Estimation of Regression Functions in the Presence of Irrelevant Regressors."
+
 147. McGill University, April 6, 2007, "A Partially Linear Kernel Estimator for Categorical Data."
+
 148. Cornell University, February 27, 2007, "A Partially Linear Kernel Estimator for Categorical Data."
+
 149. Oregon State University, January 26, 2007, "A Partially Linear Kernel Estimator for Categorical Data."
+
 150. The South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006, "A Partially Linear Kernel Estimator for Categorical Data."
+
 151. HEC Montreal, November 16, 2006, "Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data."
+
 152. The University of Toronto, November 10, 2006, "Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data."
+
 153. SHARCNET Fall Workshop, the University of Waterloo, October 16, 2006, "Topics on scientific and statistical parallel computing using R on distributed systems."
+
 154. The Far East Meetings of the Econometric Society, Tsinghua University, Beijing, China, July 9th-12th, 2006, "Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data."
+
 155. useR! 2006, Wirtschaftsuniversität Wien, Vienna, Austria, June 16, 2006, "np: A Package for Nonparametric Kernel Smoothing with Mixed Datatypes."
+
 156. The Southern Methodist University, May 8, 2006, "Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data."
+
 157. Texas A&M University, May 4, 2006, "Consistent Specification Testing of Heteroskedastic Parametric Regression Quantile Models with Mixed Data."
+
 158. The University of Waterloo, March 31, 2006, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data."
+
 159. New York Econometrics Camp I, February 4, 2006, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance."
+
 160. The Georgia Institute of Technology, November 8, 2005, "Recent Developments in Kernel Smoothing with both Categorical and Continuous Data."
+
 161. The Canadian Econometrics Study Group, October 22, 2005, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data."
+
 162. McMaster University (Department of Mathematics and Statistics), September 27, 2005, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Applications in Finance."
+
 163. The 9th World Congress of the Econometric Society, University College London, August 24, 2005, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data."
+
 164. The American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 10, 2005, "A Nonparametric Wald Test of General Nonlinear Restrictions."
+
 165. SPIDA, York University, June 3, 2005, "Bootstrapping When Only a Small Number of Replications are Possible."
+
 166. The University of Toronto, May 26, 2005, Keynote Speaker, Canadian Health Economics Study Group, "Nonparametric Methods for Mixed Categorical and Continuous Processes with Applications in the Health Arena."
+
 167. Texas A&M University, January 19, 2005, "Nonparametric Estimation of Conditional CDF and Quantile Functions with Mixed Categorical and Continuous Data."
+
 168. Southern Economic Association, November 21, 2004, "A Nonparametric Test for Equality of Distributions with Mixed Categorical and Continuous Data."
+
 169. The University of California Riverside, November 8, 2004, "Kernel Methods in Mixed Data Models."
+
 170. New York University, November 5, 2004, "Kernel Methods in Mixed Data Models."
+
 171. The Midwest Econometrics Group, Northwestern University, October 16, 2004, "Efficient Estimation of Average Treatment Effects with Mixed Categorical and Continuous Data."
+
 172. The Canadian Econometric Study Group 2004, York University, September 25, 2004, "A Versatile and Robust Metric Entropy Test of Time Reversibility and Dependence."
+
 173. Georgia State University, September 10, 2004, "Nonparametric Estimation and Inference with Mixed Data Types."
+
 174. McMaster University, April 30, 2004, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 175. McGill University, April 2, 2004, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 176. Syracuse University, February 26, 2004, "Parallel Distributed Numerical Computation."
+
 177. The University of Toronto, February 2, 2004, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 178. Simon Fraser University, December 2, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 179. The University of British Columbia, December 1, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 180. State University of New York, Binghamton, November 21, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 181. Queens University, November 4, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 182. The Canadian Econometric Study Group 2003, McMaster University, September 20, 2003, "A Nonparametric Analysis of the Determinants of Child Schooling in Indonesia."
+
 183. York University, September 19, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 184. Syracuse University, March 26, 2003, "An Introduction to Kernel Smoothing with Mixed Data Types."
+
 185. Texas Econometrics Camp VIII, February 23, 2003, "Inference via Kernel Smoothing of Bootstrap P Values."
+
 186. Southern Methodist University, February 21, 2003, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 187. The University of Guelph, November 15, 2002, "Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables."
+
 188. Cornell University, October 1, 2002, "Nonparametric Estimation of Regression Functions with Discrete Explanatory Variables."
+
 189. The Australian National University, September 20, 2002, "To smooth or not to smooth? Kernel smoothing for mixed data with applications."
+
 190. International Conference on Current Advances and Trends in Nonparametric Statistics held in Crete, Greece, July 15-19, 2002, "Testing the Significance of Categorical Variables in Nonparametric Regression Models."
+
 191. Texas Econometrics Camp VII, February 24, 2002, "Growth and Convergence: A Profile of Distribution Dynamics and Mobility."
+
 192. Syracuse University, November 16, 2001, "Nonparametric Estimation and Inference with Mixed Data Types."
+
 193. The University of Miami, October 12, 2001, "Nonparametric Estimation and Inference with Mixed Data Types."
+
 194. The University of Central Florida, September 7, 2001, "Cells and Kernels: Nonparametric Estimation with Mixed Data Types."
+
 195. La Trobe University, July 20, 2001, "Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types."
+
 196. Monash University, July 19, 2001, "Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types."
+
 197. The University of Melbourne, July 16, 2001, "Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types."
+
 198. Interface '01, The 33rd Symposium on the Interface of Computing Science and Statistics, Los Angeles, June 14, 2001, "Statistical Inference, the Bootstrap, and Neural Network Modelling with Application to Foreign Exchange Rates."
+
 199. Texas A&M University, April 19, 2001, "Nonparametric Estimation with Mixed Data Types."
+
 200. The University of Arizona, January 18, 2001, "Recent Developments in Nonparametric Kernel Estimation with Mixed Data Types."
+
 201. Southern Methodist University, November 17, 2000, "A Global Nonparametric Wald-Type Test of Equality Restrictions with Mixed Data Types."
+
 202. The University of Rochester, November 9, 2000, "Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data."
+
 203. Cornell University, November 7, 2000, "Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data."
+
 204. The Canadian Econometric Study Group 2000, the University of Guelph, September 29, 2000, "Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data."
+
 205. The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 16, 2000, "Nonparametric Estimation of Regression Functions with Mixed Categorical and Continuous Data."
+
 206. The 8th World Congress of the Econometric Society, the University of Washington, Seattle, August 15, 2000, "Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data."
+
 207. Southern Methodist University, April 17, 2000, "Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data."
+
 208. The University of Texas, Austin, April 15, 2000, "Nonparametric Estimation of Conditional Distributions with Mixed Categorical and Continuous Data."
+
 209. The Canadian Econometric Study Group 1999, Montreal, September 25, 1999, "A Metric Entropy and a New Test of Independence."
+
 210. The Far East Meetings of the Econometric Society, Singapore, July 3, 1999, "Generalized Semiparametric Binary Choice."
+
 211. The University of South Florida, April 23, 1999, "A Metric Entropy and a New Test of Independence."
+
 212. Texas Econometrics Camp IV, February 27, 1999, "A Metric Entropy and a New Test of Independence."
+
 213. The University of South Florida, November, 1998, "Density Based Multinomial Choice."
+
 214. Pennsylvania State University, October 9, 1998, "Density Based Multinomial Choice."
+
 215. The University of South Florida, February, 1998, "Nonparametric Maximum Likelihood Estimation and Inference."
+
 216. The North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, June, 1998, "Nonparametric Maximum Likelihood Estimation and Inference."
+
 217. The University of South Florida Department of Epidemiology and Biostatistics, May, 1998, "Nonparametric Maximum Likelihood Estimation and Inference."
+
 218. The North American Summer Meetings of the Econometric Society, Caltech, June, 1997, "Bias-Corrected Kernel Regression."
+
 219. Wilfrid Laurier University, March, 1997, "Bias-Corrected Kernel Regression."
+
 220. The University of Florida, November, 1996, "A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation."
+
 221. The University of South Florida, September, 1996, "A Consistent Cross-Validatory Method for Dependent data: hv-Block Cross-Validation."
+
 222. North American Summer Meetings of the Econometric Society, July, 1994, "Statistical Inference, the Bootstrap, and Neural Network Modelling."
+
 223. Florida State University, March, 1994, "Consistent Significance Testing for Nonparametric Regression."
+
 224. The Canadian Econometric Study Group 1994, the University of Toronto, September, 1993, "Consistent Significance Testing for Nonparametric Regression."
+
 225. The University of South Florida, March, 1993, "Consistent Significance Testing for Nonparametric Regression."
+
 226. The University of California San Diego, March, 1993, "Consistent Significance Testing for Nonparametric Regression."
+
 227. The University of California Riverside, February, 1993, "Consistent Significance Testing for Nonparametric Regression."
+
 228. Georgia State University, February, 1993, "Consistent Significance Testing for Nonparametric Regression."
+
 229. South East Asia Meetings of the Econometric Society, Bombay India, December, 1992, "Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds."
+
 230. The University of California San Diego, October 1992, "Bias-Corrected Kernel Regression with Heteroskedasticity-Consistent Error Bounds."
+
 231. McMaster University, September 1992, "The Reverse Regression Paradox: Some New Evidence."
+
 232. The Canadian Economics Association Meetings, September 1992, "The Reverse Regression Paradox: Some New Evidence."
+
 233. York University, March 1992, "The Reverse Regression Paradox: Some New Evidence."
+
 234. The University of Toronto, November, 1991, "Computer Assisted Corneal Topography of Kerataconus Kindreds."
+
 235. The Canadian Econometric Study Group 1990, September, 1990, "A Semiparametric Approach to the Estimation of Systems of Equations Models in the Presence of Heteroscedasticity of Unknown Form."
+
 236. York University, February, 1989, "Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form."
+
 237. The University of Missouri, Columbia, February, 1989, "Semiparametric Estimation in the Presence of Heteroscedasticity of Unknown Form."
+
 238. The University of Windsor, February, 1989, "Semiparametric Estimation of SUR models: A Heteroscedasticity Consistent Approach."
 
 ## Conference Organization and Participation {.unnumbered}
 
 1.  Member of Scientific Committe, Conference Volume Guest Editor, Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 25-29, 2024, held in Braga, Portugal.
+
 2.  Discussant for "Kernel Estimation in Regression on Vector and Function Spaces" by Sid Kankanala, Marcia Schafgans, and Victoria Zinde-Walsh, the Canadian Econometrics Study Group, McMaster University, Hamilton Ontario, October 28, 2023.
+
 3.  Session Organizer and Chair, *International Symposia for Nonparametric Statistics*, June 20-24, 2022, held in Paphos, Cyprus.
+
 4.  Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 11-15, 2018, held in Salerno, Italy.
+
 5.  Session Chair at the New York Econometrics Camp XIII, April 7, 2018.
+
 6.  Session Chair at the 32nd Annual Congress of the European Economic Association & 70th European Meeting of the Econometric Society, August 23, 2017, Lisbon, Portugal.
+
 7.  Session Chair at the New York Econometrics Camp XII, April 8, 2017.
+
 8.  Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 11-15, 2016, held in Avignon, France.
+
 9.  Session Chair at the New York Econometrics Camp XI, April 9, 2016.
+
 10. Programme Committee member, Info-Metrics Conference on Information-Theoretic Methods of Inference held at Clare College, the University of Cambridge, April 1-2, 2016.
+
 11. Session Chair at the New York Econometrics Camp X, April 12, 2015.
+
 12. Panel Discussant, Info-Metrics Conference on Philosophy of Information and Information Processing, Pembroke College, the University of Oxford, March 27, 2015.
+
 13. Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 12-16, 2014, held in Cádiz, España.
+
 14. Session Chair at the Info-Metrics Institute Conference on Information, Instability and Fragility in Networks, Boulder Colorado, November 15, 2013.
+
 15. Discussant for "Quantile Regression for Panel Data Models with Fixed Effects and Small T: Identification and Estimation" by Maria Ponomareva, the Canadian Econometrics Study Group, Ryerson University, Toronto Ontario, October 13, 2011.
+
 16. Session Chair at the New York Econometrics Camp VI, April 10, 2011.
+
 17. Discussant for "Tighter Bounds in Triangular Systems" by Jun, Pinkse and Xu, Canadian Econometrics Study Group, Carleton University, Ottawa Ontario, September 19, 2009.
+
 18. Session Chair at the New York Econometrics Camp IV, April 5, 2009.
+
 19. Session Chair at the New York Econometrics Camp II, March 24, 2007.
+
 20. Session Chair of the Nonparametric/Semiparametric Econometrics Session, South East Asia Meetings of the Econometric Society, Chennai India, December 19, 2006.
+
 21. Session Chair of the Model Selection Session, Canadian Econometrics Study Group, Brock University, Niagara Falls, Ontario, October 21, 2006.
+
 22. The Canadian Econometrics Study Group Program Committee, Brock University, Niagara Falls, Ontario, 2006.
+
 23. Discussant for "Nonstandard Asymptotics for Quantile Regression" Chuan Goh (the University of Toronto), Canadian Econometrics Study Group, Simon Fraser University, Vancouver B.C., October 22, 2005.
+
 24. Session Chair of the Nonparametric Estimation II Session at the 9th World Congress of the Econometric Society, University College London, August 24, 2005.
+
 25. Session Chair of the Econometric Methods and Applications Session at the American Statistical Association Joint Statistical Meetings, Minneapolis Minnesota, August 8, 2005.
+
 26. Discussant for "Kernel Estimation When Density Does Not Exist" by Victoria Zinde-Walsh (McGill University), Canadian Economics Association Meeting, May 29, 2005.
+
 27. Session Chair of the Nonparametric Methods II Session at the Fifth World Congress of the Econometric Society, the University of Washington, August 15, 2000.
+
 28. Session Chair of the Applied Econometrics Session at the Far East Meetings of the Econometric Society, Singapore, July 3, 1999.
+
 29. Discussant for "The Relative Measurement Error Bias in Nonparametric and OLS Regression: Implications for Specification Tests" by Chris Bollinger (Georgia State University), North American Summer Meetings of the Econometric Society, the University of Quebec at Montreal, July, 1998.
+
 30. Discussant for "Semiparametric Maximum Likelihood Estimation of Nonlinear Regression Models and Monte Carlo Evidence" by Jian Yang (the University of Western Ontario), Canadian Econometric Study Group meetings, Queens University, September, 1997.
+
 31. Discussant for "An Algorithm for Robust Regression" by Lonnie Magee (McMaster University) at the Canadian Econometric Study Group meetings at the University of Laval, September, 1991.
 
 ## Referee and Review Activities {.unnumbered}
