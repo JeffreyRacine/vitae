@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeffrey Scott Racine">
-<meta name="dcterms.date" content="2026-01-11">
+<meta name="dcterms.date" content="2026-01-12">
 
 <title>Curriculum Vitae</title>
 <style>
@@ -82,9 +82,9 @@ div.csl-indent {
       pkgDiv.querySelectorAll('.csl-entry a').forEach(function(a){
         const href = a.getAttribute('href') || '';
         const next = a.nextSibling;
-        // Only add a link icon for DOI links. For CRAN package DOIs (doi.org/...CRAN.package...),
-        // also append the R logo AFTER the link icon. Avoid inserting duplicates.
-        // Only add a link icon for non-CRAN DOI links; for CRAN package DOIs, append only the R logo
+        // For DOI links: do not insert link icons (they caused layout/clobbering issues).
+        // For CRAN package DOIs (doi.org/...CRAN.package...), append the R logo (no link icon) and avoid inserting duplicates.
+        // Non-DOI links are left as-is.
         if(href.includes('doi.org')){
           // Do not insert link icons (they caused layout/clobbering issues).
           // For CRAN package DOIs, still append the R logo (no link icon).
@@ -264,7 +264,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-11</p>
+      <p class="date">2026-01-12</p>
     </div>
   </div>
   
@@ -619,23 +619,23 @@ Date: 1985-1986</p></li>
 </section>
 <section id="google-scholar-citation-summary" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="google-scholar-citation-summary"><i class="ai ai-google-scholar" aria-hidden="true"></i>&nbsp;Google Scholar Citation Summary</h2>
-<div id="uljhoxlcie" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uljhoxlcie table {
+<div id="mviuscbrzw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mviuscbrzw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uljhoxlcie thead, #uljhoxlcie tbody, #uljhoxlcie tfoot, #uljhoxlcie tr, #uljhoxlcie td, #uljhoxlcie th {
+#mviuscbrzw thead, #mviuscbrzw tbody, #mviuscbrzw tfoot, #mviuscbrzw tr, #mviuscbrzw td, #mviuscbrzw th {
   border-style: none;
 }
 
-#uljhoxlcie p {
+#mviuscbrzw p {
   margin: 0;
   padding: 0;
 }
 
-#uljhoxlcie .gt_table {
+#mviuscbrzw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -661,12 +661,12 @@ Date: 1985-1986</p></li>
   border-left-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_caption {
+#mviuscbrzw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uljhoxlcie .gt_title {
+#mviuscbrzw .gt_title {
   color: #333333;
   font-size: 12px;
   font-weight: initial;
@@ -678,7 +678,7 @@ Date: 1985-1986</p></li>
   border-bottom-width: 0;
 }
 
-#uljhoxlcie .gt_subtitle {
+#mviuscbrzw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -690,7 +690,7 @@ Date: 1985-1986</p></li>
   border-top-width: 0;
 }
 
-#uljhoxlcie .gt_heading {
+#mviuscbrzw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -702,13 +702,13 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_bottom_border {
+#mviuscbrzw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_col_headings {
+#mviuscbrzw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -723,7 +723,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_col_heading {
+#mviuscbrzw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 12px;
@@ -743,7 +743,7 @@ Date: 1985-1986</p></li>
   overflow-x: hidden;
 }
 
-#uljhoxlcie .gt_column_spanner_outer {
+#mviuscbrzw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 12px;
@@ -755,15 +755,15 @@ Date: 1985-1986</p></li>
   padding-right: 4px;
 }
 
-#uljhoxlcie .gt_column_spanner_outer:first-child {
+#mviuscbrzw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uljhoxlcie .gt_column_spanner_outer:last-child {
+#mviuscbrzw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uljhoxlcie .gt_column_spanner {
+#mviuscbrzw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -775,11 +775,11 @@ Date: 1985-1986</p></li>
   width: 100%;
 }
 
-#uljhoxlcie .gt_spanner_row {
+#mviuscbrzw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uljhoxlcie .gt_group_heading {
+#mviuscbrzw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +805,7 @@ Date: 1985-1986</p></li>
   text-align: left;
 }
 
-#uljhoxlcie .gt_empty_group_heading {
+#mviuscbrzw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -820,15 +820,15 @@ Date: 1985-1986</p></li>
   vertical-align: middle;
 }
 
-#uljhoxlcie .gt_from_md > :first-child {
+#mviuscbrzw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uljhoxlcie .gt_from_md > :last-child {
+#mviuscbrzw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uljhoxlcie .gt_row {
+#mviuscbrzw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -847,7 +847,7 @@ Date: 1985-1986</p></li>
   overflow-x: hidden;
 }
 
-#uljhoxlcie .gt_stub {
+#mviuscbrzw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -860,7 +860,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#uljhoxlcie .gt_stub_row_group {
+#mviuscbrzw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -874,15 +874,15 @@ Date: 1985-1986</p></li>
   vertical-align: top;
 }
 
-#uljhoxlcie .gt_row_group_first td {
+#mviuscbrzw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uljhoxlcie .gt_row_group_first th {
+#mviuscbrzw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uljhoxlcie .gt_summary_row {
+#mviuscbrzw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -892,16 +892,16 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#uljhoxlcie .gt_first_summary_row {
+#mviuscbrzw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_first_summary_row.thick {
+#mviuscbrzw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uljhoxlcie .gt_last_summary_row {
+#mviuscbrzw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,7 +911,7 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_grand_summary_row {
+#mviuscbrzw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -921,7 +921,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#uljhoxlcie .gt_first_grand_summary_row {
+#mviuscbrzw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -931,7 +931,7 @@ Date: 1985-1986</p></li>
   border-top-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_last_grand_summary_row_top {
+#mviuscbrzw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,11 +941,11 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_striped {
+#mviuscbrzw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uljhoxlcie .gt_table_body {
+#mviuscbrzw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -954,7 +954,7 @@ Date: 1985-1986</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_footnotes {
+#mviuscbrzw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,7 +968,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_footnote {
+#mviuscbrzw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -977,7 +977,7 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#uljhoxlcie .gt_sourcenotes {
+#mviuscbrzw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -991,7 +991,7 @@ Date: 1985-1986</p></li>
   border-right-color: #D3D3D3;
 }
 
-#uljhoxlcie .gt_sourcenote {
+#mviuscbrzw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -999,72 +999,72 @@ Date: 1985-1986</p></li>
   padding-right: 5px;
 }
 
-#uljhoxlcie .gt_left {
+#mviuscbrzw .gt_left {
   text-align: left;
 }
 
-#uljhoxlcie .gt_center {
+#mviuscbrzw .gt_center {
   text-align: center;
 }
 
-#uljhoxlcie .gt_right {
+#mviuscbrzw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uljhoxlcie .gt_font_normal {
+#mviuscbrzw .gt_font_normal {
   font-weight: normal;
 }
 
-#uljhoxlcie .gt_font_bold {
+#mviuscbrzw .gt_font_bold {
   font-weight: bold;
 }
 
-#uljhoxlcie .gt_font_italic {
+#mviuscbrzw .gt_font_italic {
   font-style: italic;
 }
 
-#uljhoxlcie .gt_super {
+#mviuscbrzw .gt_super {
   font-size: 65%;
 }
 
-#uljhoxlcie .gt_footnote_marks {
+#mviuscbrzw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uljhoxlcie .gt_asterisk {
+#mviuscbrzw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uljhoxlcie .gt_indent_1 {
+#mviuscbrzw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uljhoxlcie .gt_indent_2 {
+#mviuscbrzw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uljhoxlcie .gt_indent_3 {
+#mviuscbrzw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uljhoxlcie .gt_indent_4 {
+#mviuscbrzw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uljhoxlcie .gt_indent_5 {
+#mviuscbrzw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uljhoxlcie .katex-display {
+#mviuscbrzw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uljhoxlcie div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mviuscbrzw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1080,8 +1080,8 @@ Date: 1985-1986</p></li>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="index">Citations</td>
-<td class="gt_row gt_center" headers="All">14,452</td>
-<td class="gt_row gt_center" headers="Since 2021">4,253</td>
+<td class="gt_row gt_center" headers="All">14,440</td>
+<td class="gt_row gt_center" headers="Since 2021">4,244</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="index">h-index</td>
@@ -1163,7 +1163,7 @@ Date: 1985-1986</p></li>
 1. V. Patilea and J.S. Racine “Locally adaptive online functional data analysis”. In: <em>Journal of Nonparametric Statistics</em> (forthcoming)
 </div>
 <div id="ref-racine_forthcoming" class="csl-entry" role="listitem">
-2. J.S. Racine “Quarto the assassin”. In: <em>Advanced studies in theoretical and applied econometrics</em> Vol. 56 (forthcoming), doi: <a href="https://doi.org/10.1007/978-3-031-97941-5">10.1007/978-3-031-97941-5</a>
+2. J.S. Racine “Quarto the assassin”. In: <em>Advanced studies in theoretical and applied econometrics</em> Vol. 56 (forthcoming)
 </div>
 <div id="ref-wang_2025" class="csl-entry" role="listitem">
 3. L. Wang, J.S. Racine, and Q. Wang “Bootstrap inference on a factor model based average treatment effects estimator”. In: <em>Econometric Reviews</em> Vol. 44 (1) (2025), pp. 80–89, doi: <a href="https://doi.org/10.1080/07474938.2024.2390392">10.1080/07474938.2024.2390392</a>
@@ -1391,7 +1391,7 @@ Date: 1985-1986</p></li>
 77. C. Granger, E. Maasoumi, and J.S. Racine “A dependence metric for possibly nonlinear processes”. In: <em>Journal of Time Series Analysis</em> Vol. 25 (5) (2004), pp. 649–669, doi: <a href="https://doi.org/10.1111/j.1467-9892.2004.01866.x">10.1111/j.1467-9892.2004.01866.x</a>
 </div>
 <div id="ref-li_2004b" class="csl-entry" role="listitem">
-78. Q. Li and J.S. Racine “Cross-validated local linear nonparametric regression”. In: <em>Statistica Sinica</em> Vol. 14 (2) (2004), pp. 485–512, doi: <a href="https://doi.org/10.1201/b15416-13">10.1201/b15416-13</a>
+78. Q. Li and J.S. Racine “Cross-validated local linear nonparametric regression”. In: <em>Statistica Sinica</em> Vol. 14 (2) (2004), pp. 485–512
 </div>
 <div id="ref-racine_2004b" class="csl-entry" role="listitem">
 79. J.S. Racine and Q. Li “Nonparametric estimation of regression functions with both categorical and continuous data”. In: <em>Journal of Econometrics</em> Vol. 119 (2004), pp. 99–130, doi: <a href="https://doi.org/10.1016/s0304-4076(03)00157-x">10.1016/s0304-4076(03)00157-x</a>
@@ -1415,7 +1415,7 @@ Date: 1985-1986</p></li>
 85. J.S. Racine “Generalized semiparametric binary prediction”. In: <em>Annals of Economics and Finance</em> Vol. 3 (2002), pp. 131–147
 </div>
 <div id="ref-racine_2002e" class="csl-entry" role="listitem">
-86. J.S. Racine “Index-free, density-based multinomial choice”. In: <em>Handbook of applied econometrics and statistical inference</em> (2002), pp. 115–142, doi: <a href="https://doi.org/10.1016/b978-0-12-201150-4.50016-5">10.1016/b978-0-12-201150-4.50016-5</a>
+86. J.S. Racine “Index-free, density-based multinomial choice”. In: <em>Handbook of applied econometrics and statistical inference</em> (2002), pp. 115–142
 </div>
 <div id="ref-racine_2001a" class="csl-entry" role="listitem">
 87. J.S. Racine “On the nonlinear predictability of stock returns using financial and economic variables”. In: <em>Journal of Business &amp; Economic Statistics</em> Vol. 19 (3) (2001), pp. 380–382, doi: <a href="https://doi.org/10.1080/07350015.1999.10524830">10.1080/07350015.1999.10524830</a>
