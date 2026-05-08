@@ -56,7 +56,7 @@ format:
             /* Small R logo alignment */
             .r-logo svg{ display:inline-block; vertical-align: -0.12em; margin-right: .5rem }
             /* Icons: add spacing to emulate NBSP in HTML only (won't affect PDF) */
-            i[class*="fa-"], i[class*="ai-"]{ margin-right: .35rem; vertical-align: -0.12em; display:inline-block }
+            i[class*="fa-"], i[class*="ai-"], i[class*="bi-"]{ margin-right: .35rem; vertical-align: -0.12em; display:inline-block }
             /* Package link icons */
             #refs-packages .csl-entry a { text-decoration: none }
             .pkg-icon { margin-left: .35rem; vertical-align: middle; display: inline-block }
@@ -218,6 +218,57 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
             params$spacing$value$paragraph_gap))
 ```
 
+::: {.content-visible when-format="html"}
+::: {.cv-hero}
+::: {.cv-hero-copy}
+<div class="cv-hero-name">Jeffrey S. Racine</div>
+
+Senator William McMaster Chair in Econometrics · Professor of Economics · Professor, Graduate Program in Statistics
+
+Nonparametric econometrics, mixed-data smoothing, reproducible econometrics, and R package development.
+:::
+
+::: {.cv-hero-actions}
+[Download PDF](vitae.pdf){.cv-button .cv-button-primary}
+[Research](https://jeffreyracine.github.io/research/){.cv-button}
+[Code Gallery](https://jeffreyracine.github.io/gallery/){.cv-button}
+[GitHub](https://github.com/JeffreyRacine){.cv-button}
+[Google Scholar](https://scholar.google.com/citations?user=TXeKxGsAAAAJ){.cv-button}
+[ORCID](https://orcid.org/0000-0002-5680-3705){.cv-button}
+:::
+:::
+
+:::: {.cv-summary-grid}
+::: {.cv-summary-card}
+<div class="cv-summary-title">Current Positions</div>
+
+McMaster Economics, Graduate Statistics, Senator William McMaster Chair in Econometrics, Info-Metrics Institute, and Rimini Center for Economic Analysis.
+:::
+
+::: {.cv-summary-card}
+<div class="cv-summary-title">Research Contributions</div>
+
+Three books, edited volumes, peer-reviewed articles, reviews, invited lectures, and workshops in econometrics and statistics.
+:::
+
+::: {.cv-summary-card}
+<div class="cv-summary-title">R Packages on CRAN</div>
+
+Lead author and maintainer of `np`, `npRmpi`, `crs`, and related R software for nonparametric and semiparametric methods.
+:::
+
+::: {.cv-summary-card}
+<div class="cv-summary-title">Live Google Scholar Metrics</div>
+
+Google Scholar citation counts and figures are refreshed by a local scheduled render and then served as static GitHub Pages output.
+:::
+::::
+
+::: {.cv-official-note}
+This HTML page is a web companion to the official PDF CV. For circulation, use the [PDF version](vitae.pdf).
+:::
+:::
+
 ## <i class="fa-solid fa-house" aria-hidden="true"></i> Contact Information {.unnumbered}
 
 -   <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Department of Economics\
@@ -230,6 +281,8 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 
 ## <i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Academic Profiles and Websites {.unnumbered}
 
+-   [<i class="fa-solid fa-file-lines" aria-hidden="true"></i> CV Website: jeffreyracine.github.io/vitae](https://jeffreyracine.github.io/vitae/)
+-   [<i class="bi bi-code-slash" aria-hidden="true"></i> Gallery of Code: jeffreyracine.github.io/gallery](https://jeffreyracine.github.io/gallery/)
 -   [<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub Profile: github.com/JeffreyRacine](https://github.com/JeffreyRacine)
 -   [<i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar Profile: scholar.google.com/citations?user=TXeKxGsAAAAJ](https://scholar.google.com/citations?user=TXeKxGsAAAAJ)
 -   [<i class="fa-solid fa-globe" aria-hidden="true"></i> IDEAS/RePEc Profile: ideas.repec.org/e/pra175.html](https://ideas.repec.org/e/pra175.html)
@@ -237,6 +290,7 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 -   [<i class="fa-solid fa-university" aria-hidden="true"></i> McMaster Website: experts.mcmaster.ca/display/racinej](https://experts.mcmaster.ca/display/racinej)
 -   [<i class="ai ai-orcid" aria-hidden="true"></i> ORCID Profile: orcid.org/0000-0002-5680-3705](https://orcid.org/0000-0002-5680-3705)
 -   [<i class="fa-solid fa-blog" aria-hidden="true"></i> Personal Blog: jeffreyracine.github.io/blog](https://jeffreyracine.github.io/blog)
+-   [<i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> Research Website: jeffreyracine.github.io/research](https://jeffreyracine.github.io/research/)
 -   [<i class="ai ai-researchgate" aria-hidden="true"></i> ResearchGate Profile: www.researchgate.net/profile/Jeffrey_Racine](https://www.researchgate.net/profile/Jeffrey_Racine)
 -   [<i class="fa-solid fa-globe-americas" aria-hidden="true"></i> Scopus Profile: Author ID: 12790466400](https://www.scopus.com/authid/detail.uri?authorId=12790466400)
 
@@ -293,7 +347,7 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 ## <i class="fa-solid fa-book-open" aria-hidden="true"></i> Editorial Positions {.unnumbered}
 
 -   Guest Editor (with M. Gorfine and J. de Uña Alvarez), *Journal of Nonparametric Statistics*, ISNPS 2024 Special Volumes (2024-)
--   Associate Editor, [*Econometric Reviews*](http://www.tandfonline.com/action/journalInformation?show=editorialBoard&journalCode=lecr20), (2012-)
+-   Associate Editor, [*Econometric Reviews*](http://www.tandfonline.com/action/journalInformation?show=editorialBoard&journalCode=lecr20), (2012-2025)
 -   Deputy Editor-in-Chief, [*Econometrics*](http://www.mdpi.com/journal/econometrics/editors), (2016-2019)
 -   Associate Editor, [*Journal of Econometric Methods*](http://www.degruyter.com/view/j/jem), (2010-2018)
 -   Editorial Board, *Book Series on Econometrics*, World Scientific and Imperial College Press, (2013-)
@@ -302,6 +356,7 @@ cat(sprintf('<style>:root{--cv-body-line-height:%s;--cv-bib-line-height:%s;--cv-
 
 ## Visiting Appointments {.unnumbered}
 
+-   Visiting Fellow, ENSAI (École nationale de la statistique et de l'analyse d l'information), Rennes, France (2026)
 -   Visiting Fellow, ENSAI (École nationale de la statistique et de l'analyse d l'information), Rennes, France (2022)
 -   Visiting Fellow, ENSAI (École nationale de la statistique et de l'analyse d l'information), Rennes, France (2016)
 -   Visiting Fellow, CSIR (Council for Scientific and Industrial Research), Pretoria, South Africa (2016)
@@ -632,26 +687,35 @@ if(knitr::is_latex_output()) {
     pander::pander(foofoo$citation_indices)
   }
 } else {
-  # Use gt for HTML
-  if(requireNamespace("gt", quietly = TRUE)){
-    library(gt)
-    gse_tbl %>%
-      gt() %>%
-      fmt_number(columns = intersect(c("All", "Since 2021"), names(gse_tbl)), decimals = 0, use_seps = TRUE) %>%
-      cols_align(align = "left", columns = "index") %>%
-      cols_align(align = "center", columns = intersect(c("All", "Since 2021"), names(gse_tbl))) %>%
-      tab_options(
-        table.font.size = px(13),
-        column_labels.font.size = px(12),
-        data_row.padding = px(8),
-        heading.title.font.size = px(12),
-        table.width = pct(50),
-        table.align = "center"
-      )
-  } else {
-    pander::panderOptions('table.alignment.default',c('left','right','right'))
-    pander::pander(foofoo$citation_indices)
+  html_escape <- function(x) {
+    x <- as.character(x)
+    x <- gsub("&", "&amp;", x, fixed = TRUE)
+    x <- gsub("<", "&lt;", x, fixed = TRUE)
+    x <- gsub(">", "&gt;", x, fixed = TRUE)
+    x <- gsub('"', "&quot;", x, fixed = TRUE)
+    x
   }
+  fmt_num <- function(x) format(as.numeric(x), big.mark = ",", scientific = FALSE, trim = TRUE)
+  metric_col <- if("index" %in% names(gse_tbl)) "index" else names(gse_tbl)[1]
+  all_col <- if("All" %in% names(gse_tbl)) "All" else names(gse_tbl)[2]
+  recent_col <- if("Since 2021" %in% names(gse_tbl)) "Since 2021" else tail(names(gse_tbl), 1)
+
+  metric_cards <- vapply(seq_len(nrow(gse_tbl)), function(i) {
+    sprintf(
+      '<article class="gs-metric-card"><div class="gs-metric-label">%s</div><div class="gs-metric-values"><span><em>All</em><strong>%s</strong></span><span><em>%s</em><strong>%s</strong></span></div></article>',
+      html_escape(gse_tbl[[metric_col]][i]),
+      html_escape(fmt_num(gse_tbl[[all_col]][i])),
+      html_escape(recent_col),
+      html_escape(fmt_num(gse_tbl[[recent_col]][i]))
+    )
+  }, character(1))
+
+  cat(
+    '<div class="gs-native gs-metrics" aria-label="Google Scholar citation metrics">',
+    paste(metric_cards, collapse = "\n"),
+    '</div>',
+    sep = "\n"
+  )
 }
 ```
 
@@ -663,24 +727,72 @@ if(knitr::is_latex_output()) {
 #| warning: FALSE
 #| echo: FALSE
 #| results: 'asis'
-require(ggplot2)
-require(gridExtra)
-require(scholar)
-#plot1 <- qplot(1)
-#plot2 <- qplot(1)
 ## Adjust for discrepancy in total (field All[1] in call to gcite)
 adjust <- foo$citation_indices$All[1]-sum(foo$overall_citations$n_citations)
-plot1 <- ggplot(foo$overall_citations,aes(x=year,y=n_citations))+
-    geom_bar(stat='identity')+
-    theme_bw()+
-    xlab('Year')+
-    ylab('Citations/Year')
-plot2 <- ggplot(foo$overall_citations,aes(x=year,y=cumsum(n_citations)+adjust))+
-    geom_bar(stat='identity')+
-    theme_bw()+
-    xlab('Year')+
-    ylab('Cumulative Citations')
-grid.arrange(plot1, plot2, ncol=2)    
+if(knitr::is_latex_output()) {
+  require(ggplot2)
+  require(gridExtra)
+  plot1 <- ggplot(foo$overall_citations,aes(x=year,y=n_citations))+
+      geom_bar(stat='identity')+
+      theme_bw()+
+      xlab('Year')+
+      ylab('Citations/Year')
+  plot2 <- ggplot(foo$overall_citations,aes(x=year,y=cumsum(n_citations)+adjust))+
+      geom_bar(stat='identity')+
+      theme_bw()+
+      xlab('Year')+
+      ylab('Cumulative Citations')
+  grid.arrange(plot1, plot2, ncol=2)
+} else {
+  html_escape <- function(x) {
+    x <- as.character(x)
+    x <- gsub("&", "&amp;", x, fixed = TRUE)
+    x <- gsub("<", "&lt;", x, fixed = TRUE)
+    x <- gsub(">", "&gt;", x, fixed = TRUE)
+    x <- gsub('"', "&quot;", x, fixed = TRUE)
+    x
+  }
+  fmt_num <- function(x) format(round(as.numeric(x)), big.mark = ",", scientific = FALSE, trim = TRUE)
+  citation_data <- foo$overall_citations
+  citation_data$cumulative_citations <- cumsum(citation_data$n_citations) + adjust
+
+  make_chart <- function(data, value_col, title, subtitle, chart_class) {
+    values <- as.numeric(data[[value_col]])
+    years <- as.integer(data$year)
+    max_value <- max(values, na.rm = TRUE)
+    if(!is.finite(max_value) || max_value <= 0) max_value <- 1
+    show_year <- years %% 5 == 0 | seq_along(years) == 1 | seq_along(years) == length(years)
+
+    bars <- vapply(seq_along(values), function(i) {
+      height <- max(2, 100 * values[i] / max_value)
+      year_label <- if(show_year[i]) html_escape(years[i]) else "&nbsp;"
+      sprintf(
+        '<div class="gs-bar-wrap"><div class="gs-bar" style="height: %.2f%%" title="%s: %s"></div><div class="gs-year">%s</div></div>',
+        height,
+        html_escape(years[i]),
+        html_escape(fmt_num(values[i])),
+        year_label
+      )
+    }, character(1))
+
+    sprintf(
+      '<article class="gs-chart %s"><div class="gs-chart-header"><h3>%s</h3><span>%s</span></div><div class="gs-bars" aria-label="%s">%s</div></article>',
+      chart_class,
+      html_escape(title),
+      html_escape(subtitle),
+      html_escape(title),
+      paste(bars, collapse = "\n")
+    )
+  }
+
+  cat(
+    '<div class="gs-native gs-charts">',
+    make_chart(citation_data, "n_citations", "Citations by Year", "Annual Google Scholar citations", "gs-chart-annual"),
+    make_chart(citation_data, "cumulative_citations", "Cumulative Citations", "Running total adjusted to the current Scholar total", "gs-chart-cumulative"),
+    '</div>',
+    sep = "\n"
+  )
+}
 ```
 
 ## <i class="fa-solid fa-book" aria-hidden="true"></i> Books {.unnumbered}

@@ -5,6 +5,15 @@
  */
 
 :root {
+  --cv-paper: #fcfaf5;
+  --cv-paper-soft: #f3efe5;
+  --cv-card: #fffdf8;
+  --cv-ink: #18343f;
+  --cv-muted: #5f7077;
+  --cv-accent: #0f6b6f;
+  --cv-accent-strong: #144e58;
+  --cv-border: #d7ddd4;
+  --cv-shadow: 0 16px 40px rgba(24, 52, 63, 0.08);
   /* Base line-height for body text (default: slightly more relaxed than 'tight') */
   --cv-body-line-height: 1.35;
   /* Bibliography entry line-height */
@@ -15,6 +24,307 @@
   --cv-list-gap: 0.65em; /* gap between list items (li) */
   --cv-list-item-gap: 0.35em; /* small gap for nested/compact lists */
   --cv-paragraph-gap: 0.85em; /* default paragraph bottom margin */
+}
+
+/* HTML companion styling: the PDF output keeps its LaTeX layout. */
+body {
+  background: linear-gradient(180deg, var(--cv-paper) 0%, var(--cv-paper-soft) 100%);
+  color: var(--cv-ink);
+  font-family: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.title {
+  color: var(--cv-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--cv-accent-strong);
+}
+
+a:hover,
+a:focus {
+  color: var(--cv-accent);
+}
+
+main.content {
+  min-width: 0;
+}
+
+.quarto-title-block.default .quarto-title .title {
+  font-size: 2.6rem;
+}
+
+.cv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.9fr);
+  gap: 1.5rem;
+  align-items: end;
+  margin: 0.8rem 0 1.4rem;
+  padding: 1.45rem 1.55rem;
+  background: linear-gradient(135deg, #e5efe8 0%, #f7f4eb 100%);
+  border: 1px solid var(--cv-border);
+  border-radius: 1rem;
+  box-shadow: var(--cv-shadow);
+}
+
+.cv-hero h3 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+  font-size: 2rem;
+}
+
+.cv-hero-name {
+  margin-bottom: 0.45rem;
+  color: var(--cv-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cv-hero p {
+  max-width: 46rem;
+  color: var(--cv-muted);
+  font-size: 1.05rem;
+}
+
+.cv-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.35rem 0.72rem;
+  color: var(--cv-accent-strong);
+  background: rgba(255, 253, 248, 0.78);
+  border: 1px solid var(--cv-border);
+  border-radius: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(24, 52, 63, 0.05);
+}
+
+.cv-button:hover,
+.cv-button:focus {
+  text-decoration: none;
+  background: #fffdf8;
+}
+
+.cv-button-primary {
+  color: #fff;
+  background: var(--cv-accent-strong);
+  border-color: var(--cv-accent-strong);
+}
+
+.cv-button-primary:hover,
+.cv-button-primary:focus {
+  color: #fff;
+  background: var(--cv-accent);
+}
+
+.cv-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1.2rem 0 1rem;
+}
+
+.cv-summary-card {
+  padding: 1rem 1.05rem;
+  background: var(--cv-card);
+  border: 1px solid var(--cv-border);
+  border-radius: 0.95rem;
+  box-shadow: var(--cv-shadow);
+}
+
+.cv-summary-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  font-size: 1.2rem;
+}
+
+.cv-summary-title {
+  margin-bottom: 0.35rem;
+  color: var(--cv-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cv-summary-card p,
+.cv-official-note p {
+  margin-bottom: 0;
+}
+
+.cv-official-note {
+  margin: 1.15rem 0 1.4rem;
+  padding: 0.9rem 1rem;
+  background: #e8f3ef;
+  border-left: 4px solid var(--cv-accent);
+  border-radius: 0.85rem;
+}
+
+.gs-native {
+  margin: 1rem 0 1.25rem;
+}
+
+.gs-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.gs-metric-card,
+.gs-chart {
+  background: var(--cv-card);
+  border: 1px solid var(--cv-border);
+  border-radius: 0.85rem;
+  box-shadow: var(--cv-shadow);
+}
+
+.gs-metric-card {
+  padding: 0.85rem 0.95rem;
+}
+
+.gs-metric-label {
+  color: var(--cv-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gs-metric-values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.gs-metric-values span {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.gs-metric-values em {
+  color: var(--cv-muted);
+  font-size: 0.76rem;
+  font-style: normal;
+}
+
+.gs-metric-values strong {
+  color: var(--cv-ink);
+  font-size: 1.28rem;
+  line-height: 1.05;
+}
+
+.gs-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.gs-chart {
+  padding: 0.9rem 0.95rem 0.7rem;
+}
+
+.gs-chart-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.gs-chart-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.gs-chart-header span {
+  color: var(--cv-muted);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.gs-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.16rem;
+  height: 15rem;
+  padding: 0.35rem 0.3rem 0;
+  border-bottom: 1px solid var(--cv-border);
+  border-left: 1px solid var(--cv-border);
+}
+
+.gs-bar-wrap {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  height: 100%;
+}
+
+.gs-bar {
+  min-height: 2px;
+  width: 100%;
+  background: var(--cv-accent-strong);
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.gs-chart-cumulative .gs-bar {
+  background: #7c8f58;
+}
+
+.gs-year {
+  min-height: 1rem;
+  margin-top: 0.25rem;
+  color: var(--cv-muted);
+  font-size: 0.62rem;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .cv-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-hero-actions {
+    justify-content: flex-start;
+  }
+
+  .cv-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gs-metrics,
+  .gs-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .gs-chart-header {
+    display: block;
+  }
+
+  .gs-chart-header span {
+    display: block;
+    margin-top: 0.2rem;
+    text-align: left;
+  }
 }
 
 /* Global body/paragraph spacing (use variables above to tweak) */
