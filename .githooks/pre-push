@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cat >&2 <<'EOF'
+
+CV workflow reminder:
+  After this push succeeds, pull the iCloud production checkout:
+
+     cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/CV"
+     git pull --ff-only
+
+EOF
+
+exit 0

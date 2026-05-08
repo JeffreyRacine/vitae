@@ -119,6 +119,29 @@ the development checkout before starting new work:
 git pull --ff-only
 ```
 
+## Local Reminder Hooks
+
+The development checkout carries non-blocking Git hooks under `.githooks/`.
+They print the CV publication reminder after local commits and before pushes:
+commit in `/Users/jracine/Development/CV_website`, push to GitHub, then pull the
+iCloud production checkout so the weekly cron job is not left behind.
+
+Enable the hooks in each clone with:
+
+```bash
+make install-hooks
+```
+
+or directly with:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The hooks intentionally do not block commits or pushes. They are reminders, not
+policy enforcement, because occasional local-only checkpoints are still useful
+during design work.
+
 ## Manual Production Run
 
 From the iCloud production checkout, a manual production-equivalent run is:

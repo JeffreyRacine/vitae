@@ -12,5 +12,8 @@ publish-local:
 publish:
 	CV_PUSH=1 /opt/local/bin/bash ./CV.sh
 
+install-hooks:
+	./scripts/install-git-hooks.sh
+
 clean:
 	rm -rf index.html index.pdf index.tex index_files
