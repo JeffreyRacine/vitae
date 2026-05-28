@@ -888,35 +888,37 @@ if(knitr::is_latex_output()) {
 
 ## Conference Presentations and Invited Lectures {.unnumbered}
 
-1.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
+1.  McMaster University (Graduate Program in Statistics), March 12, 2026, "Boundary Adjusted, Polynomial Adaptive, Nonparametric Kernel Conditional Density Estimation."
 
-2.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
+2.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
 
-3.  XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, "Locally Adaptive Online Functional Data Analysis."
+3.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
 
-4.  2024 Econometrics Workshop, University of Kansas, April 27, 2024, "Locally Adaptive Online Functional Data Analysis."
+4.  XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, "Locally Adaptive Online Functional Data Analysis."
 
-5.  6TH Workshop on Goodness-Of-Fit, Change-Point and Related Problems, Skukuza Lodge, Kruger National Park, South Africa, August 27, 2023, "Locally Adaptive Online Functional Data Analysis."
+5.  2024 Econometrics Workshop, University of Kansas, April 27, 2024, "Locally Adaptive Online Functional Data Analysis."
 
-6.  University of Pretoria (Department of Economics), August 21, 2023, "Locally Adaptive Online Functional Data Analysis."
+6.  6TH Workshop on Goodness-Of-Fit, Change-Point and Related Problems, Skukuza Lodge, Kruger National Park, South Africa, August 27, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-7.  Georgia Institute of Technology (Department of Economics), April 28, 2023, "Locally Adaptive Online Functional Data Analysis."
+7.  University of Pretoria (Department of Economics), August 21, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-8.  Emory University (Department of Economics), April 24, 2023, "Locally Adaptive Online Functional Data Analysis."
+8.  Georgia Institute of Technology (Department of Economics), April 28, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-9.  2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador (keynote speaker), April 19, 2023, "Locally Adaptive Online Functional Data Analysis."
+9.  Emory University (Department of Economics), April 24, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-10. McMaster University (Graduate Program in Statistics), April 4, 2023, "Locally Adaptive Online Functional Data Analysis."
+10. 2nd International Congress of Applied Statistics, Escuela Superior Politecnica de Chimborazo, Riobamba, Ecuador (keynote speaker), April 19, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-11. McGill University (Department of Economics), March 10, 2023, "Locally Adaptive Online Functional Data Analysis."
+11. McMaster University (Graduate Program in Statistics), April 4, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-12. The 5th Conference of the International Symposia for Nonparametric Statistics, June 23, 2022, Paphos Cyprus, "Boundary-Adaptive Kernel Density Estimation."
+12. McGill University (Department of Economics), March 10, 2023, "Locally Adaptive Online Functional Data Analysis."
 
-13. New Directions in Economic Theory and Empirical Economics Conference (keynote speaker), Indian Institute of Management Kolkata, August 17, 2018, "Dealing with model uncertainty via frequentist model averaging."
+13. The 5th Conference of the International Symposia for Nonparametric Statistics, June 23, 2022, Paphos Cyprus, "Boundary-Adaptive Kernel Density Estimation."
 
-14. Indian Statistical Institute Kolkata, August 10, 2018, "Bootstrap Model Averaging Unit Root Inference."
+14. New Directions in Economic Theory and Empirical Economics Conference (keynote speaker), Indian Institute of Management Kolkata, August 17, 2018, "Dealing with model uncertainty via frequentist model averaging."
 
-15. Universidad del Rosario, April 19, 2018, "Bootstrap Model Averaging Unit Root Inference."
+15. Indian Statistical Institute Kolkata, August 10, 2018, "Bootstrap Model Averaging Unit Root Inference."
+
+16. Universidad del Rosario, April 19, 2018, "Bootstrap Model Averaging Unit Root Inference."
 
 16. State University of New York Albany, April 5, 2018, "Bootstrap Model Averaging Unit Root Inference."
 
