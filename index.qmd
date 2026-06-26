@@ -668,8 +668,11 @@ foofoo <- foo <- gcite::gcite_user_info('TXeKxGsAAAAJ',verbose=FALSE,read_citati
 gse_tbl <- as.data.frame(foofoo$citation_indices, stringsAsFactors = FALSE)
 
 if("Since.2021" %in% names(gse_tbl)) names(gse_tbl)[names(gse_tbl)=="Since.2021"] <- "Since 2021"
+if(!"All" %in% names(gse_tbl) && ncol(gse_tbl) >= 2) names(gse_tbl)[2] <- "All"
+if(!"Since 2021" %in% names(gse_tbl) && ncol(gse_tbl) >= 3) names(gse_tbl)[3] <- "Since 2021"
 if("All" %in% names(gse_tbl)) gse_tbl$All <- as.numeric(gse_tbl$All)
 if("Since 2021" %in% names(gse_tbl)) gse_tbl$`Since 2021` <- as.numeric(gse_tbl$`Since 2021`)
+if(nrow(gse_tbl) >= 3) gse_tbl[[1]][1:3] <- c("Citations", "h-index", "i10-index")
 
 if(knitr::is_latex_output()) {
   # Use kableExtra for PDF - has better centering support
@@ -728,7 +731,7 @@ if(knitr::is_latex_output()) {
 #| echo: FALSE
 #| results: 'asis'
 ## Adjust for discrepancy in total (field All[1] in call to gcite)
-adjust <- foo$citation_indices$All[1]-sum(foo$overall_citations$n_citations)
+adjust <- gse_tbl$All[1]-sum(foo$overall_citations$n_citations)
 if(knitr::is_latex_output()) {
   require(ggplot2)
   require(gridExtra)
@@ -888,11 +891,13 @@ if(knitr::is_latex_output()) {
 
 ## Conference Presentations and Invited Lectures {.unnumbered}
 
-1.  McMaster University (Graduate Program in Statistics), March 12, 2026, "Boundary Adjusted, Polynomial Adaptive, Nonparametric Kernel Conditional Density Estimation."
+1.  The 7th Conference of the International Symposia for Nonparametric Statistics, June 24, 2026, Thessaloniki, Greece, "Semiparametric Covariance Estimation for Sparse Functional Data."
 
-2.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
+2.  McMaster University (Graduate Program in Statistics), March 12, 2026, "Boundary Adjusted, Polynomial Adaptive, Nonparametric Kernel Conditional Density Estimation."
 
-3.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
+3.  The University of Washington, Seattle, February 18, 2025, "Boundary Corrected Adaptive Conditional Kernel Density Estimation."
+
+4.  The 6th Conference of the International Symposia for Nonparametric Statistics, June 25, 2024, Braga Portgugal, "Locally Adaptive Online Functional Data Analysis."
 
 4.  XIII Foro Internacional de Estadística Aplicada (keynote speaker), Veracruz, Mexico, May 22, 2024, "Locally Adaptive Online Functional Data Analysis."
 
@@ -1368,11 +1373,21 @@ if(knitr::is_latex_output()) {
 
 ## Conference Organization and Participation {.unnumbered}
 
-1.  Member of Scientific Committe, Conference Volume Guest Editor, Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 25-29, 2024, held in Braga, Portugal.
+1.  Scientific Committee member, *International Symposia for Nonparametric Statistics*, June 22-26, 2026, held in Thessaloniki, Greece.
 
-2.  Discussant for "Kernel Estimation in Regression on Vector and Function Spaces" by Sid Kankanala, Marcia Schafgans, and Victoria Zinde-Walsh, the Canadian Econometrics Study Group, McMaster University, Hamilton Ontario, October 28, 2023.
+2.  Session Chair, "New Directions in Nonparametric Methods," *International Symposia for Nonparametric Statistics*, June 24, 2026, held in Thessaloniki, Greece.
 
-3.  Session Organizer and Chair, *International Symposia for Nonparametric Statistics*, June 20-24, 2022, held in Paphos, Cyprus.
+3.  Introduced keynote speaker Xuming He, *International Symposia for Nonparametric Statistics*, June 24, 2026, held in Thessaloniki, Greece.
+
+4.  Session Chair, "Topics in Econometrics I," *International Symposia for Nonparametric Statistics*, June 25, 2026, held in Thessaloniki, Greece.
+
+5.  Session Chair, "Estimation, Semiparametrics and Prediction," *International Symposia for Nonparametric Statistics*, June 25, 2026, held in Thessaloniki, Greece.
+
+6.  Member of Scientific Committe, Conference Volume Guest Editor, Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 25-29, 2024, held in Braga, Portugal.
+
+7.  Discussant for "Kernel Estimation in Regression on Vector and Function Spaces" by Sid Kankanala, Marcia Schafgans, and Victoria Zinde-Walsh, the Canadian Econometrics Study Group, McMaster University, Hamilton Ontario, October 28, 2023.
+
+8.  Session Organizer and Chair, *International Symposia for Nonparametric Statistics*, June 20-24, 2022, held in Paphos, Cyprus.
 
 4.  Session Organizer and Chair, *International Society for Nonparametric Statistics*, June 11-15, 2018, held in Salerno, Italy.
 
