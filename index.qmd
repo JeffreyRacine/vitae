@@ -891,6 +891,8 @@ if(knitr::is_latex_output()) {
 
 ## Conference Presentations and Invited Lectures {.unnumbered}
 
+1.  University of Miami (Department of Economics), August 21, 2026, "Semiparametric Covariance Estimation for Sparse Functional Data."
+
 1.  The 7th Conference of the International Symposia for Nonparametric Statistics, June 24, 2026, Thessaloniki, Greece, "Semiparametric Covariance Estimation for Sparse Functional Data."
 
 2.  McMaster University (Graduate Program in Statistics), March 12, 2026, "Boundary Adjusted, Polynomial Adaptive, Nonparametric Kernel Conditional Density Estimation."
